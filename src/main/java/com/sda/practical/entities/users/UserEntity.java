@@ -1,11 +1,19 @@
 package com.sda.practical.entities.users;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+
 public class UserEntity {
     private Integer userId;
     private String surname;
     private String name;
     private String phoneNumber;
     private String email;
+    private String password;
 
     public Integer getUserId() {
         return userId;
@@ -45,5 +53,13 @@ public class UserEntity {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }
