@@ -1,13 +1,12 @@
 package com.sda.practical.entities.users;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
 @Table
 
 public class UserEntity {
+
     private Integer userId;
     private String surname;
     private String name;
