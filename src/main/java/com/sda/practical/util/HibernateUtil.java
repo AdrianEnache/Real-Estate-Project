@@ -1,5 +1,6 @@
 package com.sda.practical.util;
 
+import com.sda.practical.entities.users.UserEntity;
 import com.sda.practical.temporaryEntities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
