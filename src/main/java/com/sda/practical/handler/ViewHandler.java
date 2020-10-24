@@ -15,8 +15,6 @@ public class ViewHandler {
 
         this.myMenues = new HashMap<>();
 
-        myMenues.put(MenuTypeEnum.MAIN_MENU, new ArrayList<>());
-        myMenues.get(MenuTypeEnum.MAIN_MENU).add("1. Selecteaza tip user : ");
 
         myMenues.put(MenuTypeEnum.SEARCH_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("1. Cauta dupa pret : ");
