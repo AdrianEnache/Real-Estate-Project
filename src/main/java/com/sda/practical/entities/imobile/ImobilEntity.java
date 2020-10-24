@@ -2,7 +2,7 @@ package com.sda.practical.entities.imobile;
 
 import java.util.Date;
 
-public class TipImobilEntity {
+public class ImobilEntity {
 
     private Integer idTipImobilEntity;
 
