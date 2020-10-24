@@ -1,20 +1,27 @@
 package com.sda.practical.entities.users;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
 
 public class UserEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
+    @Column(length = 45)
     private String surname;
+    @Column(length = 45)
     private String name;
+    @Column(length = 45)
     private String phoneNumber;
+    @Column (length = 45)
     private String email;
+    @Column(length = 45)
     private String password;
 
+
+    @OneToMany (mappedBy = "userEntity")
     public Integer getUserId() {
         return userId;
     }

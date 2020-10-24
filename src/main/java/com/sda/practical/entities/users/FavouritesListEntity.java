@@ -1,16 +1,20 @@
 package com.sda.practical.entities.users;
 
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 public class FavouritesListEntity {
-    private Integer favouriteId;
+    private Integer favouritesListEntityId;
     private Integer userId;
     private Integer imobilId;
 
-    public Integer getFavouriteId() {
-        return favouriteId;
+    @OneToOne ()
+    public Integer getFavouritesListEntityId() {
+        return favouritesListEntityId;
     }
 
-    public void setFavouriteId(Integer favouriteId) {
-        this.favouriteId = favouriteId;
+    public void setFavouritesListEntityId(Integer favouritesListEntityId) {
+        this.favouritesListEntityId = favouritesListEntityId;
     }
 
     public Integer getUserId() {
