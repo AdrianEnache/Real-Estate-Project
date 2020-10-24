@@ -4,7 +4,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table
-
 public class UserEntity {
 
     private Integer userId;
