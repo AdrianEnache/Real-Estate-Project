@@ -9,6 +9,7 @@ import com.sda.practical.models.UserModel;
 import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class DatabaseHandler {
             userEntity.setPassword(userModel.getPassword());
             userEntity.setEmail(userModel.getEmail());
             userEntity.setPhoneNumber(userModel.getPhoneNumber());
-            UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class,userModel.getUserTypeId());
+            UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class, userModel.getUserTypeId());
             userEntity.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
             session.save(userEntity);
@@ -39,9 +40,9 @@ public class DatabaseHandler {
     }
 
 
-    public void addImobil(ImobilModel imobilModel){
+    public void addImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
-        try{
+        try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             ImobileEntity imobileEntity = new ImobileEntity();
             imobileEntity.setDataPostariiAnuntului(imobilModel.getDataPostariiAnuntului());
@@ -52,25 +53,24 @@ public class DatabaseHandler {
             imobileEntity.setNumarCamere(imobilModel.getNumarCamere());
             imobileEntity.setCoordonate(imobilModel.getCoordonate());
             imobileEntity.setDescriere(imobilModel.getDescriere());
-            AnuntStatusEntity anuntStatus = session.find(AnuntStatusEntity.class,imobilModel.getAnuntStatus());
+            AnuntStatusEntity anuntStatus = session.find(AnuntStatusEntity.class, imobilModel.getAnuntStatus());
             imobileEntity.setAnuntStatus(anuntStatus);
             CompartimentareEntity compartimentare = session.find(CompartimentareEntity.class, imobilModel.getCompartimentare());
             imobileEntity.setCompartimentare(compartimentare);
-            CurrencyEntity currency = session.find(CurrencyEntity.class,imobilModel.getCurrency());
+            CurrencyEntity currency = session.find(CurrencyEntity.class, imobilModel.getCurrency());
             imobileEntity.setCurrency(currency);
             OrasEntity oras = session.find();
             transaction = session.beginTransaction();
             session.save(imobileEntity);
             transaction.commit();
             session.close();
-        }catch (Exception ex){
-            if (transaction != null){
+        } catch (Exception ex) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             System.out.println(ex.getMessage());
         }
     }
-
 
 
     public List<ImobileEntity> getImobils(FilterModel filterModel) {
@@ -86,4 +86,17 @@ public class DatabaseHandler {
         }
         return sql;
     }
+
+    //TODO cum interogam in baza de date un string (user) folosing Primary key
+
+    public void logIn(UserModel userModel) {
+        try {
+            Session session =
+
+        } catch () {
+
+        }
+    }
+
 }
+

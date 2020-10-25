@@ -23,12 +23,15 @@ public class ConsoleView {
         }
         switch (option) {
             case 1:
+
             case 2:
+
             case 3:
+
             case 4:
         }
 
-        public static void
+
 
 
     }
