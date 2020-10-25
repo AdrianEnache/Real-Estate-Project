@@ -1,7 +1,15 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+
 public class AnuntStatusEntity {
 
+    @Id
     private Integer idAnuntStatusEntity;
     private Boolean deleted;
     private Boolean sold;

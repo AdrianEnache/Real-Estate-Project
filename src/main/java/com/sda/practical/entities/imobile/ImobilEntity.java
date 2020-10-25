@@ -1,26 +1,27 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.*;
 import java.util.Date;
+
+@Entity
+@Table
 
 public class ImobilEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idTipImobilEntity;
-
-    public Integer getIdTipImobilEntity() {
-        return idTipImobilEntity;
-    }
-
-    public void setIdTipImobilEntity(Integer idTipImobilEntity) {
-        this.idTipImobilEntity = idTipImobilEntity;
-    }
-
+    @Column(columnDefinition = "DATE")
+    @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
     private Double suprafata;
     private Double pret;
-    private Integer Etaj;
-    private Integer anConstructii;
+    private Integer etaj;
+    private Integer anConstructie;
     private Integer numarCamere;
+    @Column(length = 45)
     private String coordonate;
+    @Column(length = 250)
     private String descriere;
 
     public Date getDataPostariiAnuntului() {
@@ -29,6 +30,14 @@ public class ImobilEntity {
 
     public void setDataPostariiAnuntului(Date dataPostariiAnuntului) {
         this.dataPostariiAnuntului = dataPostariiAnuntului;
+    }
+
+    public Integer getIdTipImobilEntity() {
+        return idTipImobilEntity;
+    }
+
+    public void setIdTipImobilEntity(Integer idTipImobilEntity) {
+        this.idTipImobilEntity = idTipImobilEntity;
     }
 
     public Double getSuprafata() {
