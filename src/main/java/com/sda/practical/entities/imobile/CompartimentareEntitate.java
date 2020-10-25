@@ -5,24 +5,24 @@ import javax.persistence.*;
 @Entity
 @Table
 
-public class CompartimentareEntity {
+public class CompartimentareEntitate {
 
     @Id
     @Column(columnDefinition = "ID Compartimentare")
-    private Integer idCompartimentareEntity;
+    private Integer idCompartimentareEntitate;
     @Column(columnDefinition = "Compartimentare")
     private String compartimentare;
 
     @OneToOne
     @JoinColumn(name = "idTipImobilEntity")
-    private ImobileEntity imobileEntity;
+    private ImobileEntitate imobileEntity;
 
-    public Integer getIdCompartimentareEntity() {
-        return idCompartimentareEntity;
+    public Integer getIdCompartimentareEntitate() {
+        return idCompartimentareEntitate;
     }
 
-    public void setIdCompartimentareEntity(Integer idCompartimentareEntity) {
-        this.idCompartimentareEntity = idCompartimentareEntity;
+    public void setIdCompartimentareEntitate(Integer idCompartimentareEntitate) {
+        this.idCompartimentareEntitate = idCompartimentareEntitate;
     }
 
     public String getCompartimentare() {
@@ -33,11 +33,11 @@ public class CompartimentareEntity {
         this.compartimentare = compartimentare;
     }
 
-    public ImobileEntity getImobileEntity() {
+    public ImobileEntitate getImobileEntity() {
         return imobileEntity;
     }
 
-    public void setImobileEntity(ImobileEntity imobileEntity) {
+    public void setImobileEntity(ImobileEntitate imobileEntity) {
         this.imobileEntity = imobileEntity;
     }
 }

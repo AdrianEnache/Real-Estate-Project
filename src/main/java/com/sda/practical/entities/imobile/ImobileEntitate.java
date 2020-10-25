@@ -8,12 +8,12 @@ import java.util.List;
 @Entity
 @Table
 
-public class ImobileEntity {
+public class ImobileEntitate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "ID Imobil")
-    private Integer idTipImobilEntity;
+    private Integer idTipImobilEntitate;
     @Column(columnDefinition = "Posted Date")
     @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
@@ -33,17 +33,17 @@ public class ImobileEntity {
     private String descriere;
 
     @OneToOne(mappedBy = "imobileEntity")
-    private AnuntStatusEntity anuntStatusEntity;
+    private AnuntStatusEntitate anuntStatusEntity;
 
     @OneToOne(mappedBy = "imobileEntity")
-    private CompartimentareEntity compartimentareEntity;
+    private CompartimentareEntitate compartimentareEntity;
 
     @OneToMany(mappedBy = "imobileEntity")
-    private List<CurrencyEntity> currencyEntities;
+    private List<ValutaEntitate> currencyEntities;
 
     @ManyToOne
     @JoinColumn (name = "idListaOraseEntity")
-    private OrasEntity orasEntity;
+    private OrasEntitate orasEntity;
 
     public Integer getAnConstructie() {
         return anConstructie;
@@ -53,11 +53,11 @@ public class ImobileEntity {
         this.anConstructie = anConstructie;
     }
 
-    public AnuntStatusEntity getAnuntStatusEntity() {
+    public AnuntStatusEntitate getAnuntStatusEntity() {
         return anuntStatusEntity;
     }
 
-    public void setAnuntStatusEntity(AnuntStatusEntity anuntStatusEntity) {
+    public void setAnuntStatusEntity(AnuntStatusEntitate anuntStatusEntity) {
         this.anuntStatusEntity = anuntStatusEntity;
     }
 
@@ -69,12 +69,12 @@ public class ImobileEntity {
         this.dataPostariiAnuntului = dataPostariiAnuntului;
     }
 
-    public Integer getIdTipImobilEntity() {
-        return idTipImobilEntity;
+    public Integer getIdTipImobilEntitate() {
+        return idTipImobilEntitate;
     }
 
-    public void setIdTipImobilEntity(Integer idTipImobilEntity) {
-        this.idTipImobilEntity = idTipImobilEntity;
+    public void setIdTipImobilEntitate(Integer idTipImobilEntitate) {
+        this.idTipImobilEntitate = idTipImobilEntitate;
     }
 
     public Double getSuprafata() {
@@ -133,27 +133,27 @@ public class ImobileEntity {
         this.descriere = descriere;
     }
 
-    public CompartimentareEntity getCompartimentareEntity() {
+    public CompartimentareEntitate getCompartimentareEntity() {
         return compartimentareEntity;
     }
 
-    public void setCompartimentareEntity(CompartimentareEntity compartimentareEntity) {
+    public void setCompartimentareEntity(CompartimentareEntitate compartimentareEntity) {
         this.compartimentareEntity = compartimentareEntity;
     }
 
-    public List<CurrencyEntity> getCurrencyEntities() {
+    public List<ValutaEntitate> getCurrencyEntities() {
         return currencyEntities;
     }
 
-    public void setCurrencyEntities(List<CurrencyEntity> currencyEntities) {
+    public void setCurrencyEntities(List<ValutaEntitate> currencyEntities) {
         this.currencyEntities = currencyEntities;
     }
 
-    public OrasEntity getOrasEntity() {
+    public OrasEntitate getOrasEntity() {
         return orasEntity;
     }
 
-    public void setOrasEntity(OrasEntity orasEntity) {
+    public void setOrasEntity(OrasEntitate orasEntity) {
         this.orasEntity = orasEntity;
     }
 }

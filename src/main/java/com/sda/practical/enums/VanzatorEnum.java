@@ -3,7 +3,7 @@ package com.sda.practical.enums;
 
 public enum VanzatorEnum {
 
-    UNKNOWN(0),
+    NECUNOSCUT(0),
     ADAUGA_IMOBIL(1),
     VINDE_IMOBIL(2),
     STERGE_IMOBIL(3);
@@ -20,6 +20,6 @@ public enum VanzatorEnum {
                 return vanzatorEnum;
             }
         }
-        return UNKNOWN;
+        return NECUNOSCUT;
     }
 }

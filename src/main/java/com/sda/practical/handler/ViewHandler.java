@@ -1,6 +1,7 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.enums.MenuTypeEnum;
+import org.hibernate.dialect.MyISAMStorageEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +20,11 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("1. Log In.");
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("2. Create account.");
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("3. Log Out.");
+
+        myMenues.put(MenuTypeEnum.USER_TYPE, new ArrayList<>());
+        myMenues.get(MenuTypeEnum.USER_TYPE).add("1. Cumparator");
+        myMenues.get(MenuTypeEnum.USER_TYPE).add("2. Vanzator");
+
 
         myMenues.put(MenuTypeEnum.SEARCH_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("1. Cauta dupa pret : ");

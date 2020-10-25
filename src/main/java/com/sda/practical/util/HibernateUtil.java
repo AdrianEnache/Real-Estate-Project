@@ -1,9 +1,9 @@
 package com.sda.practical.util;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.FavouritesListEntity;
+import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.ImobilTypeEntity;
-import com.sda.practical.entities.users.UserEntity;
+import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
@@ -25,20 +25,20 @@ public class HibernateUtil {
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 properties.put(Environment.URL, "jdbc:mysql://localhost:3306/imobiliare?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
-                properties.put(Environment.PASS, "Bucharest2018");
+                properties.put(Environment.PASS, "Adrian@91");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "update");
                 Configuration configuration = new Configuration();
                 configuration.setProperties(properties);
-                configuration.addAnnotatedClass(OrasEntity.class);
-                configuration.addAnnotatedClass(AnuntStatusEntity.class);
-                configuration.addAnnotatedClass(CurrencyEntity.class);
-                configuration.addAnnotatedClass(ImobileEntity.class);
-                configuration.addAnnotatedClass(CompartimentareEntity.class);
+                configuration.addAnnotatedClass(OrasEntitate.class);
+                configuration.addAnnotatedClass(AnuntStatusEntitate.class);
+                configuration.addAnnotatedClass(ValutaEntitate.class);
+                configuration.addAnnotatedClass(ImobileEntitate.class);
+                configuration.addAnnotatedClass(CompartimentareEntitate.class);
                 configuration.addAnnotatedClass(ImobilTypeEntity.class);
-                configuration.addAnnotatedClass(UserEntity.class);
+                configuration.addAnnotatedClass(UtilizatorEntitate.class);
                 configuration.addAnnotatedClass(UserTypesEntity.class);
-                configuration.addAnnotatedClass(FavouritesListEntity.class);
+                configuration.addAnnotatedClass(ListaFavoriteEntitate.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
