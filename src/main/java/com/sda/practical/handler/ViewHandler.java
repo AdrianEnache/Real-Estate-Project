@@ -15,7 +15,6 @@ public class ViewHandler {
 
         this.myMenues = new HashMap<>();
 
-
         myMenues.put(MenuTypeEnum.MAIN_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("1. Log In.");
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("2. Log Out.");

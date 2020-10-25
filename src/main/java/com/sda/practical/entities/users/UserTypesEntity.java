@@ -11,7 +11,6 @@ import javax.persistence.OneToOne;
 public class UserTypesEntity {
     @Id
     private Integer userTypesEntityId;
-
     private String seller;
     private String buyer;
     private String renter;
