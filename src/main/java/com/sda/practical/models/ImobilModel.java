@@ -15,43 +15,10 @@ public class ImobilModel {
     private Integer numarCamere;
     private String coordonate;
     private String descriere;
-    private Boolean anuntStatus;
-    private String compartimentare;
-    private String currency;
-    private String oras;
-
-
-    public Boolean getAnuntStatus() {
-        return anuntStatus;
-    }
-
-    public void setAnuntStatus(Boolean anuntStatus) {
-        this.anuntStatus = anuntStatus;
-    }
-
-    public String getCompartimentare() {
-        return compartimentare;
-    }
-
-    public void setCompartimentare(String compartimentare) {
-        this.compartimentare = compartimentare;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getOras() {
-        return oras;
-    }
-
-    public void setOras(String oras) {
-        this.oras = oras;
-    }
+    private Integer idAnuntStatusEntity;
+    private String idCompartimentareEntity;
+    private String idCurrencyEntity;
+    private String idOras;
 
     public Integer getIdTipImobilEntity() {
         return idTipImobilEntity;
@@ -59,6 +26,38 @@ public class ImobilModel {
 
     public void setIdTipImobilEntity(Integer idTipImobilEntity) {
         this.idTipImobilEntity = idTipImobilEntity;
+    }
+
+    public Integer getIdAnuntStatusEntity() {
+        return idAnuntStatusEntity;
+    }
+
+    public void setIdAnuntStatusEntity(Integer idAnuntStatusEntity) {
+        this.idAnuntStatusEntity = idAnuntStatusEntity;
+    }
+
+    public String getIdCompartimentareEntity() {
+        return idCompartimentareEntity;
+    }
+
+    public void setIdCompartimentareEntity(String idCompartimentareEntity) {
+        this.idCompartimentareEntity = idCompartimentareEntity;
+    }
+
+    public String getIdCurrencyEntity() {
+        return idCurrencyEntity;
+    }
+
+    public void setIdCurrencyEntity(String idCurrencyEntity) {
+        this.idCurrencyEntity = idCurrencyEntity;
+    }
+
+    public String getIdOras() {
+        return idOras;
+    }
+
+    public void setIdOras(String idOras) {
+        this.idOras = idOras;
     }
 
     public Date getDataPostariiAnuntului() {

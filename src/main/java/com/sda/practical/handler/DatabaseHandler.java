@@ -26,7 +26,7 @@ public class DatabaseHandler {
             userEntity.setEmail(userModel.getEmail());
             userEntity.setPhoneNumber(userModel.getPhoneNumber());
             UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class,userModel.getUserTypeId());
-            userEntity.setUserTypesEntity(userTypesEntity);
+            userEntity.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
             session.save(userEntity);
             transaction.commit();

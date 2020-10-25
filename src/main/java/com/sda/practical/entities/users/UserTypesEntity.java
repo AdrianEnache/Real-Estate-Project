@@ -24,8 +24,6 @@ public class UserTypesEntity {
     private UserEntity user;
 
 
-    private UserEntity userId;
-
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;
     }
@@ -58,11 +56,13 @@ public class UserTypesEntity {
         this.renter = renter;
     }
 
-    public UserEntity getUserEntity() {
-        return userEntity;
+    public UserEntity getUser() {
+        return user;
     }
 
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
+    public void setUser(UserEntity user) {
+        this.user = user;
     }
+
+
 }

@@ -18,7 +18,17 @@ public class UserEntity {
     @Column(length = 45)
     private String password;
 
-    @OneToMany(mappedBy = "userEntity")
+    @OneToOne(mappedBy = "user")
+    private UserTypesEntity userType;
+
+    public UserTypesEntity getUserType() {
+        return userType;
+    }
+
+    public void setUserType(UserTypesEntity userType) {
+        this.userType = userType;
+    }
+
     public Integer getUserId() {
         return userId;
     }

@@ -2,7 +2,6 @@ package com.sda.practical.entities.imobile;
 
 import javax.persistence.*;
 import java.util.List;
-import java.util.Map;
 
 @Entity
 @Table
@@ -11,7 +10,7 @@ public class OrasEntity {
 
     @Id
     @Column(columnDefinition = "ID ListaOrase")
-    private Integer idListaOraseEntity;
+    private Integer idOras;
     @Column(columnDefinition = "Orase")
     private String oras;
 
@@ -27,12 +26,12 @@ public class OrasEntity {
     }
 
 
-    public Integer getIdListaOraseEntity() {
-        return idListaOraseEntity;
+    public Integer getIdOras() {
+        return idOras;
     }
 
-    public void setIdListaOraseEntity(Integer idListaOraseEntity) {
-        this.idListaOraseEntity = idListaOraseEntity;
+    public void setIdOras(Integer idOras) {
+        this.idOras = idOras;
     }
 
     public List<ImobileEntity> getImobileEntities() {
