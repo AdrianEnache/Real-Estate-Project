@@ -1,5 +1,6 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,8 +11,11 @@ import javax.persistence.Table;
 public class AnuntStatusEntity {
 
     @Id
+    @Column(columnDefinition = "ID StatusAnunt")
     private Integer idAnuntStatusEntity;
+    @Column(columnDefinition = "Deleted")
     private Boolean deleted;
+    @Column(columnDefinition = "Sold")
     private Boolean sold;
 
 

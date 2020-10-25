@@ -1,5 +1,6 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -10,7 +11,9 @@ import javax.persistence.Table;
 public class CompartimentareEntity {
 
     @Id
+    @Column(columnDefinition = "ID Compartimentare")
     private Integer idCompartimentareEntity;
+    @Column(columnDefinition = "Compartimentare")
     private String compartimentare;
 
     public Integer getIdCompartimentareEntity() {

@@ -6,22 +6,28 @@ import java.util.Date;
 @Entity
 @Table
 
-public class ImobilEntity {
+public class ImobileEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "ID Imobil")
     private Integer idTipImobilEntity;
-    @Column(columnDefinition = "DATE")
+    @Column(columnDefinition = "Posted Date")
     @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
+    @Column(columnDefinition = "Suprafata imobil")
     private Double suprafata;
+    @Column(columnDefinition = "Pret imobil")
     private Double pret;
+    @Column(columnDefinition = "Etaj imobil")
     private Integer etaj;
+    @Column(columnDefinition = "An constructie")
     private Integer anConstructie;
+    @Column(columnDefinition = "Numar camere")
     private Integer numarCamere;
-    @Column(length = 45)
+    @Column(length = 45, columnDefinition = "Coordonate")
     private String coordonate;
-    @Column(length = 250)
+    @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
 
     public Date getDataPostariiAnuntului() {

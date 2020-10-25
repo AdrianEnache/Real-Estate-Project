@@ -1,5 +1,6 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -12,7 +13,9 @@ import java.util.Map;
 public class ListaOraseEntity {
 
     @Id
+    @Column(columnDefinition = "ID ListaOrase")
     private Integer idListaOraseEntity;
+    @Column(columnDefinition = "Orase")
     private Map<String, List<String>> myCities;
 
     public Integer getIdListaOraseEntity() {
