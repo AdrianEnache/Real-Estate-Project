@@ -4,7 +4,7 @@ import org.hibernate.usertype.UserType;
 
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+
 import javax.persistence.OneToOne;
 
 
@@ -18,8 +18,7 @@ public class UserTypesEntity {
 
     //TODO - relations ONE TO ONE and ONE TO MANY
 
-<<<<<<< HEAD
-=======
+
     @OneToOne
     @JoinColumn(name = "userId")
     private UserEntity user;
@@ -31,7 +30,7 @@ public class UserTypesEntity {
     public void setUser(UserEntity user) {
         this.user = user;
     }
->>>>>>> bd89567cac1298680cc84480b781721736ea7828
+
 
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;

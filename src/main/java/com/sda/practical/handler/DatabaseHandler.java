@@ -12,7 +12,7 @@ import java.util.List;
 public class DatabaseHandler {
 
 
-    public void createAccount(String name, String surname, String password, String email, String phoneNumber) {
+    public void createUser(String name, String surname, String password, String email, String phoneNumber) {
         Transaction transaction = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
