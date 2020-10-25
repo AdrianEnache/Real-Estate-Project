@@ -1,5 +1,6 @@
 package com.sda.practical.entities.users;
 
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
@@ -9,8 +10,9 @@ public class ListaFavoriteEntitate {
     private Integer idUtilizator;
     private Integer imobilId;
 
-    @ManyToOne(mappedBy = "userEntity")
-    private List<UtilizatorEntitate> userEntityList;
+    @ManyToOne
+    @JoinColumn(name = "idUtilizator")
+    private UtilizatorEntitate utilizator;
 
 
     public Integer getListaFavoriteEntitateId() {
@@ -35,5 +37,13 @@ public class ListaFavoriteEntitate {
 
     public void setImobilId(Integer imobilId) {
         this.imobilId = imobilId;
+    }
+
+    public UtilizatorEntitate getUtilizator() {
+        return utilizator;
+    }
+
+    public void setUtilizator(UtilizatorEntitate utilizator) {
+        this.utilizator = utilizator;
     }
 }

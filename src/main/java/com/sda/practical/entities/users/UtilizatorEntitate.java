@@ -1,6 +1,7 @@
 package com.sda.practical.entities.users;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Table
 public class UtilizatorEntitate {
@@ -21,9 +22,8 @@ public class UtilizatorEntitate {
     @OneToOne(mappedBy = "user")
     private UserTypesEntity userType;
 
-    @OneToMany
-    @JoinColumn(name = "favouritesListEntityId")
-    private ListaFavoriteEntitate favouritesListEntityId;
+    @OneToMany(mappedBy = "utilizator")
+    private List<ListaFavoriteEntitate> favouritesListEntityId;
 
     public UserTypesEntity getUserType() {
         return userType;
@@ -81,11 +81,11 @@ public class UtilizatorEntitate {
         this.parola = parola;
     }
 
-    public ListaFavoriteEntitate getFavouritesListEntityId() {
+    public List<ListaFavoriteEntitate> getFavouritesListEntityId() {
         return favouritesListEntityId;
     }
 
-    public void setFavouritesListEntityId(ListaFavoriteEntitate favouritesListEntityId) {
+    public void setFavouritesListEntityId(List<ListaFavoriteEntitate> favouritesListEntityId) {
         this.favouritesListEntityId = favouritesListEntityId;
     }
 }
