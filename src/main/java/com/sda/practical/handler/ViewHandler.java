@@ -17,7 +17,8 @@ public class ViewHandler {
 
         myMenues.put(MenuTypeEnum.MAIN_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.MAIN_MENU).add("1. Log In.");
-        myMenues.get(MenuTypeEnum.MAIN_MENU).add("2. Log Out.");
+        myMenues.get(MenuTypeEnum.MAIN_MENU).add("2. Create account.");
+        myMenues.get(MenuTypeEnum.MAIN_MENU).add("3. Log Out.");
 
         myMenues.put(MenuTypeEnum.SEARCH_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("1. Cauta dupa pret : ");
