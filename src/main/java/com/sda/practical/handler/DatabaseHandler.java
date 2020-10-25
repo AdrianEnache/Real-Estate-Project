@@ -1,7 +1,7 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.UserEntity;
+import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.models.FilterModel;
 import com.sda.practical.models.ImobilModel;
@@ -19,12 +19,12 @@ public class DatabaseHandler {
         Transaction transaction = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            UserEntity userEntity = new UserEntity();
-            userEntity.setName(userModel.getName());
-            userEntity.setSurname(userModel.getSurname());
-            userEntity.setPassword(userModel.getPassword());
-            userEntity.setEmail(userModel.getEmail());
-            userEntity.setPhoneNumber(userModel.getPhoneNumber());
+            UtilizatorEntitate userEntity = new UtilizatorEntitate();
+            userEntity.setPrenume(userModel.getName());
+            userEntity.setNumeDeFamilie(userModel.getSurname());
+            userEntity.setParola(userModel.getPassword());
+            userEntity.setAdresaEmail(userModel.getEmail());
+            userEntity.setNumarTelefon(userModel.getPhoneNumber());
             UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class,userModel.getUserTypeId());
             userEntity.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
@@ -43,7 +43,7 @@ public class DatabaseHandler {
         Transaction transaction = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
-            ImobileEntity imobileEntity = new ImobileEntity();
+            ImobileEntitate imobileEntity = new ImobileEntitate();
             imobileEntity.setDataPostariiAnuntului(imobilModel.getDataPostariiAnuntului());
             imobileEntity.setPret(imobilModel.getPret());
             imobileEntity.setSuprafata(imobilModel.getSuprafata());
@@ -52,13 +52,13 @@ public class DatabaseHandler {
             imobileEntity.setNumarCamere(imobilModel.getNumarCamere());
             imobileEntity.setCoordonate(imobilModel.getCoordonate());
             imobileEntity.setDescriere(imobilModel.getDescriere());
-            AnuntStatusEntity anuntStatus = session.find(AnuntStatusEntity.class,imobilModel.getAnuntStatus());
+            AnuntStatusEntitate anuntStatus = session.find(AnuntStatusEntitate.class,imobilModel.getAnuntStatus());
             imobileEntity.setAnuntStatus(anuntStatus);
-            CompartimentareEntity compartimentare = session.find(CompartimentareEntity.class, imobilModel.getCompartimentare());
+            CompartimentareEntitate compartimentare = session.find(CompartimentareEntitate.class, imobilModel.getCompartimentare());
             imobileEntity.setCompartimentare(compartimentare);
-            CurrencyEntity currency = session.find(CurrencyEntity.class,imobilModel.getCurrency());
+            ValutaEntitate currency = session.find(ValutaEntitate.class,imobilModel.getCurrency());
             imobileEntity.setCurrency(currency);
-            OrasEntity oras = session.find();
+            OrasEntitate oras = session.find();
             transaction = session.beginTransaction();
             session.save(imobileEntity);
             transaction.commit();
@@ -75,7 +75,7 @@ public class DatabaseHandler {
 
 
 
-    public List<ImobileEntity> getImobils(FilterModel filterModel) {
+    public List<ImobileEntitate> getImobils(FilterModel filterModel) {
         String sql = createFilterSql(filterModel);
 
         return null;

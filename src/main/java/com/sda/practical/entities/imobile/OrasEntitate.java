@@ -6,7 +6,7 @@ import java.util.List;
 @Entity
 @Table
 
-public class OrasEntity {
+public class OrasEntitate {
 
     @Id
     @Column(columnDefinition = "ID ListaOrase")
@@ -15,7 +15,7 @@ public class OrasEntity {
     private String oras;
 
     @OneToMany(mappedBy = "orasEntity")
-    private List<ImobileEntity> imobileEntities;
+    private List<ImobileEntitate> imobileEntities;
 
     public String getOras() {
         return oras;
@@ -34,11 +34,11 @@ public class OrasEntity {
         this.idOras = idOras;
     }
 
-    public List<ImobileEntity> getImobileEntities() {
+    public List<ImobileEntitate> getImobileEntities() {
         return imobileEntities;
     }
 
-    public void setImobileEntities(List<ImobileEntity> imobileEntities) {
+    public void setImobileEntities(List<ImobileEntitate> imobileEntities) {
         this.imobileEntities = imobileEntities;
     }
 }

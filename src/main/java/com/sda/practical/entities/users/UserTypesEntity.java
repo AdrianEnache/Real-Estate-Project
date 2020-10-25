@@ -1,27 +1,24 @@
 package com.sda.practical.entities.users;
 
-import org.hibernate.usertype.UserType;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
 public class UserTypesEntity {
     @Id
     private Integer userTypesEntityId;
-    private String seller;
-    private String buyer;
-    private String renter;
+    private String vanzator;
+    private String cumparator;
+    private String chirias;
 
 
     //TODO - relations ONE TO ONE and ONE TO MANY
 
     @OneToOne
     @JoinColumn(name = "userId")
-    private UserEntity user;
+    private UtilizatorEntitate user;
 
 
     public Integer getUserTypesEntityId() {
@@ -32,35 +29,35 @@ public class UserTypesEntity {
         this.userTypesEntityId = userTypesEntityId;
     }
 
-    public String getSeller() {
-        return seller;
+    public String getVanzator() {
+        return vanzator;
     }
 
-    public void setSeller(String seller) {
-        this.seller = seller;
+    public void setVanzator(String vanzator) {
+        this.vanzator = vanzator;
     }
 
-    public String getBuyer() {
-        return buyer;
+    public String getCumparator() {
+        return cumparator;
     }
 
-    public void setBuyer(String buyer) {
-        this.buyer = buyer;
+    public void setCumparator(String cumparator) {
+        this.cumparator = cumparator;
     }
 
-    public String getRenter() {
-        return renter;
+    public String getChirias() {
+        return chirias;
     }
 
-    public void setRenter(String renter) {
-        this.renter = renter;
+    public void setChirias(String chirias) {
+        this.chirias = chirias;
     }
 
-    public UserEntity getUser() {
+    public UtilizatorEntitate getUser() {
         return user;
     }
 
-    public void setUser(UserEntity user) {
+    public void setUser(UtilizatorEntitate user) {
         this.user = user;
     }
 

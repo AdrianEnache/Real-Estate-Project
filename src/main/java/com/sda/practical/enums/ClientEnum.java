@@ -3,7 +3,7 @@ package com.sda.practical.enums;
 public enum ClientEnum {
 
 
-    UNKNOWN(0),
+    NECUNOSCUT(0),
     INCHIRIAZA_IMOBIL(1),
     CUMPARA_IMOBIL(2);
 
@@ -19,7 +19,7 @@ public enum ClientEnum {
                 return clientEnum;
             }
         }
-        return UNKNOWN;
+        return NECUNOSCUT;
     }
 
 
