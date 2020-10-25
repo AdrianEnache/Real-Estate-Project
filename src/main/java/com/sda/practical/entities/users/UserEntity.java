@@ -1,16 +1,25 @@
 package com.sda.practical.entities.users;
 
+<<<<<<< HEAD
 import javax.persistence.*;
 import java.util.List;
 
+=======
 
-@Entity
+import javax.persistence.*;
+import javax.persistence.Table;
+>>>>>>> 8c8904627ba5d1cecd97188e1b44e4f0193dbc61
+
 @Table
+
 public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8c8904627ba5d1cecd97188e1b44e4f0193dbc61
     private Integer userId;
     @Column(length = 45)
     private String surname;
