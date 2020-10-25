@@ -1,19 +1,9 @@
 package com.sda.practical.entities.users;
-<<<<<<< HEAD
-import javax.persistence.*;
-import javax.persistence.Table;
-=======
-
-
-import javax.persistence.*;
-import java.util.List;
-
-
 
 import javax.persistence.*;
 import javax.persistence.Table;
 
->>>>>>> 465c93eee2e9dfd93a02a7bd026aaa12730c76f3
+
 @Table
 public class UserEntity {
     @Id
@@ -29,7 +19,19 @@ public class UserEntity {
     private String email;
     @Column(length = 45)
     private String password;
-    @OneToMany (mappedBy = "userEntity")
+
+
+    @OneToOne (mappedBy = "user")
+    private UserTypesEntity userTypesEntity;
+
+    public UserTypesEntity getUserTypesEntity() {
+        return userTypesEntity;
+    }
+
+    public void setUserTypesEntity(UserTypesEntity userTypesEntity) {
+        this.userTypesEntity = userTypesEntity;
+    }
+
     public Integer getUserId() {
         return userId;
     }
