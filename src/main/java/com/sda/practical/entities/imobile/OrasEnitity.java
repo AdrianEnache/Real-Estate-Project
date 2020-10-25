@@ -10,13 +10,13 @@ import java.util.Map;
 @Entity
 @Table
 
-public class ListaOraseEntity {
+public class OrasEnitity {
 
     @Id
     @Column(columnDefinition = "ID ListaOrase")
     private Integer idListaOraseEntity;
     @Column(columnDefinition = "Orase")
-    private Map<String, List<String>> myCities;
+    private String oras;
 
     public Integer getIdListaOraseEntity() {
         return idListaOraseEntity;
@@ -26,11 +26,11 @@ public class ListaOraseEntity {
         this.idListaOraseEntity = idListaOraseEntity;
     }
 
-    public Map<String, List<String>> getMyCities() {
-        return myCities;
+    public String getMyCities() {
+        return oras;
     }
 
     public void setMyCities(Map<String, List<String>> myCities) {
-        this.myCities = myCities;
+        this.oras = oras;
     }
 }
