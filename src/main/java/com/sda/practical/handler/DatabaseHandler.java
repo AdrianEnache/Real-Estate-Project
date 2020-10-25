@@ -77,8 +77,6 @@ public class DatabaseHandler {
 
 
 
-
-
     public List<ImobileEntity> getImobils(FilterModel filterModel) {
         String sql = createFilterSql(filterModel);
 

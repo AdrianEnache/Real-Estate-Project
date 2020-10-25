@@ -1,7 +1,5 @@
 package com.sda.practical.entities.users;
 
-import org.hibernate.usertype.UserType;
-
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
