@@ -1,6 +1,7 @@
 package com.sda.practical.models;
 
 public class FilterModel {
+
     private Integer suprafata;
     private String oras;
 
