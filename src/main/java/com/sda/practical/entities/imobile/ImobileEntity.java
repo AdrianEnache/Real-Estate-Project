@@ -1,27 +1,41 @@
 package com.sda.practical.entities.imobile;
 
+<<<<<<< HEAD:src/main/java/com/sda/practical/entities/imobile/ImobilEntity.java
+import javax.persistence.OneToOne;
+=======
+import javax.persistence.*;
+>>>>>>> 8c8904627ba5d1cecd97188e1b44e4f0193dbc61:src/main/java/com/sda/practical/entities/imobile/ImobileEntity.java
 import java.util.Date;
 
-public class ImobilEntity {
+@Entity
+@Table
 
+public class ImobileEntity {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(columnDefinition = "ID Imobil")
     private Integer idTipImobilEntity;
-
-    public Integer getIdTipImobilEntity() {
-        return idTipImobilEntity;
-    }
-
-    public void setIdTipImobilEntity(Integer idTipImobilEntity) {
-        this.idTipImobilEntity = idTipImobilEntity;
-    }
-
+    @Column(columnDefinition = "Posted Date")
+    @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
+    @Column(columnDefinition = "Suprafata imobil")
     private Double suprafata;
+    @Column(columnDefinition = "Pret imobil")
     private Double pret;
-    private Integer Etaj;
-    private Integer anConstructii;
+    @Column(columnDefinition = "Etaj imobil")
+    private Integer etaj;
+    @Column(columnDefinition = "An constructie")
+    private Integer anConstructie;
+    @Column(columnDefinition = "Numar camere")
     private Integer numarCamere;
+    @Column(length = 45, columnDefinition = "Coordonate")
     private String coordonate;
+    @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
+
+    @OneToOne
+    private ListaOraseEntity oras;
 
     public Date getDataPostariiAnuntului() {
         return dataPostariiAnuntului;
@@ -29,6 +43,14 @@ public class ImobilEntity {
 
     public void setDataPostariiAnuntului(Date dataPostariiAnuntului) {
         this.dataPostariiAnuntului = dataPostariiAnuntului;
+    }
+
+    public Integer getIdTipImobilEntity() {
+        return idTipImobilEntity;
+    }
+
+    public void setIdTipImobilEntity(Integer idTipImobilEntity) {
+        this.idTipImobilEntity = idTipImobilEntity;
     }
 
     public Double getSuprafata() {
@@ -48,19 +70,19 @@ public class ImobilEntity {
     }
 
     public Integer getEtaj() {
-        return Etaj;
+        return etaj;
     }
 
     public void setEtaj(Integer etaj) {
-        Etaj = etaj;
+        etaj = etaj;
     }
 
     public Integer getAnConstructii() {
-        return anConstructii;
+        return anConstructie;
     }
 
     public void setAnConstructii(Integer anConstructii) {
-        this.anConstructii = anConstructii;
+        this.anConstructie = anConstructii;
     }
 
     public Integer getNumarCamere() {
