@@ -1,7 +1,10 @@
 package com.sda.practical.util;
 
+import com.sda.practical.entities.imobile.*;
+import com.sda.practical.entities.users.FavouritesListEntity;
+import com.sda.practical.entities.users.ImobilTypeEntity;
 import com.sda.practical.entities.users.UserEntity;
-import com.sda.practical.temporaryEntities.*;
+import com.sda.practical.entities.users.UserTypesEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -27,14 +30,15 @@ public class HibernateUtil {
                 properties.put(Environment.HBM2DDL_AUTO, "update");
                 Configuration configuration = new Configuration();
                 configuration.setProperties(properties);
-                configuration.addAnnotatedClass(UserEntity.class);
+                configuration.addAnnotatedClass(OrasEntity.class);
                 configuration.addAnnotatedClass(AnuntStatusEntity.class);
                 configuration.addAnnotatedClass(CurrencyEntity.class);
-                configuration.addAnnotatedClass(ImobilEntity.class);
-                configuration.addAnnotatedClass(TipCompartimentareEntity.class);
-                configuration.addAnnotatedClass(TipImobilEntity.class);
-                configuration.addAnnotatedClass(TipUserEntity.class);
-                configuration.addAnnotatedClass(ListaOrasEentity.class);
+                configuration.addAnnotatedClass(ImobileEntity.class);
+                configuration.addAnnotatedClass(CompartimentareEntity.class);
+                configuration.addAnnotatedClass(ImobilTypeEntity.class);
+                configuration.addAnnotatedClass(UserEntity.class);
+                configuration.addAnnotatedClass(UserTypesEntity.class);
+                configuration.addAnnotatedClass(FavouritesListEntity.class);
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

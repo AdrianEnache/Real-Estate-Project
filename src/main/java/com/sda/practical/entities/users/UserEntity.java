@@ -1,6 +1,19 @@
 package com.sda.practical.entities.users;
+<<<<<<< HEAD
 import javax.persistence.*;
 import javax.persistence.Table;
+=======
+
+
+import javax.persistence.*;
+import java.util.List;
+
+
+
+import javax.persistence.*;
+import javax.persistence.Table;
+
+>>>>>>> 465c93eee2e9dfd93a02a7bd026aaa12730c76f3
 @Table
 public class UserEntity {
     @Id

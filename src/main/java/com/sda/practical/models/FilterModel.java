@@ -1,16 +1,15 @@
 package com.sda.practical.models;
 
-public class FiltrerModel {
-
-    private Integer suprfata;
+public class FilterModel {
+    private Integer suprafata;
     private String oras;
 
-    public Integer getSuprfata() {
-        return suprfata;
+    public Integer getSuprafata() {
+        return suprafata;
     }
 
-    public void setSuprfata(Integer suprfata) {
-        this.suprfata = suprfata;
+    public void setSuprafata(Integer suprafata) {
+        this.suprafata = suprafata;
     }
 
     public String getOras() {
