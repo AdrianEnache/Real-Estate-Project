@@ -1,31 +1,15 @@
-package com.sda.practical.entities.users;
+package com.sda.practical.models;
 
-import javax.persistence.*;
 
-@Table
-public class UserEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer userId;
-    @Column(length = 45)
+
+public class UserModel {
+
     private String surname;
-    @Column(length = 45)
     private String name;
-    @Column(length = 45)
     private String phoneNumber;
-    @Column(length = 45)
     private String email;
-    @Column(length = 45)
     private String password;
-
-    @OneToMany(mappedBy = "userEntity")
-    public Integer getUserId() {
-        return userId;
-    }
-
-    public void setUserId(Integer userId) {
-        this.userId = userId;
-    }
+    private Integer userTypeId;
 
     public String getSurname() {
         return surname;
@@ -65,5 +49,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Integer getUserTypeId() {
+        return userTypeId;
+    }
+
+    public void setUserTypeId(Integer userTypeId) {
+        this.userTypeId = userTypeId;
     }
 }

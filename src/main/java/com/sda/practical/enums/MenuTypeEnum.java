@@ -2,10 +2,26 @@ package com.sda.practical.enums;
 
 public enum MenuTypeEnum {
 
-    //TODO log in si log out
+    //TODO log in si log out - done
 
-    SEARCH_MENU,
-    ORDER_MENU;
+    UNKNOWN(0),
+    MAIN_MENU(1),
+    SEARCH_MENU(2),
+    ORDER_MENU(3);
 
+    private Integer option;
+
+    MenuTypeEnum(Integer option) {
+        this.option = option;
+    }
+
+    public static MenuTypeEnum getEnum(Integer option) {
+        for (MenuTypeEnum menuTypeEnum : MenuTypeEnum.values()) {
+            if (menuTypeEnum.option == option) {
+                return menuTypeEnum;
+            }
+        }
+        return UNKNOWN;
+    }
 
 }
