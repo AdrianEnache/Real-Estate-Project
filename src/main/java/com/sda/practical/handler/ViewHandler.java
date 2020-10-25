@@ -15,9 +15,16 @@ public class ViewHandler {
 
         this.myMenues = new HashMap<>();
 
+<<<<<<< HEAD
         myMenues.put(TipMeniuEnum.MENIU_PRINCIPAL, new ArrayList<>());
         myMenues.get(TipMeniuEnum.MENIU_PRINCIPAL).add("1. Log In.");
         myMenues.get(TipMeniuEnum.MENIU_PRINCIPAL).add("2. Log Out.");
+=======
+        myMenues.put(MenuTypeEnum.MAIN_MENU, new ArrayList<>());
+        myMenues.get(MenuTypeEnum.MAIN_MENU).add("1. Log In.");
+        myMenues.get(MenuTypeEnum.MAIN_MENU).add("2. Create account.");
+        myMenues.get(MenuTypeEnum.MAIN_MENU).add("3. Log Out.");
+>>>>>>> be9ba83da591d9d7c8642459b3ffb24b186b10ff
 
         myMenues.put(TipMeniuEnum.MENIU_CAUTARE, new ArrayList<>());
         myMenues.get(TipMeniuEnum.MENIU_CAUTARE).add("1. Cauta dupa pret : ");

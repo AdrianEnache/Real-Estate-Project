@@ -73,9 +73,13 @@ public class DatabaseHandler {
 
 
 
+<<<<<<< HEAD
 
 
     public List<ImobileEntitate> getImobils(FilterModel filterModel) {
+=======
+    public List<ImobileEntity> getImobils(FilterModel filterModel) {
+>>>>>>> be9ba83da591d9d7c8642459b3ffb24b186b10ff
         String sql = createFilterSql(filterModel);
 
         return null;
