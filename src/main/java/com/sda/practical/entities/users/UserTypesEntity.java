@@ -5,6 +5,7 @@ import org.hibernate.usertype.UserType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 
@@ -16,21 +17,15 @@ public class UserTypesEntity {
     private String buyer;
     private String renter;
 
-    //TODO - relations ONE TO ONE and ONE TO MANY
 
+    //TODO - relations ONE TO ONE and ONE TO MANY
 
     @OneToOne
     @JoinColumn(name = "userId")
     private UserEntity user;
 
-    public UserEntity getUser() {
-        return user;
-    }
 
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
-
+    private UserEntity userId;
 
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;
@@ -62,5 +57,13 @@ public class UserTypesEntity {
 
     public void setRenter(String renter) {
         this.renter = renter;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }
