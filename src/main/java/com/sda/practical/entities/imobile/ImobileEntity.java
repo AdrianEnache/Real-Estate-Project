@@ -1,6 +1,10 @@
 package com.sda.practical.entities.imobile;
 
+<<<<<<< HEAD:src/main/java/com/sda/practical/entities/imobile/ImobilEntity.java
+import javax.persistence.OneToOne;
+=======
 import javax.persistence.*;
+>>>>>>> 8c8904627ba5d1cecd97188e1b44e4f0193dbc61:src/main/java/com/sda/practical/entities/imobile/ImobileEntity.java
 import java.util.Date;
 
 @Entity
@@ -29,6 +33,9 @@ public class ImobileEntity {
     private String coordonate;
     @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
+
+    @OneToOne
+    private ListaOraseEntity oras;
 
     public Date getDataPostariiAnuntului() {
         return dataPostariiAnuntului;

@@ -1,18 +1,35 @@
 package com.sda.practical.entities.users;
 
+import org.hibernate.usertype.UserType;
+
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 
 public class UserTypesEntity {
     @Id
     private Integer userTypesEntityId;
+
     private String seller;
     private String buyer;
     private String renter;
 
     //TODO - relations ONE TO ONE and ONE TO MANY
 
-    
+    @OneToOne
+    @JoinColumn(name = "userId")
+    private UserEntity user;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
+
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;
     }
