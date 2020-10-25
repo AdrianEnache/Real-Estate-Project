@@ -1,9 +1,6 @@
 package com.sda.practical.entities.imobile;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -15,6 +12,10 @@ public class CompartimentareEntity {
     private Integer idCompartimentareEntity;
     @Column(columnDefinition = "Compartimentare")
     private String compartimentare;
+
+    @OneToOne
+    @JoinColumn(name = "idTipImobilEntity")
+    private ImobileEntity imobileEntity;
 
     public Integer getIdCompartimentareEntity() {
         return idCompartimentareEntity;
@@ -30,5 +31,13 @@ public class CompartimentareEntity {
 
     public void setCompartimentare(String compartimentare) {
         this.compartimentare = compartimentare;
+    }
+
+    public ImobileEntity getImobileEntity() {
+        return imobileEntity;
+    }
+
+    public void setImobileEntity(ImobileEntity imobileEntity) {
+        this.imobileEntity = imobileEntity;
     }
 }

@@ -3,6 +3,7 @@ package com.sda.practical.entities.imobile;
 import javax.persistence.OneToOne;
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table
@@ -31,8 +32,34 @@ public class ImobileEntity {
     @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
 
-    @OneToOne
-    private ListaOraseEntity oras;
+    @OneToOne(mappedBy = "imobileEntity")
+    private AnuntStatusEntity anuntStatusEntity;
+
+    @OneToOne(mappedBy = "imobileEntity")
+    private CompartimentareEntity compartimentareEntity;
+
+    @OneToMany(mappedBy = "imobileEntity")
+    private List<CurrencyEntity> currencyEntities;
+
+    @ManyToOne
+    @JoinColumn (name = "idListaOraseEntity")
+    private OrasEntity orasEntity;
+
+    public Integer getAnConstructie() {
+        return anConstructie;
+    }
+
+    public void setAnConstructie(Integer anConstructie) {
+        this.anConstructie = anConstructie;
+    }
+
+    public AnuntStatusEntity getAnuntStatusEntity() {
+        return anuntStatusEntity;
+    }
+
+    public void setAnuntStatusEntity(AnuntStatusEntity anuntStatusEntity) {
+        this.anuntStatusEntity = anuntStatusEntity;
+    }
 
     public Date getDataPostariiAnuntului() {
         return dataPostariiAnuntului;
@@ -104,5 +131,29 @@ public class ImobileEntity {
 
     public void setDescriere(String descriere) {
         this.descriere = descriere;
+    }
+
+    public CompartimentareEntity getCompartimentareEntity() {
+        return compartimentareEntity;
+    }
+
+    public void setCompartimentareEntity(CompartimentareEntity compartimentareEntity) {
+        this.compartimentareEntity = compartimentareEntity;
+    }
+
+    public List<CurrencyEntity> getCurrencyEntities() {
+        return currencyEntities;
+    }
+
+    public void setCurrencyEntities(List<CurrencyEntity> currencyEntities) {
+        this.currencyEntities = currencyEntities;
+    }
+
+    public OrasEntity getOrasEntity() {
+        return orasEntity;
+    }
+
+    public void setOrasEntity(OrasEntity orasEntity) {
+        this.orasEntity = orasEntity;
     }
 }

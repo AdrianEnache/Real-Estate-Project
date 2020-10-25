@@ -1,9 +1,6 @@
 package com.sda.practical.entities.imobile;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.List;
 import java.util.Map;
 
@@ -17,6 +14,9 @@ public class OrasEntity {
     private Integer idListaOraseEntity;
     @Column(columnDefinition = "Orase")
     private String oras;
+
+    @OneToMany(mappedBy = "orasEntity")
+    private List<ImobileEntity> imobileEntities;
 
     public String getOras() {
         return oras;
@@ -35,5 +35,11 @@ public class OrasEntity {
         this.idListaOraseEntity = idListaOraseEntity;
     }
 
+    public List<ImobileEntity> getImobileEntities() {
+        return imobileEntities;
+    }
 
+    public void setImobileEntities(List<ImobileEntity> imobileEntities) {
+        this.imobileEntities = imobileEntities;
+    }
 }

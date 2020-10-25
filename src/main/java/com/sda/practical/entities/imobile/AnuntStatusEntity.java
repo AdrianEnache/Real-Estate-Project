@@ -1,9 +1,6 @@
 package com.sda.practical.entities.imobile;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -18,6 +15,9 @@ public class AnuntStatusEntity {
     @Column(columnDefinition = "Sold")
     private Boolean sold;
 
+    @OneToOne
+    @JoinColumn(name = "idTipImobilEntity")
+    private ImobileEntity imobileEntity;
 
     public Integer getIdAnuntStatusEntity() {
         return idAnuntStatusEntity;
@@ -41,6 +41,13 @@ public class AnuntStatusEntity {
 
     public void setSold(Boolean sold) {
         this.sold = sold;
+    }
+    public ImobileEntity getImobileEntity() {
+        return imobileEntity;
+    }
+
+    public void setImobileEntity(ImobileEntity imobileEntity) {
+        this.imobileEntity = imobileEntity;
     }
 
 

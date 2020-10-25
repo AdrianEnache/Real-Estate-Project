@@ -1,9 +1,6 @@
 package com.sda.practical.entities.imobile;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table
@@ -15,6 +12,10 @@ public class CurrencyEntity {
     private Integer idCurrencyEntity;
     @Column(columnDefinition = "Currency")
     private String currency;
+
+    @ManyToOne
+    @JoinColumn(name = "idTipImobilEntity")
+    private ImobileEntity imobileEntity;
 
     public Integer getIdCurrencyEntity() {
         return idCurrencyEntity;
@@ -30,5 +31,13 @@ public class CurrencyEntity {
 
     public void setCurrency(String currency) {
         this.currency = currency;
+    }
+
+    public ImobileEntity getImobileEntity() {
+        return imobileEntity;
+    }
+
+    public void setImobileEntity(ImobileEntity imobileEntity) {
+        this.imobileEntity = imobileEntity;
     }
 }
