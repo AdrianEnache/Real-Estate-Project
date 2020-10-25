@@ -25,7 +25,7 @@ public class HibernateUtil {
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 properties.put(Environment.URL, "jdbc:mysql://localhost:3306/imobiliare?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
-                properties.put(Environment.PASS, "Bucharest2018");
+                properties.put(Environment.PASS, "Adrian@91");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "update");
                 Configuration configuration = new Configuration();

@@ -1,10 +1,16 @@
 package com.sda.practical;
 
 import com.mysql.cj.xdevapi.SessionFactory;
+import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.enums.MenuTypeEnum;
 import com.sda.practical.handler.DatabaseHandler;
 import com.sda.practical.handler.KeyboardHandler;
 import com.sda.practical.handler.ViewHandler;
+import com.sda.practical.models.UserModel;
+import com.sda.practical.util.HibernateUtil;
+import org.hibernate.Session;
+
+import java.awt.*;
 
 public class ConsoleView {
 
@@ -15,25 +21,53 @@ public class ConsoleView {
         SessionFactory sessionFactory = new SessionFactory();
 
 
-        Integer option = 0;
-        while (option != 0) {
+        Integer option =0;
+        while (option != 3) {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
 
+
+            switch (option) {
+                case 1:
+
+                    break;
+                case 2:
+                    UserModel user = new UserModel();
+                    user.setName(keyboardHandler.readString("Add Name: "));
+                    user.setSurname(keyboardHandler.readString("Add SurName: "));
+                    user.setPassword(keyboardHandler.readString("Add Password: "));
+                    user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
+                    System.out.println("Choose a user type: ");
+                    viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
+                    int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
+                    boolean iscorect = true;
+                    while (iscorect){
+                        if (userTypeId == 2){
+                            iscorect = true;
+                        }else if (userTypeId != 1){
+                            iscorect = true;
+                        }else{
+                            userTypeId = keyboardHandler.readInteger("Choose a user type: ");
+                            iscorect = false;
+                        }
+                    }
+
+                    databaseHandler.createUser(user);
+
+                    break;
+
+                case 3:
+                    System.out.println("Bye bye");
+                    break;
+                default:
+                    System.out.println("Nu cunoastem optiunea");
+            }
+
         }
-        switch (option) {
-            case 1:
-
-            case 2:
-            case 3:
-
-        }
-
-        public static void
 
 
     }
 
-    public static void ()
+
 
 }

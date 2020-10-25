@@ -65,6 +65,7 @@ public class DatabaseHandler {
             session.save(imobileEntity);
             transaction.commit();
             session.close();
+
         }catch (Exception ex){
             if (transaction != null){
                 transaction.rollback();
@@ -85,9 +86,12 @@ public class DatabaseHandler {
 
     public String createFilterSql(FilterModel filterModel) {
         String sql = "Select * imobile where ";
+
         if (filterModel.getOras() != null) {
             sql += "suprafata = " + filterModel.getSuprafata();
         }
         return sql;
     }
+
+
 }
