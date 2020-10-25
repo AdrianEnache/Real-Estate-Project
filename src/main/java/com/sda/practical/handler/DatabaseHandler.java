@@ -10,6 +10,7 @@ import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class DatabaseHandler {
@@ -52,13 +53,14 @@ public class DatabaseHandler {
             imobileEntity.setNumarCamere(imobilModel.getNumarCamere());
             imobileEntity.setCoordonate(imobilModel.getCoordonate());
             imobileEntity.setDescriere(imobilModel.getDescriere());
-            AnuntStatusEntity anuntStatus = session.find(AnuntStatusEntity.class,imobilModel.getAnuntStatus());
-            imobileEntity.setAnuntStatus(anuntStatus);
-            CompartimentareEntity compartimentare = session.find(CompartimentareEntity.class, imobilModel.getCompartimentare());
-            imobileEntity.setCompartimentare(compartimentare);
-            CurrencyEntity currency = session.find(CurrencyEntity.class,imobilModel.getCurrency());
-            imobileEntity.setCurrency(currency);
-            OrasEntity oras = session.find();
+            AnuntStatusEntity anuntStatus = session.find(AnuntStatusEntity.class,imobilModel.getIdAnuntStatusEntity());
+            imobileEntity.setAnuntStatusEntity(anuntStatus);
+            CompartimentareEntity compartimentare = session.find(CompartimentareEntity.class, imobilModel.getIdCompartimentareEntity());
+            imobileEntity.setCompartimentareEntity(compartimentare);
+            CurrencyEntity currency = session.find(CurrencyEntity.class,imobilModel.getIdCurrencyEntity());
+            imobileEntity.setCurrencyEntities(Arrays.asList(currency));
+            OrasEntity oras = session.find(OrasEntity.class,imobilModel.getIdOras());
+            imobileEntity.setOrasEntity(oras);
             transaction = session.beginTransaction();
             session.save(imobileEntity);
             transaction.commit();
@@ -69,6 +71,8 @@ public class DatabaseHandler {
             }
             System.out.println(ex.getMessage());
         }
+
+
     }
 
 
