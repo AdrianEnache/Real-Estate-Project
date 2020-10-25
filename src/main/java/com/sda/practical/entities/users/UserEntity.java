@@ -1,6 +1,7 @@
 package com.sda.practical.entities.users;
 
 import javax.persistence.*;
+import java.util.List;
 
 
 @Entity
@@ -23,7 +24,9 @@ public class UserEntity {
     private String password;
 
 
-    @OneToMany (mappedBy = "userEntity")
+    @OneToOne (mappedBy = "user")
+    private UserTypesEntity userTypesEntity;
+
     public Integer getUserId() {
         return userId;
     }

@@ -1,5 +1,6 @@
 package com.sda.practical.entities.imobile;
 
+import javax.persistence.OneToOne;
 import java.util.Date;
 
 public class ImobilEntity {
@@ -22,6 +23,9 @@ public class ImobilEntity {
     private Integer numarCamere;
     private String coordonate;
     private String descriere;
+
+    @OneToOne
+    private ListaOraseEntity oras;
 
     public Date getDataPostariiAnuntului() {
         return dataPostariiAnuntului;
