@@ -3,6 +3,7 @@ package com.sda.practical.entities.users;
 import javax.persistence.ManyToOne;
 import java.util.List;
 
+
 public class ListaFavoriteEntitate {
     private Integer listaFavoriteEntitateId;
     private Integer idUtilizator;
