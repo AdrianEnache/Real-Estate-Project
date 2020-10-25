@@ -57,19 +57,19 @@ public class ImobilEntity {
     }
 
     public Integer getEtaj() {
-        return Etaj;
+        return etaj;
     }
 
     public void setEtaj(Integer etaj) {
-        Etaj = etaj;
+        etaj = etaj;
     }
 
     public Integer getAnConstructii() {
-        return anConstructii;
+        return anConstructie;
     }
 
     public void setAnConstructii(Integer anConstructii) {
-        this.anConstructii = anConstructii;
+        this.anConstructie = anConstructii;
     }
 
     public Integer getNumarCamere() {
