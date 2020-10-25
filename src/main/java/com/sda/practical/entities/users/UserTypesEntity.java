@@ -12,7 +12,7 @@ public class UserTypesEntity {
 
 //TODO - relations ONE TO ONE and ONE TO MANY
 
-    
+
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;
     }
