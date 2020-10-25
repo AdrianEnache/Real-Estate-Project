@@ -1,4 +1,4 @@
-package com.sda.practical.model;
+package com.sda.practical.models;
 
 public class FilterModel {
     private Integer suprafata;

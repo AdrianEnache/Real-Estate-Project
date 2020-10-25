@@ -1,7 +1,9 @@
 package com.sda.practical.util;
 
+import com.sda.practical.entities.imobile.AnuntStatusEntity;
+import com.sda.practical.entities.imobile.CurrencyEntity;
+import com.sda.practical.entities.imobile.ImobileEntity;
 import com.sda.practical.entities.users.UserEntity;
-import com.sda.practical.temporaryEntities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -30,8 +32,8 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(UserEntity.class);
                 configuration.addAnnotatedClass(AnuntStatusEntity.class);
                 configuration.addAnnotatedClass(CurrencyEntity.class);
-                configuration.addAnnotatedClass(ImobilEntity.class);
-                configuration.addAnnotatedClass(TipCompartimentareEntity.class);
+                configuration.addAnnotatedClass(ImobileEntity.class);
+                configuration.addAnnotatedClass(Compartimenare.class);
                 configuration.addAnnotatedClass(TipImobilEntity.class);
                 configuration.addAnnotatedClass(TipUserEntity.class);
                 configuration.addAnnotatedClass(ListaOrasEentity.class);

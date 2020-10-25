@@ -10,7 +10,7 @@ public class UserTypesEntity {
     private String buyer;
     private String renter;
 
-//TODO - relations ONE TO ONE and ONE TO MANY
+    //TODO - relations ONE TO ONE and ONE TO MANY
 
     
     public Integer getUserTypesEntityId() {
