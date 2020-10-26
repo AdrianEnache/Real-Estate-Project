@@ -37,7 +37,7 @@ public class ConsoleView {
                     user.setSurname(keyboardHandler.readString("Add SurName: "));
                     user.setPassword(keyboardHandler.readString("Add Password: "));
                     user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
-//                    System.out.println("Choose a user type: ");
+
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                     boolean iscorect = true;
