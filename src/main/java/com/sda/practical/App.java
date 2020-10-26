@@ -1,12 +1,16 @@
 package com.sda.practical;
 
 
-public class App 
+import com.sda.practical.util.HibernateUtil;
+import org.hibernate.Session;
+
+
+public class App
 {
     public static void main( String[] args )
     {
-
-        new ConsoleView().startApp();
+        Session session = HibernateUtil.getSessionFactory().openSession();
+//        new ConsoleView().startApp();
 
     }
 }

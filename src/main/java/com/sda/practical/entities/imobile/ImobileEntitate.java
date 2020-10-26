@@ -32,13 +32,13 @@ public class ImobileEntitate {
     @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
 
-    @OneToOne(mappedBy = "imobileEntity")
+    @OneToOne(mappedBy = "imobileEntitate")
     private AnuntStatusEntitate anuntStatusEntity;
 
-    @OneToOne(mappedBy = "imobileEntity")
+    @OneToOne(mappedBy = "imobileEntitate")
     private CompartimentareEntitate compartimentareEntity;
 
-    @OneToMany(mappedBy = "imobileEntity")
+    @OneToMany(mappedBy = "imobileEntitate")
     private List<ValutaEntitate> currencyEntities;
 
     @ManyToOne

@@ -1,16 +1,10 @@
 package com.sda.practical;
 
-import com.mysql.cj.xdevapi.SessionFactory;
-import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.enums.MenuTypeEnum;
 import com.sda.practical.handler.DatabaseHandler;
 import com.sda.practical.handler.KeyboardHandler;
 import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.UserModel;
-import com.sda.practical.util.HibernateUtil;
-import org.hibernate.Session;
-
-import java.awt.*;
 
 public class ConsoleView {
 
@@ -18,10 +12,9 @@ public class ConsoleView {
         ViewHandler viewHandler = new ViewHandler();
         KeyboardHandler keyboardHandler = new KeyboardHandler();
         DatabaseHandler databaseHandler = new DatabaseHandler();
-        SessionFactory sessionFactory = new SessionFactory();
 
 
-        Integer option =0;
+        Integer option = 0;
         while (option != 3) {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
@@ -40,13 +33,13 @@ public class ConsoleView {
                     System.out.println("Choose a user type: ");
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
-                    boolean iscorect = true;
-                    while (iscorect){
-                        if (userTypeId == 2){
+                    boolean iscorect = false;
+                    while (iscorect) {
+                        if (userTypeId == 2) {
                             iscorect = true;
-                        }else if (userTypeId != 1){
+                        } else if (userTypeId != 1) {
                             iscorect = true;
-                        }else{
+                        } else {
                             userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                             iscorect = false;
                         }
@@ -67,7 +60,6 @@ public class ConsoleView {
 
 
     }
-
 
 
 }

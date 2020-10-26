@@ -3,8 +3,11 @@ package com.sda.practical.entities.users;
 import javax.persistence.*;
 import java.util.List;
 
+@Entity
 @Table
+
 public class UtilizatorEntitate {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUtilizator;

@@ -1,16 +1,18 @@
 package com.sda.practical.entities.users;
 
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
+import javax.persistence.*;
 
-import javax.persistence.OneToOne;
-
+@Entity
+@Table
 
 public class UserTypesEntity {
     @Id
     private Integer userTypesEntityId;
+    @Column(name = "Vanzator")
     private String vanzator;
+    @Column(name = "Cumparator")
     private String cumparator;
+    @Column(name = "Chirias")
     private String chirias;
 
 

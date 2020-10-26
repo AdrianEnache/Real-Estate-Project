@@ -1,13 +1,17 @@
 package com.sda.practical.entities.users;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import java.util.List;
+import javax.persistence.*;
 
+@Entity
+@Table
 
 public class ListaFavoriteEntitate {
+    @Id
+    @Column(name = "ID Lista Favorite")
     private Integer listaFavoriteEntitateId;
+    @Column(name = "ID Utilizator")
     private Integer idUtilizator;
+    @Column(name = "ID Imobil")
     private Integer imobilId;
 
     @ManyToOne
