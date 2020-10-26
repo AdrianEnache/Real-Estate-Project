@@ -1,31 +1,52 @@
 package com.sda.practical.entities.users;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table
+
 public class ImobilTypeEntity {
-    private String Land;
-    private String House;
-    private String Apartment;
+    @Id
+    private String idImobilTypeEntity;
+    @Column(name = "Teren")
+    private String land;
+    @Column(name = "Casa")
+    private String house;
+    @Column(name = "Apartament")
+    private String apartment;
+
+    public String getIdImobilTypeEntity() {
+        return idImobilTypeEntity;
+    }
+
+    public void setIdImobilTypeEntity(String idImobilTypeEntity) {
+        this.idImobilTypeEntity = idImobilTypeEntity;
+    }
 
     public String getLand() {
-        return Land;
+        return land;
     }
 
     public void setLand(String land) {
-        Land = land;
+        this.land = land;
     }
 
     public String getHouse() {
-        return House;
+        return house;
     }
 
     public void setHouse(String house) {
-        House = house;
+        this.house = house;
     }
 
     public String getApartment() {
-        return Apartment;
+        return apartment;
     }
 
     public void setApartment(String apartment) {
-        Apartment = apartment;
+        this.apartment = apartment;
     }
 }

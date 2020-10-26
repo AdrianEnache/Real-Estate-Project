@@ -15,7 +15,7 @@ public class CompartimentareEntitate {
 
     @OneToOne
     @JoinColumn(name = "idTipImobilEntity")
-    private ImobileEntitate imobileEntity;
+    private ImobileEntitate imobileEntitate;
 
     public Integer getIdCompartimentareEntitate() {
         return idCompartimentareEntitate;
@@ -34,10 +34,10 @@ public class CompartimentareEntitate {
     }
 
     public ImobileEntitate getImobileEntity() {
-        return imobileEntity;
+        return imobileEntitate;
     }
 
     public void setImobileEntity(ImobileEntitate imobileEntity) {
-        this.imobileEntity = imobileEntity;
+        this.imobileEntitate = imobileEntity;
     }
 }

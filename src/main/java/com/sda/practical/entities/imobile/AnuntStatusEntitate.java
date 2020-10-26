@@ -17,7 +17,7 @@ public class AnuntStatusEntitate {
 
     @OneToOne
     @JoinColumn(name = "idTipImobilEntity")
-    private ImobileEntitate imobileEntity;
+    private ImobileEntitate imobileEntitate;
 
     public Integer getIdAnuntStatusEntitate() {
         return idAnuntStatusEntitate;
@@ -42,12 +42,13 @@ public class AnuntStatusEntitate {
     public void setVandut(Boolean vandut) {
         this.vandut = vandut;
     }
+
     public ImobileEntitate getImobileEntity() {
-        return imobileEntity;
+        return imobileEntitate;
     }
 
     public void setImobileEntity(ImobileEntitate imobileEntity) {
-        this.imobileEntity = imobileEntity;
+        this.imobileEntitate = imobileEntity;
     }
 
 

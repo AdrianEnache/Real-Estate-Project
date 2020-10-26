@@ -1,7 +1,6 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
-
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.models.FilterModel;
@@ -28,7 +27,7 @@ public class DatabaseHandler {
             utilizator.setParola(userModel.getPassword());
             utilizator.setAdresaEmail(userModel.getEmail());
             utilizator.setNumarTelefon(userModel.getPhoneNumber());
-            UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class,userModel.getUserTypeId());
+            UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class, userModel.getUserTypeId());
             utilizator.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
             session.save(utilizator);
@@ -42,9 +41,9 @@ public class DatabaseHandler {
     }
 
 
-    public void addImobil(ImobilModel imobilModel){
+    public void addImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
-        try{
+        try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             ImobileEntitate imobil = new ImobileEntitate();
             imobil.setDataPostariiAnuntului(imobilModel.getDataPostariiAnuntului());
@@ -55,21 +54,21 @@ public class DatabaseHandler {
             imobil.setNumarCamere(imobilModel.getNumarCamere());
             imobil.setCoordonate(imobilModel.getCoordonate());
             imobil.setDescriere(imobilModel.getDescriere());
-            AnuntStatusEntitate anuntStatus = session.find(AnuntStatusEntitate.class,imobilModel.getIdAnuntStatusEntity());
+            AnuntStatusEntitate anuntStatus = session.find(AnuntStatusEntitate.class, imobilModel.getIdAnuntStatusEntity());
             imobil.setAnuntStatusEntity(anuntStatus);
             CompartimentareEntitate compartimentare = session.find(CompartimentareEntitate.class, imobilModel.getIdCompartimentareEntity());
             imobil.setCompartimentareEntity(compartimentare);
-            ValutaEntitate currency = session.find(ValutaEntitate.class,imobilModel.getIdCurrencyEntity());
+            ValutaEntitate currency = session.find(ValutaEntitate.class, imobilModel.getIdCurrencyEntity());
             imobil.setCurrencyEntities(Arrays.asList(currency));
-            OrasEntitate oras = session.find(OrasEntitate.class,imobilModel.getIdOras());
+            OrasEntitate oras = session.find(OrasEntitate.class, imobilModel.getIdOras());
             imobil.setOrasEntity(oras);
             transaction = session.beginTransaction();
             session.save(imobil);
             transaction.commit();
             session.close();
 
-        }catch (Exception ex){
-            if (transaction != null){
+        } catch (Exception ex) {
+            if (transaction != null) {
                 transaction.rollback();
             }
             System.out.println(ex.getMessage());
@@ -77,7 +76,6 @@ public class DatabaseHandler {
 
 
     }
-
 
 
     public List<ImobileEntitate> getImobils(FilterModel filterModel) {

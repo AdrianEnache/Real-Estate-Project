@@ -25,11 +25,15 @@ public class HibernateUtil {
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
                 properties.put(Environment.URL, "jdbc:mysql://localhost:3306/imobiliare?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
-                properties.put(Environment.PASS, "Adrian@91");
+                properties.put(Environment.PASS, "12345678");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "update");
+
+                //TODO de modificat user si pasw cand se doreste conectarea la baza de date
+
                 Configuration configuration = new Configuration();
                 configuration.setProperties(properties);
+
                 configuration.addAnnotatedClass(OrasEntitate.class);
                 configuration.addAnnotatedClass(AnuntStatusEntitate.class);
                 configuration.addAnnotatedClass(ValutaEntitate.class);
@@ -46,6 +50,7 @@ public class HibernateUtil {
                         .build();
                 sessionFactory = configuration.buildSessionFactory(serviceRegistry);
             } catch (Exception ex) {
+                System.out.println("Conectare fara succes!");
                 System.out.println(ex.getMessage());
             }
         }
