@@ -9,11 +9,8 @@ public class UserTypesEntity {
     @Id
     @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
-    @Column(name = "Vanzator")
     private String vanzator;
-    @Column(name = "Cumparator")
     private String cumparator;
-    @Column(name = "Chirias")
     private String chirias;
 
 

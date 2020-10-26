@@ -8,6 +8,7 @@ import javax.persistence.*;
 public class ListaFavoriteEntitate {
     @Id
     private Integer listaFavoriteEntitateId;
+    @Column(insertable = false,updatable = false)
     private Integer idUtilizator;
     private Integer imobilId;
 

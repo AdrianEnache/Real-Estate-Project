@@ -8,15 +8,12 @@ import javax.persistence.*;
 public class AnuntStatusEntitate {
 
     @Id
-    @Column(columnDefinition = "ID StatusAnunt")
     private Integer idAnuntStatusEntitate;
-    @Column(columnDefinition = "Deleted")
     private Boolean sters;
-    @Column(columnDefinition = "Sold")
     private Boolean vandut;
 
     @OneToOne
-    @JoinColumn(name = "idTipImobilEntity")
+    @JoinColumn(name = "idTipImobilEntitate")
     private ImobileEntitate imobileEntitate;
 
     public Integer getIdAnuntStatusEntitate() {

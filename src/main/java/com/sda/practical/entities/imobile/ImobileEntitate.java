@@ -12,24 +12,15 @@ public class ImobileEntitate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(columnDefinition = "ID Imobil")
     private Integer idTipImobilEntitate;
-    @Column(columnDefinition = "Posted Date")
     @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
-    @Column(columnDefinition = "Suprafata imobil")
     private Double suprafata;
-    @Column(columnDefinition = "Pret imobil")
     private Double pret;
-    @Column(columnDefinition = "Etaj imobil")
     private Integer etaj;
-    @Column(columnDefinition = "An constructie")
     private Integer anConstructie;
-    @Column(columnDefinition = "Numar camere")
     private Integer numarCamere;
-    @Column(length = 45, columnDefinition = "Coordonate")
     private String coordonate;
-    @Column(length = 250, columnDefinition = "Descriere")
     private String descriere;
 
     @OneToOne(mappedBy = "imobileEntitate")
@@ -39,11 +30,11 @@ public class ImobileEntitate {
     private CompartimentareEntitate compartimentareEntity;
 
     @OneToMany(mappedBy = "imobileEntitate")
-    private List<ValutaEntitate> currencyEntities;
+    private List<ValutaEntitate> valutaEntitate;
 
     @ManyToOne
-    @JoinColumn (name = "idListaOraseEntity")
-    private OrasEntitate orasEntity;
+    @JoinColumn (name = "idOras")
+    private OrasEntitate orasEntitate;
 
     public Integer getAnConstructie() {
         return anConstructie;
@@ -141,19 +132,21 @@ public class ImobileEntitate {
         this.compartimentareEntity = compartimentareEntity;
     }
 
-    public List<ValutaEntitate> getCurrencyEntities() {
-        return currencyEntities;
+    public List<ValutaEntitate> getValutaEntitate() {
+        return valutaEntitate;
     }
 
-    public void setCurrencyEntities(List<ValutaEntitate> currencyEntities) {
-        this.currencyEntities = currencyEntities;
+    public void setValutaEntitate(List<ValutaEntitate> valutaEntitate) {
+        this.valutaEntitate = valutaEntitate;
     }
 
-    public OrasEntitate getOrasEntity() {
-        return orasEntity;
+    public OrasEntitate getOrasEntitate() {
+        return orasEntitate;
     }
 
-    public void setOrasEntity(OrasEntitate orasEntity) {
-        this.orasEntity = orasEntity;
+    public void setOrasEntitate(OrasEntitate orasEntitate) {
+        this.orasEntitate = orasEntitate;
     }
+
+
 }
