@@ -37,18 +37,20 @@ public class ConsoleView {
                     user.setSurname(keyboardHandler.readString("Add SurName: "));
                     user.setPassword(keyboardHandler.readString("Add Password: "));
                     user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
-                    System.out.println("Choose a user type: ");
+//                    System.out.println("Choose a user type: ");
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                     boolean iscorect = true;
                     while (iscorect){
                         if (userTypeId == 2){
-                            iscorect = true;
-                        }else if (userTypeId != 1){
-                            iscorect = true;
+                            user.setUserTypeId(userTypeId);
+                            iscorect = false;
+                        }else if (userTypeId == 1){
+                            user.setUserTypeId(userTypeId);
+                            iscorect = false;
                         }else{
                             userTypeId = keyboardHandler.readInteger("Choose a user type: ");
-                            iscorect = false;
+                            iscorect = true;
                         }
                     }
 
