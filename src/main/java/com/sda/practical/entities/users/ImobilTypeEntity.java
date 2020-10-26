@@ -1,6 +1,6 @@
 package com.sda.practical.entities.users;
 
-import javax.persistence.Column;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -9,13 +9,11 @@ import javax.persistence.Table;
 @Table
 
 public class ImobilTypeEntity {
+
     @Id
     private String idImobilTypeEntity;
-    @Column(name = "Teren")
     private String land;
-    @Column(name = "Casa")
     private String house;
-    @Column(name = "Apartament")
     private String apartment;
 
     public String getIdImobilTypeEntity() {

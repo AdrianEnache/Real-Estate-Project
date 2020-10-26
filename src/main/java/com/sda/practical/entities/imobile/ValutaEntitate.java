@@ -8,7 +8,7 @@ import javax.persistence.*;
 public class ValutaEntitate {
 
     @Id
-    @Column(columnDefinition = "ID Currency")
+    @Column(columnDefinition = "IDCurrency")
     private Integer idValutateEntitate;
     @Column(columnDefinition = "Currency")
     private String valuta;

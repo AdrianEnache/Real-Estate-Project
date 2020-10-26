@@ -7,11 +7,8 @@ import javax.persistence.*;
 
 public class ListaFavoriteEntitate {
     @Id
-    @Column(name = "ID Lista Favorite")
     private Integer listaFavoriteEntitateId;
-    @Column(name = "ID Utilizator")
     private Integer idUtilizator;
-    @Column(name = "ID Imobil")
     private Integer imobilId;
 
     @ManyToOne
