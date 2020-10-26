@@ -7,6 +7,7 @@ import javax.persistence.*;
 
 public class UserTypesEntity {
     @Id
+    @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
     private String vanzator;
     private String cumparator;

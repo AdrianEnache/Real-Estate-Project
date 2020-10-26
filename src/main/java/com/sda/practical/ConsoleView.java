@@ -1,16 +1,11 @@
 package com.sda.practical;
 
 import com.mysql.cj.xdevapi.SessionFactory;
-import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.enums.MenuTypeEnum;
 import com.sda.practical.handler.DatabaseHandler;
 import com.sda.practical.handler.KeyboardHandler;
 import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.UserModel;
-import com.sda.practical.util.HibernateUtil;
-import org.hibernate.Session;
-
-import java.awt.*;
 
 public class ConsoleView {
 
@@ -21,17 +16,16 @@ public class ConsoleView {
         SessionFactory sessionFactory = new SessionFactory();
 
 
-        Integer option =0;
-        while (option != 3) {
+        Integer option = 0;
+        while (option != 5) {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
 
 
             switch (option) {
                 case 1:
-
-
-
+                    //TODO de creat metoda de log in, printr-un query
+                    //TODO sa prindem intr-un loop metoda de log in,
 
                     break;
                 case 2:
@@ -40,18 +34,18 @@ public class ConsoleView {
                     user.setSurname(keyboardHandler.readString("Add SurName: "));
                     user.setPassword(keyboardHandler.readString("Add Password: "));
                     user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
-                    user.setEmail(keyboardHandler.readString("Add Email: "));
+
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                     boolean iscorect = true;
-                    while (iscorect){
-                        if (userTypeId == 2){
+                    while (iscorect) {
+                        if (userTypeId == 2) {
                             user.setUserTypeId(userTypeId);
                             iscorect = false;
-                        }else if (userTypeId == 1){
+                        } else if (userTypeId == 1) {
                             user.setUserTypeId(userTypeId);
                             iscorect = false;
-                        }else{
+                        } else {
                             userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                             iscorect = true;
                         }
@@ -62,6 +56,12 @@ public class ConsoleView {
                     break;
 
                 case 3:
+                    //TODO - de realizat metoda de adaugat imobile
+
+
+                    break;
+
+                case 5:
                     System.out.println("Bye bye");
                     break;
                 default:
@@ -72,7 +72,6 @@ public class ConsoleView {
 
 
     }
-
 
 
 }
