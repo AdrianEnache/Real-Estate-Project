@@ -32,6 +32,8 @@ public class DatabaseHandler {
             transaction = session.beginTransaction();
             session.save(utilizator);
             transaction.commit();
+            session.close();
+
         } catch (Exception ex) {
             if (transaction != null) {
                 transaction.rollback();
