@@ -9,16 +9,16 @@ import javax.persistence.Table;
 public class ImobilTypeEntity {
 
     @Id
-    private String idImobilTypeEntity;
+    private Integer idImobilTypeEntity;
     private String land;
     private String house;
     private String apartment;
 
-    public String getIdImobilTypeEntity() {
+    public Integer getIdImobilTypeEntity() {
         return idImobilTypeEntity;
     }
 
-    public void setIdImobilTypeEntity(String idImobilTypeEntity) {
+    public void setIdImobilTypeEntity(Integer idImobilTypeEntity) {
         this.idImobilTypeEntity = idImobilTypeEntity;
     }
 

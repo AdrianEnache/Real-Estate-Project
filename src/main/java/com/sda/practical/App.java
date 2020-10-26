@@ -9,8 +9,8 @@ public class App
 {
     public static void main( String[] args )
     {
-        Session session = HibernateUtil.getSessionFactory().openSession();
-//        new ConsoleView().startApp();
+//        Session session = HibernateUtil.getSessionFactory().openSession();
+        new ConsoleView().startApp();
 
     }
 }
