@@ -30,6 +30,9 @@ public class ConsoleView {
             switch (option) {
                 case 1:
 
+
+
+
                     break;
                 case 2:
                     UserModel user = new UserModel();
@@ -37,7 +40,7 @@ public class ConsoleView {
                     user.setSurname(keyboardHandler.readString("Add SurName: "));
                     user.setPassword(keyboardHandler.readString("Add Password: "));
                     user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
-//                    System.out.println("Choose a user type: ");
+                    user.setEmail(keyboardHandler.readString("Add Email: "));
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
                     boolean iscorect = true;
