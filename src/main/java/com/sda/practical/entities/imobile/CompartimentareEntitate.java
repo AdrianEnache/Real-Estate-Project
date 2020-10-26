@@ -8,13 +8,11 @@ import javax.persistence.*;
 public class CompartimentareEntitate {
 
     @Id
-    @Column(columnDefinition = "ID Compartimentare")
     private Integer idCompartimentareEntitate;
-    @Column(columnDefinition = "Compartimentare")
     private String compartimentare;
 
     @OneToOne
-    @JoinColumn(name = "idTipImobilEntity")
+    @JoinColumn(name = "idTipImobilEntitate")
     private ImobileEntitate imobileEntitate;
 
     public Integer getIdCompartimentareEntitate() {

@@ -10,16 +10,12 @@ public class UtilizatorEntitate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(insertable = false,updatable = false)
     private Integer idUtilizator;
-    @Column(length = 45)
     private String numeDeFamilie;
-    @Column(length = 45)
     private String prenume;
-    @Column(length = 45)
     private String numarTelefon;
-    @Column(length = 45)
     private String adresaEmail;
-    @Column(length = 45)
     private String parola;
 
     @OneToOne(mappedBy = "user")

@@ -9,13 +9,11 @@ import java.util.List;
 public class OrasEntitate {
 
     @Id
-    @Column(columnDefinition = "ID ListaOrase")
     private Integer idOras;
-    @Column(columnDefinition = "Orase")
     private String oras;
 
-    @OneToMany(mappedBy = "orasEntity")
-    private List<ImobileEntitate> imobileEntities;
+    @OneToMany(mappedBy = "orasEntitate")
+    private List<ImobileEntitate> imobileEntitateList;
 
     public String getOras() {
         return oras;
@@ -34,11 +32,11 @@ public class OrasEntitate {
         this.idOras = idOras;
     }
 
-    public List<ImobileEntitate> getImobileEntities() {
-        return imobileEntities;
+    public List<ImobileEntitate> getImobileEntitateList() {
+        return imobileEntitateList;
     }
 
-    public void setImobileEntities(List<ImobileEntitate> imobileEntities) {
-        this.imobileEntities = imobileEntities;
+    public void setImobileEntitateList(List<ImobileEntitate> imobileEntitateList) {
+        this.imobileEntitateList = imobileEntitateList;
     }
 }

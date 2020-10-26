@@ -8,11 +8,8 @@ import javax.persistence.*;
 public class UserTypesEntity {
     @Id
     private Integer userTypesEntityId;
-    @Column(name = "Vanzator")
     private String vanzator;
-    @Column(name = "Cumparator")
     private String cumparator;
-    @Column(name = "Chirias")
     private String chirias;
 
 

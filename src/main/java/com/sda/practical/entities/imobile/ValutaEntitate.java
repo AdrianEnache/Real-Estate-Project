@@ -8,13 +8,11 @@ import javax.persistence.*;
 public class ValutaEntitate {
 
     @Id
-    @Column(columnDefinition = "ID Currency")
     private Integer idValutateEntitate;
-    @Column(columnDefinition = "Currency")
     private String valuta;
 
     @ManyToOne
-    @JoinColumn(name = "idTipImobilEntity")
+    @JoinColumn(name = "idTipImobilEntitate")
     private ImobileEntitate imobileEntitate;
 
     public Integer getIdValutateEntitate() {

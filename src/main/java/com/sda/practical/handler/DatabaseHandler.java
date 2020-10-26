@@ -59,9 +59,9 @@ public class DatabaseHandler {
             CompartimentareEntitate compartimentare = session.find(CompartimentareEntitate.class, imobilModel.getIdCompartimentareEntity());
             imobil.setCompartimentareEntity(compartimentare);
             ValutaEntitate currency = session.find(ValutaEntitate.class, imobilModel.getIdCurrencyEntity());
-            imobil.setCurrencyEntities(Arrays.asList(currency));
+            imobil.setValutaEntitate(Arrays.asList(currency));
             OrasEntitate oras = session.find(OrasEntitate.class, imobilModel.getIdOras());
-            imobil.setOrasEntity(oras);
+            imobil.setOrasEntitate(oras);
             transaction = session.beginTransaction();
             session.save(imobil);
             transaction.commit();
