@@ -17,9 +17,10 @@ public class UtilizatorEntitate {
     private String numarTelefon;
     private String adresaEmail;
     private String parola;
+    @Column(insertable = false,updatable = false)
     private Integer idTipUser;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
