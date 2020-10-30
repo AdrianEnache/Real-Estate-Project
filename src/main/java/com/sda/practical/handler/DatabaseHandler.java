@@ -10,7 +10,6 @@ import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -86,11 +85,11 @@ public class DatabaseHandler {
         boolean isValid = false;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            String sql = "select * from utilizatorentitate where numeDeFamilie='"+ numeDeFamilie+"' and prenume = '"+prenume+"' and parola ='"+parola+"'";
-            List<UtilizatorEntitate> utilizatorEntitate = session.createQuery(sql,UtilizatorEntitate.class).list();
+            String sql = "select * from utilizatorentitate where numeDeFamilie='" + numeDeFamilie + "' and prenume = '" + prenume + "' and parola ='" + parola + "'";
+            List<UtilizatorEntitate> utilizatorEntitate = session.createQuery(sql, UtilizatorEntitate.class).list();
             isValid = utilizatorEntitate.isEmpty();
-           session.close();
-        }catch (Exception ex){
+            session.close();
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
         return isValid;
