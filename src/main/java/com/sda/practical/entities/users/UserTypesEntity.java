@@ -9,15 +9,15 @@ public class UserTypesEntity {
     @Id
     @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
-    private String vanzator;
-    private String cumparator;
-    private String chirias;
+    private Integer vanzator ;
+    private Integer cumparator ;
+
 
 
     //TODO - relations ONE TO ONE and ONE TO MANY
 
-    @OneToOne
-    @JoinColumn(name = "userId")
+    @OneToOne(mappedBy = "userType")
+//    @JoinColumn(name = "userId")
     private UtilizatorEntitate user;
 
 
@@ -29,28 +29,45 @@ public class UserTypesEntity {
         this.userTypesEntityId = userTypesEntityId;
     }
 
-    public String getVanzator() {
+//    public String getVanzator() {
+//        return vanzator;
+//    }
+//
+//    public void setVanzator(String vanzator) {
+//        this.vanzator = vanzator;
+//    }
+//
+//    public String getCumparator() {
+//        return cumparator;
+//    }
+//
+//    public void setCumparator(String cumparator) {
+//        this.cumparator = cumparator;
+//    }
+//
+//    public String getChirias() {
+//        return chirias;
+//    }
+//
+//    public void setChirias(String chirias) {
+//        this.chirias = chirias;
+//    }
+
+
+    public Integer getVanzator() {
         return vanzator;
     }
 
-    public void setVanzator(String vanzator) {
+    public void setVanzator(Integer vanzator) {
         this.vanzator = vanzator;
     }
 
-    public String getCumparator() {
+    public Integer getCumparator() {
         return cumparator;
     }
 
-    public void setCumparator(String cumparator) {
+    public void setCumparator(Integer cumparator) {
         this.cumparator = cumparator;
-    }
-
-    public String getChirias() {
-        return chirias;
-    }
-
-    public void setChirias(String chirias) {
-        this.chirias = chirias;
     }
 
     public UtilizatorEntitate getUser() {

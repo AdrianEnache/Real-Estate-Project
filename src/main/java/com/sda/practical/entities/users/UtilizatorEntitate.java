@@ -17,8 +17,10 @@ public class UtilizatorEntitate {
     private String numarTelefon;
     private String adresaEmail;
     private String parola;
+    private Integer idTipUser;
 
-    @OneToOne(mappedBy = "user")
+    @OneToOne
+    @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
     @OneToMany(mappedBy = "utilizator")
@@ -86,5 +88,13 @@ public class UtilizatorEntitate {
 
     public void setFavouritesListEntityId(List<ListaFavoriteEntitate> favouritesListEntityId) {
         this.favouritesListEntityId = favouritesListEntityId;
+    }
+
+    public Integer getIdTipUser() {
+        return idTipUser;
+    }
+
+    public void setIdTipUser(Integer idTipUser) {
+        this.idTipUser = idTipUser;
     }
 }
