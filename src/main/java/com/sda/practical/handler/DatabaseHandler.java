@@ -10,6 +10,7 @@ import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -31,9 +32,9 @@ public class DatabaseHandler {
             utilizator.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
             session.save(utilizator);
+            session.save(userTypesEntity);
             transaction.commit();
             session.close();
-
         } catch (Exception ex) {
             if (transaction != null) {
                 transaction.rollback();
@@ -77,6 +78,22 @@ public class DatabaseHandler {
         }
 
 
+    }
+
+
+    public boolean verifyUser(String numeDeFamilie, String prenume, String parola) {
+        Transaction transaction = null;
+        boolean isValid = false;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            String sql = "select * from utilizatorentitate where numeDeFamilie='"+ numeDeFamilie+"' and prenume = '"+prenume+"' and parola ='"+parola+"'";
+            List<UtilizatorEntitate> utilizatorEntitate = session.createQuery(sql,UtilizatorEntitate.class).list();
+            isValid = utilizatorEntitate.isEmpty();
+           session.close();
+        }catch (Exception ex){
+            System.out.println(ex.getMessage());
+        }
+        return isValid;
     }
 
 

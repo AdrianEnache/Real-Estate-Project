@@ -24,6 +24,11 @@ public class ConsoleView {
 
             switch (option) {
                 case 1:
+                    String prenume = keyboardHandler.readString("Prenume: ");
+                    String nume = keyboardHandler.readString("Nume: ");
+                    String parola = keyboardHandler.readString("Parola: ");
+                    System.out.println(databaseHandler.verifyUser(nume,prenume,parola));
+
                     //TODO de creat metoda de log in, printr-un query
                     //TODO sa prindem intr-un loop metoda de log in,
 
@@ -34,6 +39,7 @@ public class ConsoleView {
                     user.setSurname(keyboardHandler.readString("Add SurName: "));
                     user.setPassword(keyboardHandler.readString("Add Password: "));
                     user.setPhoneNumber(keyboardHandler.readString("Add PhoneNumber: "));
+                    user.setEmail(keyboardHandler.readString("Add Email: "));
 
                     viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
                     int userTypeId = keyboardHandler.readInteger("Choose a user type: ");
