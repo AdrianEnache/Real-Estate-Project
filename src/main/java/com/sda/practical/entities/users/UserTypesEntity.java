@@ -1,6 +1,7 @@
 package com.sda.practical.entities.users;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -9,17 +10,15 @@ public class UserTypesEntity {
     @Id
     @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
-    private Integer vanzator ;
-    private Integer cumparator ;
+    private String  tipClient;
+    private Integer tipUserId;
 
 
 
     //TODO - relations ONE TO ONE and ONE TO MANY
 
-    @OneToOne(mappedBy = "userType")
-//    @JoinColumn(name = "userId")
-    private UtilizatorEntitate user;
-
+    @OneToMany(mappedBy = "userType")
+   private List<UtilizatorEntitate> listUser;
 
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;
@@ -29,54 +28,27 @@ public class UserTypesEntity {
         this.userTypesEntityId = userTypesEntityId;
     }
 
-//    public String getVanzator() {
-//        return vanzator;
-//    }
-//
-//    public void setVanzator(String vanzator) {
-//        this.vanzator = vanzator;
-//    }
-//
-//    public String getCumparator() {
-//        return cumparator;
-//    }
-//
-//    public void setCumparator(String cumparator) {
-//        this.cumparator = cumparator;
-//    }
-//
-//    public String getChirias() {
-//        return chirias;
-//    }
-//
-//    public void setChirias(String chirias) {
-//        this.chirias = chirias;
-//    }
-
-
-    public Integer getVanzator() {
-        return vanzator;
+    public String getTipClient() {
+        return tipClient;
     }
 
-    public void setVanzator(Integer vanzator) {
-        this.vanzator = vanzator;
+    public void setTipClient(String tipClient) {
+        this.tipClient = tipClient;
     }
 
-    public Integer getCumparator() {
-        return cumparator;
+    public Integer getTipUserId() {
+        return tipUserId;
     }
 
-    public void setCumparator(Integer cumparator) {
-        this.cumparator = cumparator;
+    public void setTipUserId(Integer tipUserId) {
+        this.tipUserId = tipUserId;
     }
 
-    public UtilizatorEntitate getUser() {
-        return user;
+    public List<UtilizatorEntitate> getListUser() {
+        return listUser;
     }
 
-    public void setUser(UtilizatorEntitate user) {
-        this.user = user;
+    public void setListUser(List<UtilizatorEntitate> listUser) {
+        this.listUser = listUser;
     }
-
-
 }
