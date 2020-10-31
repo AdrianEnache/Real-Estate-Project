@@ -27,10 +27,16 @@ public class ConsoleView {
                     String prenume = keyboardHandler.readString("Prenume: ");
                     String nume = keyboardHandler.readString("Nume: ");
                     String parola = keyboardHandler.readString("Parola: ");
-                    System.out.println(databaseHandler.verifyUser(nume, prenume, parola));
+                    Integer idTipUser = databaseHandler.verifyUser(prenume, nume, parola);
+                    if (idTipUser == 1) {
+                        viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
+                        switch () {
 
-                    //TODO de creat metoda de log in, printr-un query
-                    //TODO sa prindem intr-un loop metoda de log in,
+                        }
+                    }
+
+                    //TODO de creat metoda de log in, printr-un query - done
+                    //TODO sa prindem intr-un loop metoda de log in, - done
 
                     break;
                 case 2:
@@ -65,12 +71,11 @@ public class ConsoleView {
                 //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata
                 case 3:
                     ImobilModel imobilModel = new ImobilModel();
-                    //TODO creat metoda de conversie din date in string, sa vedem cum facem asta cu scanner
-                    imobilModel.setDataPostariiAnuntului(keyboardHandler.readString("Add date: "));
+                    imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
                     imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
                     imobilModel.setEtaj(keyboardHandler.readInteger("Add etaj: "));
                     imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
-
+                    imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
 
 
                     break;
