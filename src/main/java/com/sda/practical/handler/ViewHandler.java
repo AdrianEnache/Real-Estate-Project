@@ -1,6 +1,6 @@
 package com.sda.practical.handler;
 
-import com.sda.practical.enums.ClientEnum;
+
 import com.sda.practical.enums.MenuTypeEnum;
 
 import java.util.ArrayList;
@@ -44,7 +44,13 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("6. Descendent dupa suprafata.");
 
 
-
+        myMenues.put(MenuTypeEnum.CLIENT_USER, new ArrayList<>());
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("1.Cauta imobil");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("2.Inchiriaza imobil");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("3.Cumpara imobil");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("4.Prezinta Lista Favorite");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("5.Adauga la Favorit");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("6.Sterge de la Favorit");
 
     }
 
