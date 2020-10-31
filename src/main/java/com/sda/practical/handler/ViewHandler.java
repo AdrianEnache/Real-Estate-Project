@@ -1,5 +1,6 @@
 package com.sda.practical.handler;
 
+import com.sda.practical.enums.ClientEnum;
 import com.sda.practical.enums.MenuTypeEnum;
 import org.hibernate.dialect.MyISAMStorageEngine;
 
@@ -11,6 +12,7 @@ import java.util.Map;
 public class ViewHandler {
 
     private Map<MenuTypeEnum, List<String>> myMenues;
+
 
     public ViewHandler() {
 
@@ -24,7 +26,6 @@ public class ViewHandler {
         myMenues.put(MenuTypeEnum.USER_TYPE, new ArrayList<>());
         myMenues.get(MenuTypeEnum.USER_TYPE).add("1. Cumparator");
         myMenues.get(MenuTypeEnum.USER_TYPE).add("2. Vanzator");
-
 
         myMenues.put(MenuTypeEnum.SEARCH_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("1. Cauta dupa pret : ");
@@ -42,6 +43,8 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("4. Imobile de inchiriat.");
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("5. Ascendent dupa suprafata.");
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("6. Descendent dupa suprafata.");
+
+
 
 
     }
