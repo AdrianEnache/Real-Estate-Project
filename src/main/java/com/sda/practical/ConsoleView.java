@@ -5,6 +5,7 @@ import com.sda.practical.enums.MenuTypeEnum;
 import com.sda.practical.handler.DatabaseHandler;
 import com.sda.practical.handler.KeyboardHandler;
 import com.sda.practical.handler.ViewHandler;
+import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
 public class ConsoleView {
@@ -21,13 +22,12 @@ public class ConsoleView {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
 
-
             switch (option) {
                 case 1:
                     String prenume = keyboardHandler.readString("Prenume: ");
                     String nume = keyboardHandler.readString("Nume: ");
                     String parola = keyboardHandler.readString("Parola: ");
-                    System.out.println(databaseHandler.verifyUser(nume,prenume,parola));
+                    System.out.println(databaseHandler.verifyUser(nume, prenume, parola));
 
                     //TODO de creat metoda de log in, printr-un query
                     //TODO sa prindem intr-un loop metoda de log in,
@@ -58,11 +58,19 @@ public class ConsoleView {
                     }
 
                     databaseHandler.createUser(user);
+                    System.out.println("User created !");
 
                     break;
 
+                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata
                 case 3:
-                    //TODO - de realizat metoda de adaugat imobile
+                    ImobilModel imobilModel = new ImobilModel();
+                    //TODO creat metoda de conversie din date in string, sa vedem cum facem asta cu scanner
+                    imobilModel.setDataPostariiAnuntului(keyboardHandler.readString("Add date: "));
+                    imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
+                    imobilModel.setEtaj(keyboardHandler.readInteger("Add etaj: "));
+                    imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
+
 
 
                     break;

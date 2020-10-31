@@ -1,7 +1,6 @@
 package com.sda.practical.models;
 
 
-
 import java.util.Date;
 
 public class ImobilModel {

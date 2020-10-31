@@ -9,9 +9,7 @@ import com.sda.practical.models.UserModel;
 import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import org.hibernate.query.Query;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.List;
 
@@ -80,17 +78,21 @@ public class DatabaseHandler {
 
     }
 
-
-    public boolean verifyUser(String numeDeFamilie, String prenume, String parola) {
+    public boolean verifyUser(String prenume, String numeDeFamilie, String parola) {
         Transaction transaction = null;
         boolean isValid = false;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            String sql = "select  from utilizatorentitate where numeDeFamilie='"+ numeDeFamilie+"' and prenume = '"+prenume+"' and parola ='"+parola+"'";
-         List<UtilizatorEntitate> users = session.createQuery(sql,UtilizatorEntitate.class).list();
+            //TODO am realziat query cu mai multi parametri, dar se conecteaza indiferent de ce criterii ii introducem
+            String sql = "select u from UtilizatorEntitate u where u.prenume ='" + prenume + "' " +
+                    "and u.numeDeFamilie='" + numeDeFamilie + "' " +
+                    "and u.parola='" + parola + "'";
+            List<UtilizatorEntitate> users = session.createQuery(sql, UtilizatorEntitate.class).list();
             isValid = users.isEmpty();
-           session.close();
-        }catch (Exception ex){
+            System.out.println("Conected!");
+            session.close();
+        } catch (Exception ex) {
+            System.out.println("Not Connected !");
             System.out.println(ex.getMessage());
         }
         return isValid;
