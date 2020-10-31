@@ -24,7 +24,6 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.USER_TYPE).add("1. Cumparator");
         myMenues.get(MenuTypeEnum.USER_TYPE).add("2. Vanzator");
 
-
         myMenues.put(MenuTypeEnum.SEARCH_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("1. Cauta dupa pret : ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("2. Cauta dupa tip locuinta : ");
@@ -41,6 +40,12 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("4. Imobile de inchiriat.");
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("5. Ascendent dupa suprafata.");
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("6. Descendent dupa suprafata.");
+
+        myMenues.put(MenuTypeEnum.VANZATOR_USER, new ArrayList<>());
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("1. Adauga Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("2. Cauta Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("3. Sterge Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("4. Lista Imobile Vanzare.");
 
 
     }
