@@ -43,6 +43,12 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("5. Ascendent dupa suprafata.");
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("6. Descendent dupa suprafata.");
 
+        myMenues.put(MenuTypeEnum.VANZATOR_USER, new ArrayList<>());
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("1. Adauga Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("2. Cauta Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("3. Sterge Imobil.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("4. Lista Imobile Vanzare.");
+
 
         myMenues.put(MenuTypeEnum.CLIENT_USER, new ArrayList<>());
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("1.Cauta imobil");
