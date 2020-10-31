@@ -28,6 +28,7 @@ public class DatabaseHandler {
             utilizator.setAdresaEmail(userModel.getEmail());
             utilizator.setNumarTelefon(userModel.getPhoneNumber());
             UserTypesEntity userTypesEntity = session.find(UserTypesEntity.class, userModel.getUserTypeId());
+            utilizator.setIdTipUser(userModel.getUserTypeId());
             utilizator.setUserType(userTypesEntity);
             transaction = session.beginTransaction();
             session.save(utilizator);
