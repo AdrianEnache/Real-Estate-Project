@@ -8,7 +8,10 @@ public enum MenuTypeEnum {
     MAIN_MENU(1),
     SEARCH_MENU(2),
     ORDER_MENU(3),
-    USER_TYPE(4);
+    USER_TYPE(4),
+    CLIENT_USER(5),
+    VANZATOR_USER(6);
+
 
     private Integer option;
 
