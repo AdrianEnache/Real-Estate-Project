@@ -1,7 +1,6 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.enums.MenuTypeEnum;
-import org.hibernate.dialect.MyISAMStorageEngine;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,5 +50,6 @@ public class ViewHandler {
             System.out.println(meniu);
         }
     }
+
 
 }
