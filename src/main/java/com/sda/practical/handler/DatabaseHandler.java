@@ -78,24 +78,28 @@ public class DatabaseHandler {
 
     }
 
-    public boolean verifyUser(String prenume, String numeDeFamilie, String parola) {
+    public Integer verifyUser(String prenume, String numeDeFamilie, String parola) {
         Transaction transaction = null;
-        boolean isValid = false;
+        Integer idTipUser = -1;
         try {
+
             Session session = HibernateUtil.getSessionFactory().openSession();
-            //TODO am realziat query cu mai multi parametri, dar se conecteaza indiferent de ce criterii ii introducem
-            String sql = "select u from UtilizatorEntitate u where u.prenume ='" + prenume + "' " +
-                    "and u.numeDeFamilie='" + numeDeFamilie + "' " +
-                    "and u.parola='" + parola + "'";
-            List<UtilizatorEntitate> users = session.createQuery(sql, UtilizatorEntitate.class).list();
-            isValid = users.isEmpty();
+
+            // in query trebuie folosit numele clasei(tabele) din java code (case sensitive);
+            String sql = "select idTipUser from UtilizatorEntitate where prenume ='" + prenume + "' " +
+                    "and numeDeFamilie='" + numeDeFamilie + "' " +
+                    "and parola='" + parola + "'";
+
+            List<Integer> users = session.createQuery(sql, Integer.class).list();
+            idTipUser = users.get(0);
+            System.out.println(users);
             System.out.println("Conected!");
             session.close();
         } catch (Exception ex) {
             System.out.println("Not Connected !");
             System.out.println(ex.getMessage());
         }
-        return isValid;
+        return idTipUser;
     }
 
 

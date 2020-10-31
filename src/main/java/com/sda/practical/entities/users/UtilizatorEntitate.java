@@ -98,4 +98,19 @@ public class UtilizatorEntitate {
     public void setIdTipUser(Integer idTipUser) {
         this.idTipUser = idTipUser;
     }
+
+    @Override
+    public String toString() {
+        return "UtilizatorEntitate{" +
+                "idUtilizator=" + idUtilizator +
+                ", numeDeFamilie='" + numeDeFamilie + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", numarTelefon='" + numarTelefon + '\'' +
+                ", adresaEmail='" + adresaEmail + '\'' +
+                ", parola='" + parola + '\'' +
+                ", idTipUser=" + idTipUser +
+                ", userType=" + userType +
+                ", favouritesListEntityId=" + favouritesListEntityId +
+                '}';
+    }
 }
