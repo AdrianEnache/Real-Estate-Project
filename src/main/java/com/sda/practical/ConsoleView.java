@@ -29,10 +29,53 @@ public class ConsoleView {
                     String parola = keyboardHandler.readString("Parola: ");
                     Integer idTipUser = databaseHandler.verifyUser(prenume, nume, parola);
                     if (idTipUser == 1) {
-                        viewHandler.printMenu(MenuTypeEnum.USER_TYPE);
-                        switch () {
+                        while (option != 7) {
+                            viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
+                            option = keyboardHandler.readInteger("Introduceti optiunea : ");
+                            switch (option) {
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    break;
+                                case 6:
+                                    break;
+                                case 7:
+                                    System.out.println("Pa Pa");
+                                    break;
+                                default:
+                                    System.out.println("Nu cunoastem optiunea !");
 
+                            }
                         }
+                    } else if (idTipUser == 2) {
+                        while (option != 5) {
+                            viewHandler.printMenu(MenuTypeEnum.VANZATOR_USER);
+                            option = keyboardHandler.readInteger("Introduceti optiunea : ");
+                            switch (option) {
+
+                                case 1:
+                                    break;
+                                case 2:
+                                    break;
+                                case 3:
+                                    break;
+                                case 4:
+                                    break;
+                                case 5:
+                                    System.out.println("Pa Pa");
+                                    break;
+                                default:
+                                    System.out.println("Nu cunoastem optiunea !");
+                            }
+                        }
+                    } else {
+                        System.out.println("The user doesnt exist!");
                     }
 
                     //TODO de creat metoda de log in, printr-un query - done
@@ -76,6 +119,7 @@ public class ConsoleView {
                     imobilModel.setEtaj(keyboardHandler.readInteger("Add etaj: "));
                     imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
                     imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
+                    imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
 
 
                     break;

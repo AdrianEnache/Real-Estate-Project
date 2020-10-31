@@ -10,15 +10,14 @@ public class UserTypesEntity {
     @Id
     @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
-    private String  tipClient;
+    private String tipClient;
     private Integer tipUserId;
 
 
-
-    //TODO - relations ONE TO ONE and ONE TO MANY
+    //TODO - relations ONE TO ONE and ONE TO MANY -done
 
     @OneToMany(mappedBy = "userType")
-   private List<UtilizatorEntitate> listUser;
+    private List<UtilizatorEntitate> listUser;
 
     public Integer getUserTypesEntityId() {
         return userTypesEntityId;

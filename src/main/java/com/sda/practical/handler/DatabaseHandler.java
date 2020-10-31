@@ -119,5 +119,7 @@ public class DatabaseHandler {
         return sql;
     }
 
+    //TODO de realizat metodele de cautare, adaugare,
+
 
 }
