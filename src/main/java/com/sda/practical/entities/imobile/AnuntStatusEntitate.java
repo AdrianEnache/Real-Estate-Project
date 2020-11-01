@@ -9,8 +9,7 @@ public class AnuntStatusEntitate {
 
     @Id
     private Integer idAnuntStatusEntitate;
-    private Boolean sters;
-    private Boolean vandut;
+    private String statusAnunt;
 
     @OneToOne
     @JoinColumn(name = "idTipImobilEntitate")
@@ -24,20 +23,20 @@ public class AnuntStatusEntitate {
         this.idAnuntStatusEntitate = idAnuntStatusEntitate;
     }
 
-    public Boolean getSters() {
-        return sters;
+    public ImobileEntitate getImobileEntitate() {
+        return imobileEntitate;
     }
 
-    public void setSters(Boolean sters) {
-        this.sters = sters;
+    public void setImobileEntitate(ImobileEntitate imobileEntitate) {
+        this.imobileEntitate = imobileEntitate;
     }
 
-    public Boolean getVandut() {
-        return vandut;
+    public String getStatusAnunt() {
+        return statusAnunt;
     }
 
-    public void setVandut(Boolean vandut) {
-        this.vandut = vandut;
+    public void setStatusAnunt(String statusAnunt) {
+        this.statusAnunt = statusAnunt;
     }
 
     public ImobileEntitate getImobileEntity() {
