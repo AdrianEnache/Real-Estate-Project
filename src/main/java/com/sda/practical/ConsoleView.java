@@ -33,17 +33,17 @@ public class ConsoleView {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
-                                case 1:
+                                case 1:  // cauta imobil
                                     break;
-                                case 2:
+                                case 2: // inchiriaza imobil
                                     break;
-                                case 3:
+                                case 3: // cumpara imobil
                                     break;
-                                case 4:
+                                case 4: // prezinta lista favorite
                                     break;
-                                case 5:
+                                case 5: // adauga la favorit
                                     break;
-                                case 6:
+                                case 6: // sterger de la favorit
                                     break;
                                 case 7:
                                     System.out.println("Pa Pa");
@@ -59,13 +59,15 @@ public class ConsoleView {
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
 
-                                case 1:
+                                case 1: // adauga imobil
+                                    ImobilModel imobilModel = new ImobilModel();
+                                    databaseHandler.addImobil(imobilModel);
                                     break;
-                                case 2:
+                                case 2: // cauta imobil
                                     break;
-                                case 3:
+                                case 3: // sterge imobil
                                     break;
-                                case 4:
+                                case 4: // lista imobile vanzare
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");
@@ -120,8 +122,11 @@ public class ConsoleView {
                     imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
                     imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
                     imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
+                    imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
+                    imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
 
-
+                    databaseHandler.addImobil(imobilModel);
+                    System.out.println("Imobil created !");
                     break;
 
                 case 5:
