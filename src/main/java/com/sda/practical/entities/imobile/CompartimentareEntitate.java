@@ -9,7 +9,7 @@ public class CompartimentareEntitate {
 
     @Id
     private Integer idCompartimentareEntitate;
-    private String compartimentare;
+    private String tipCompartimentare;
 
     @OneToOne
     @JoinColumn(name = "idTipImobilEntitate")
@@ -23,12 +23,12 @@ public class CompartimentareEntitate {
         this.idCompartimentareEntitate = idCompartimentareEntitate;
     }
 
-    public String getCompartimentare() {
-        return compartimentare;
+    public String getTipCompartimentare() {
+        return tipCompartimentare;
     }
 
-    public void setCompartimentare(String compartimentare) {
-        this.compartimentare = compartimentare;
+    public void setTipCompartimentare(String tipCompartimentare) {
+        this.tipCompartimentare = tipCompartimentare;
     }
 
     public ImobileEntitate getImobileEntity() {

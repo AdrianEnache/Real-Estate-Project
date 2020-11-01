@@ -9,7 +9,7 @@ public class ValutaEntitate {
 
     @Id
     private Integer idValutateEntitate;
-    private String valuta;
+    private String tipValuta;
 
     @ManyToOne
     @JoinColumn(name = "idTipImobilEntitate")
@@ -23,12 +23,12 @@ public class ValutaEntitate {
         this.idValutateEntitate = idValutateEntitate;
     }
 
-    public String getValuta() {
-        return valuta;
+    public String getTipValuta() {
+        return tipValuta;
     }
 
-    public void setValuta(String valuta) {
-        this.valuta = valuta;
+    public void setTipValuta(String tipValuta) {
+        this.tipValuta = tipValuta;
     }
 
     public ImobileEntitate getImobileEntitate() {

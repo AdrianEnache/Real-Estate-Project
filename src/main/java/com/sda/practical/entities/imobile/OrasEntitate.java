@@ -10,17 +10,17 @@ public class OrasEntitate {
 
     @Id
     private Integer idOras;
-    private String oras;
+    private String numeOras;
 
     @OneToMany(mappedBy = "orasEntitate")
     private List<ImobileEntitate> imobileEntitateList;
 
-    public String getOras() {
-        return oras;
+    public String getNumeOras() {
+        return numeOras;
     }
 
-    public void setOras(String oras) {
-        this.oras = oras;
+    public void setNumeOras(String numeOras) {
+        this.numeOras = numeOras;
     }
 
 

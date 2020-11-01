@@ -22,10 +22,10 @@ public class HibernateUtil {
             try {
                 Properties properties = new Properties();
                 properties.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
-                properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
+                properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
                 properties.put(Environment.URL, "jdbc:mysql://localhost:3306/imobiliare?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
-                properties.put(Environment.PASS, "12345678");
+                properties.put(Environment.PASS, "Adrian@91");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "update");
 
