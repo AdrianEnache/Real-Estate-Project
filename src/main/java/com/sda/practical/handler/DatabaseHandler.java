@@ -56,6 +56,7 @@ public class DatabaseHandler {
             imobil.setNumarCamere(imobilModel.getNumarCamere());
             imobil.setCoordonate(imobilModel.getCoordonate());
             imobil.setDescriere(imobilModel.getDescriere());
+            //TODO trebuie corectata metoda , stabilit ce tip de anunt , compartimentare, valuta si oras este . Metoda de GetID nu are ce returna
             AnuntStatusEntitate anuntStatus = session.find(AnuntStatusEntitate.class, imobilModel.getIdAnuntStatusEntity());
             imobil.setAnuntStatusEntity(anuntStatus);
             CompartimentareEntitate compartimentare = session.find(CompartimentareEntitate.class, imobilModel.getIdCompartimentareEntity());
