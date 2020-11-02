@@ -1,5 +1,7 @@
 package com.sda.practical.entities.users;
 
+import com.sda.practical.entities.imobile.ImobileEntitate;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,15 +12,18 @@ public class UtilizatorEntitate {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(insertable = false,updatable = false)
+    @Column(insertable = false, updatable = false)
     private Integer idUtilizator;
     private String numeDeFamilie;
     private String prenume;
     private String numarTelefon;
     private String adresaEmail;
     private String parola;
-    @Column(insertable = false,updatable = false)
+    @Column(insertable = false, updatable = false)
     private Integer idTipUser;
+
+    @OneToMany(mappedBy = "utilizatorEntitate")
+    private List<ImobileEntitate> imobileEntitateList;
 
     @ManyToOne
     @JoinColumn(name = "idTipUser")
@@ -26,6 +31,14 @@ public class UtilizatorEntitate {
 
     @OneToMany(mappedBy = "utilizator")
     private List<ListaFavoriteEntitate> favouritesListEntityId;
+
+    public List<ImobileEntitate> getImobileEntitateList() {
+        return imobileEntitateList;
+    }
+
+    public void setImobileEntitateList(List<ImobileEntitate> imobileEntitateList) {
+        this.imobileEntitateList = imobileEntitateList;
+    }
 
     public UserTypesEntity getUserType() {
         return userType;

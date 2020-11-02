@@ -65,6 +65,8 @@ public class DatabaseHandler {
             imobil.setValutaEntitate(Arrays.asList(currency));
             OrasEntitate oras = session.find(OrasEntitate.class, imobilModel.getIdOras());
             imobil.setOrasEntitate(oras);
+            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, imobilModel.getIdVanzator());
+            imobil.setUtilizatorEntitate(utilizatorEntitate);
             transaction = session.beginTransaction();
             session.save(imobil);
             transaction.commit();
@@ -81,7 +83,6 @@ public class DatabaseHandler {
     }
 
     public Integer verifyUser(String prenume, String numeDeFamilie, String parola) {
-        Transaction transaction = null;
         Integer idTipUser = -1;
         try {
 
@@ -102,6 +103,29 @@ public class DatabaseHandler {
             System.out.println(ex.getMessage());
         }
         return idTipUser;
+    }
+
+    public Integer getUserId(String prenume, String numeDeFamilie, String parola) {
+        Integer idUser = -1;
+        try {
+
+            Session session = HibernateUtil.getSessionFactory().openSession();
+
+            // in query trebuie folosit numele clasei(tabele) din java code (case sensitive);
+            String sql = "select idUtilizator from UtilizatorEntitate where prenume ='" + prenume + "' " +
+                    "and numeDeFamilie='" + numeDeFamilie + "' " +
+                    "and parola='" + parola + "'";
+
+            List<Integer> users = session.createQuery(sql, Integer.class).list();
+            idUser = users.get(0);
+            System.out.println(users);
+            System.out.println("Conected!");
+            session.close();
+        } catch (Exception ex) {
+            System.out.println("Not Connected !");
+            System.out.println(ex.getMessage());
+        }
+        return idUser;
     }
 
 

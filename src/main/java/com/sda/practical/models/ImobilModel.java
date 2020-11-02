@@ -18,6 +18,15 @@ public class ImobilModel {
     private Integer idCompartimentareEntity;
     private Integer idCurrencyEntity;
     private Integer idOras;
+    private Integer idVanzator;
+
+    public Integer getIdVanzator() {
+        return idVanzator;
+    }
+
+    public void setIdVanzator(Integer idVanzator) {
+        this.idVanzator = idVanzator;
+    }
 
     public Integer getIdTipImobilEntity() {
         return idTipImobilEntity;

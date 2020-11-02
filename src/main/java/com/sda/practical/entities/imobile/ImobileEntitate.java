@@ -1,8 +1,7 @@
 package com.sda.practical.entities.imobile;
 
-import com.sun.istack.NotNull;
+import com.sda.practical.entities.users.UtilizatorEntitate;
 
-import javax.persistence.OneToOne;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -20,11 +19,15 @@ public class ImobileEntitate {
     private Double suprafata;
     private Double pret;
     @Column(nullable = false)
-   private String etaj;
+    private String etaj;
     private Integer anConstructie;
     private Integer numarCamere;
     private String coordonate;
     private String descriere;
+
+    @ManyToOne
+    @JoinColumn(name = "idVanzator")
+    private UtilizatorEntitate utilizatorEntitate;
 
     @OneToOne(mappedBy = "imobileEntitate")
     private AnuntStatusEntitate anuntStatusEntity;
@@ -36,8 +39,16 @@ public class ImobileEntitate {
     private List<ValutaEntitate> valutaEntitate;
 
     @ManyToOne
-    @JoinColumn (name = "idOras")
+    @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
+
+    public UtilizatorEntitate getUtilizatorEntitate() {
+        return utilizatorEntitate;
+    }
+
+    public void setUtilizatorEntitate(UtilizatorEntitate utilizatorEntitate) {
+        this.utilizatorEntitate = utilizatorEntitate;
+    }
 
     public Integer getAnConstructie() {
         return anConstructie;
