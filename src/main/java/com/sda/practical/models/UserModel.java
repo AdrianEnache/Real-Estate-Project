@@ -1,7 +1,6 @@
 package com.sda.practical.models;
 
 
-
 public class UserModel {
 
     private String surname;
@@ -10,6 +9,15 @@ public class UserModel {
     private String email;
     private String password;
     private Integer userTypeId;
+    private Integer userId;
+
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
 
     public String getSurname() {
         return surname;

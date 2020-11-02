@@ -10,6 +10,7 @@ import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -82,16 +83,16 @@ public class DatabaseHandler {
 
     }
 
-    public Integer verifyUser(String prenume, String numeDeFamilie, String parola) {
+    public Integer verifyUser(UserModel userModel) {
         Integer idTipUser = -1;
         try {
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             // in query trebuie folosit numele clasei(tabele) din java code (case sensitive);
-            String sql = "select idTipUser from UtilizatorEntitate where prenume ='" + prenume + "' " +
-                    "and numeDeFamilie='" + numeDeFamilie + "' " +
-                    "and parola='" + parola + "'";
+            String sql = "select idTipUser from UtilizatorEntitate where prenume ='" + userModel.getName() + "' " +
+                    "and numeDeFamilie='" + userModel.getSurname() + "' " +
+                    "and parola='" + userModel.getPassword() + "'";
 
             List<Integer> users = session.createQuery(sql, Integer.class).list();
             idTipUser = users.get(0);
@@ -105,20 +106,19 @@ public class DatabaseHandler {
         return idTipUser;
     }
 
-    public Integer getUserId(String prenume, String numeDeFamilie, String parola) {
+    public Integer getUserId(UserModel userModel) {
         Integer idUser = -1;
         try {
 
             Session session = HibernateUtil.getSessionFactory().openSession();
 
             // in query trebuie folosit numele clasei(tabele) din java code (case sensitive);
-            String sql = "select idUtilizator from UtilizatorEntitate where prenume ='" + prenume + "' " +
-                    "and numeDeFamilie='" + numeDeFamilie + "' " +
-                    "and parola='" + parola + "'";
+            String sql = "select idUtilizator from UtilizatorEntitate where prenume ='" + userModel.getName() + "' " +
+                    "and numeDeFamilie='" + userModel.getSurname() + "' " +
+                    "and parola='" + userModel.getPassword() + "'";
 
             List<Integer> users = session.createQuery(sql, Integer.class).list();
             idUser = users.get(0);
-            System.out.println(users);
             System.out.println("Conected!");
             session.close();
         } catch (Exception ex) {
@@ -128,6 +128,20 @@ public class DatabaseHandler {
         return idUser;
     }
 
+    public List<ImobileEntitate> getImobileEntitate(UserModel userModel) {
+        List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+
+            String sql = "from ImobileEntitate where idVanzator='" + userModel.getUserId() + "'";
+            imobileEntitateList = session.createQuery(sql, ImobileEntitate.class).list();
+            session.close();
+
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return imobileEntitateList;
+    }
 
     public List<ImobileEntitate> getImobils(FilterModel filterModel) {
         String sql = createFilterSql(filterModel);
