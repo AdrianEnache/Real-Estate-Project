@@ -8,7 +8,6 @@ import java.util.List;
 
 public class UserTypesEntity {
     @Id
-    @Column(name = "IDUserTypesEntity")
     private Integer userTypesEntityId;
     private String tipClient;
     private Integer tipUserId;

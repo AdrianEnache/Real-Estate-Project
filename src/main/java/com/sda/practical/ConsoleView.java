@@ -124,6 +124,21 @@ public class ConsoleView {
                     imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
                     imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
                     imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
+                    imobilModel.setIdCompartimentareEntity(keyboardHandler.readInteger("Ce tip de compartimentare are apartamentul:\n" +
+                            "1. Decomandat\n" +
+                            "2. Semidecomandat\n" +
+                            "3. Circular\n" +
+                            "4. Vagon\n"));
+                    imobilModel.setIdAnuntStatusEntity(1);
+                    imobilModel.setIdCurrencyEntity(keyboardHandler.readInteger("Ce tip de Valuta doriti:\n" +
+                            "1. RON\n" +
+                            "2. EURO\n" +
+                            "3.DOLAR\n"));
+                    imobilModel.setIdOras(keyboardHandler.readInteger("In ce oras :\n" +
+                            "1. Brasov\n" +
+                            "2. Bucuresti\n" +
+                            "3. Cluj-Napoca\n" +
+                            "4. Rm Valcea\n"));
 
                     databaseHandler.addImobil(imobilModel);
                     System.out.println("Imobil created !");
