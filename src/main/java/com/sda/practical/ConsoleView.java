@@ -113,12 +113,12 @@ public class ConsoleView {
 
                     break;
 
-                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata
+                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
                 case 3:
                     ImobilModel imobilModel = new ImobilModel();
                     imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
                     imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
-                    imobilModel.setEtaj(keyboardHandler.readInteger("Add etaj: "));
+                    imobilModel.setEtaj(keyboardHandler.readString("Add etaj: "));
                     imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
                     imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
                     imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
@@ -133,7 +133,7 @@ public class ConsoleView {
                     imobilModel.setIdCurrencyEntity(keyboardHandler.readInteger("Ce tip de Valuta doriti:\n" +
                             "1. RON\n" +
                             "2. EURO\n" +
-                            "3.DOLAR\n"));
+                            "3. DOLAR\n"));
                     imobilModel.setIdOras(keyboardHandler.readInteger("In ce oras :\n" +
                             "1. Brasov\n" +
                             "2. Bucuresti\n" +
@@ -150,10 +150,7 @@ public class ConsoleView {
                 default:
                     System.out.println("Nu cunoastem optiunea");
             }
-
         }
-
-
     }
 
 

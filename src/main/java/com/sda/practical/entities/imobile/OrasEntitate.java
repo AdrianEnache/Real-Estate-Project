@@ -1,6 +1,11 @@
 package com.sda.practical.entities.imobile;
 
-import javax.persistence.*;
+import com.sun.istack.NotNull;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
@@ -10,6 +15,7 @@ public class OrasEntitate {
 
     @Id
     private Integer idOras;
+    @NotNull
     private String numeOras;
 
     @OneToMany(mappedBy = "orasEntitate")

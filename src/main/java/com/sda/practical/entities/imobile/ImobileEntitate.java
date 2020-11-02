@@ -17,7 +17,7 @@ public class ImobileEntitate {
     private Date dataPostariiAnuntului;
     private Double suprafata;
     private Double pret;
-    private Integer etaj;
+    private String etaj;
     private Integer anConstructie;
     private Integer numarCamere;
     private String coordonate;
@@ -84,12 +84,12 @@ public class ImobileEntitate {
         this.pret = pret;
     }
 
-    public Integer getEtaj() {
+    public String getEtaj() {
         return etaj;
     }
 
-    public void setEtaj(Integer etaj) {
-        etaj = etaj;
+    public void setEtaj(String etaj) {
+        this.etaj = etaj;
     }
 
     public Integer getAnConstructii() {
@@ -147,7 +147,4 @@ public class ImobileEntitate {
     public void setOrasEntitate(OrasEntitate orasEntitate) {
         this.orasEntitate = orasEntitate;
     }
-
-
-
 }
