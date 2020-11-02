@@ -18,7 +18,6 @@ public class ConsoleView {
     public void startApp() {
 
 
-
         Integer option = 0;
         while (option != 5) {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
@@ -30,6 +29,7 @@ public class ConsoleView {
                     String nume = keyboardHandler.readString("Nume: ");
                     String parola = keyboardHandler.readString("Parola: ");
                     Integer idTipUser = databaseHandler.verifyUser(prenume, nume, parola);
+                    Integer idUser = databaseHandler.getUserId(prenume, nume, parola);
                     if (idTipUser == 1) {
                         while (option != 7) {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
@@ -60,9 +60,9 @@ public class ConsoleView {
                             viewHandler.printMenu(MenuTypeEnum.VANZATOR_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
-
+                                // TODO cum se poate encapsula metoda de add imobil
                                 case 1: // adauga imobil
-                                  this.addImobil();
+                                    this.addImobil(idUser);
                                     break;
                                 case 2: // cauta imobil
                                     break;
@@ -114,7 +114,7 @@ public class ConsoleView {
 
                     break;
 
-                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata
+                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
                 case 3:
 
                     break;
@@ -132,7 +132,7 @@ public class ConsoleView {
     }
 
 
-    public void addImobil(){
+    public void addImobil(Integer id) {
         ImobilModel imobilModel = new ImobilModel();
         imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
         imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
@@ -141,7 +141,7 @@ public class ConsoleView {
         imobilModel.setIdCurrencyEntity(keyboardHandler.readInteger("Ce tip de Valuta doriti:\n" +
                 "1. RON\n" +
                 "2. EURO\n" +
-                "3.DOLAR"));
+                "3. DOLAR"));
         imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
         imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
         imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
@@ -150,7 +150,7 @@ public class ConsoleView {
                 "1. Decomandat\n" +
                 "2. Semidecomandat\n" +
                 "3. Circular\n" +
-                "4. Vagon\n"));
+                "4. Vagon"));
         imobilModel.setIdAnuntStatusEntity(1);
         imobilModel.setIdOras(keyboardHandler.readInteger("In ce oras :\n" +
                 "1. Brasov\n" +
@@ -158,6 +158,7 @@ public class ConsoleView {
                 "3. Cluj-Napoca\n" +
                 "4. Rm Valcea"));
 
+        imobilModel.setIdVanzator(id);
         databaseHandler.addImobil(imobilModel);
         System.out.println("Imobil created !");
     }
