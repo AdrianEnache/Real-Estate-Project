@@ -26,7 +26,7 @@ public class UtilizatorEntitate {
     @OneToMany(mappedBy = "utilizatorEntitate")
     private List<ImobileEntitate> imobileEntitateList;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
@@ -113,18 +113,8 @@ public class UtilizatorEntitate {
         this.idTipUser = idTipUser;
     }
 
-    @Override
-    public String toString() {
-        return "UtilizatorEntitate{" +
-                "idUtilizator=" + idUtilizator +
-                ", numeDeFamilie='" + numeDeFamilie + '\'' +
-                ", prenume='" + prenume + '\'' +
-                ", numarTelefon='" + numarTelefon + '\'' +
-                ", adresaEmail='" + adresaEmail + '\'' +
-                ", parola='" + parola + '\'' +
-                ", idTipUser=" + idTipUser +
-                ", userType=" + userType +
-                ", favouritesListEntityId=" + favouritesListEntityId +
-                '}';
-    }
+
+
+
+
 }

@@ -25,7 +25,11 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "idTipImobil")
+    private ImobilTypeEntity tipImobil;
+
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVanzator")
     private UtilizatorEntitate utilizatorEntitate;
 
@@ -38,7 +42,7 @@ public class ImobileEntitate {
     @OneToMany(mappedBy = "imobileEntitate")
     private List<ValutaEntitate> valutaEntitate;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
 
@@ -163,6 +167,14 @@ public class ImobileEntitate {
         this.etaj = etaj;
     }
 
+    public ImobilTypeEntity getTipImobil() {
+        return tipImobil;
+    }
+
+    public void setTipImobil(ImobilTypeEntity tipImobil) {
+        this.tipImobil = tipImobil;
+    }
+
     @Override
     public String toString() {
         return "ImobileEntitate{" +
@@ -175,11 +187,6 @@ public class ImobileEntitate {
                 ", numarCamere=" + numarCamere +
                 ", coordonate='" + coordonate + '\'' +
                 ", descriere='" + descriere + '\'' +
-                ", utilizatorEntitate=" + utilizatorEntitate +
-                ", anuntStatusEntity=" + anuntStatusEntity +
-                ", compartimentareEntity=" + compartimentareEntity +
-                ", valutaEntitate=" + valutaEntitate +
-                ", orasEntitate=" + orasEntitate +
                 '}';
     }
 }

@@ -74,9 +74,11 @@ public class ConsoleView {
                                 case 3: // sterge imobil
                                     break;
                                 case 4: // lista imobile vanzare
-
+                                    //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate
                                   List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
-                                    listaImobile.stream().forEachOrdered(System.out::println);
+                                    for (ImobileEntitate imobileEntitate : listaImobile){
+                                        System.out.println(imobileEntitate.toString());
+                                    }
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");
