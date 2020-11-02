@@ -105,6 +105,12 @@ public class DatabaseHandler {
     }
 
 
+
+
+
+
+
+
     public List<ImobileEntitate> getImobils(FilterModel filterModel) {
         String sql = createFilterSql(filterModel);
 
