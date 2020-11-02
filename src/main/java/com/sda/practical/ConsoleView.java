@@ -1,12 +1,16 @@
 package com.sda.practical;
 
 import com.mysql.cj.xdevapi.SessionFactory;
+import com.sda.practical.entities.imobile.ImobileEntitate;
 import com.sda.practical.enums.MenuTypeEnum;
 import com.sda.practical.handler.DatabaseHandler;
 import com.sda.practical.handler.KeyboardHandler;
 import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConsoleView {
     ViewHandler viewHandler = new ViewHandler();
@@ -29,9 +33,9 @@ public class ConsoleView {
                     userLogat.setName(keyboardHandler.readString("Prenume: "));
                     userLogat.setSurname(keyboardHandler.readString("Nume: "));
                     userLogat.setPassword(keyboardHandler.readString("Parola: "));
-                    Integer idTipUser = databaseHandler.verifyUser(userLogat);
-                    Integer idUser = databaseHandler.getUserId(userLogat);
-                    if (idTipUser == 1) {
+                    userLogat.setUserTypeId(databaseHandler.verifyUser(userLogat));
+                    userLogat.setUserId(databaseHandler.getUserId(userLogat));
+                    if (userLogat.getUserTypeId() == 1) {
                         while (option != 7) {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
@@ -56,14 +60,14 @@ public class ConsoleView {
 
                             }
                         }
-                    } else if (idTipUser == 2) {
+                    } else if (userLogat.getUserTypeId() == 2) {
                         while (option != 5) {
                             viewHandler.printMenu(MenuTypeEnum.VANZATOR_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
                                 // TODO cum se poate encapsula metoda de add imobil - done
                                 case 1: // adauga imobil
-                                    this.addImobil(idUser);
+                                    this.addImobil(userLogat.getUserId());
                                     break;
                                 case 2: // cauta imobil
                                     break;
@@ -71,7 +75,8 @@ public class ConsoleView {
                                     break;
                                 case 4: // lista imobile vanzare
 
-                                    System.out.println(databaseHandler.getImobileEntitate(userLogat).toString());
+                                  List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
+                                    listaImobile.stream().forEachOrdered(System.out::println);
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");

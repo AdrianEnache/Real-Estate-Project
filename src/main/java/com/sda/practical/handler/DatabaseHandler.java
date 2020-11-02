@@ -128,6 +128,7 @@ public class DatabaseHandler {
         return idUser;
     }
 
+    //TODO - EROARE UtilizatorEntitate.favouritesListEntityId, could not initialize proxy - no Session
     public List<ImobileEntitate> getImobileEntitate(UserModel userModel) {
         List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {

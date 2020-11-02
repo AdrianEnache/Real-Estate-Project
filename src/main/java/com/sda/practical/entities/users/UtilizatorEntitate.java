@@ -1,6 +1,7 @@
 package com.sda.practical.entities.users;
 
 import com.sda.practical.entities.imobile.ImobileEntitate;
+import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.List;
