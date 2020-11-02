@@ -162,4 +162,24 @@ public class ImobileEntitate {
     public void setEtaj(String etaj) {
         this.etaj = etaj;
     }
+
+    @Override
+    public String toString() {
+        return "ImobileEntitate{" +
+                "idTipImobilEntitate=" + idTipImobilEntitate +
+                ", dataPostariiAnuntului=" + dataPostariiAnuntului +
+                ", suprafata=" + suprafata +
+                ", pret=" + pret +
+                ", etaj='" + etaj + '\'' +
+                ", anConstructie=" + anConstructie +
+                ", numarCamere=" + numarCamere +
+                ", coordonate='" + coordonate + '\'' +
+                ", descriere='" + descriere + '\'' +
+                ", utilizatorEntitate=" + utilizatorEntitate +
+                ", anuntStatusEntity=" + anuntStatusEntity +
+                ", compartimentareEntity=" + compartimentareEntity +
+                ", valutaEntitate=" + valutaEntitate +
+                ", orasEntitate=" + orasEntitate +
+                '}';
+    }
 }

@@ -25,11 +25,12 @@ public class ConsoleView {
 
             switch (option) {
                 case 1:
-                    String prenume = keyboardHandler.readString("Prenume: ");
-                    String nume = keyboardHandler.readString("Nume: ");
-                    String parola = keyboardHandler.readString("Parola: ");
-                    Integer idTipUser = databaseHandler.verifyUser(prenume, nume, parola);
-                    Integer idUser = databaseHandler.getUserId(prenume, nume, parola);
+                    UserModel userLogat = new UserModel();
+                    userLogat.setName(keyboardHandler.readString("Prenume: "));
+                    userLogat.setSurname(keyboardHandler.readString("Nume: "));
+                    userLogat.setPassword(keyboardHandler.readString("Parola: "));
+                    Integer idTipUser = databaseHandler.verifyUser(userLogat);
+                    Integer idUser = databaseHandler.getUserId(userLogat);
                     if (idTipUser == 1) {
                         while (option != 7) {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
@@ -60,7 +61,7 @@ public class ConsoleView {
                             viewHandler.printMenu(MenuTypeEnum.VANZATOR_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
-                                // TODO cum se poate encapsula metoda de add imobil
+                                // TODO cum se poate encapsula metoda de add imobil - done
                                 case 1: // adauga imobil
                                     this.addImobil(idUser);
                                     break;
@@ -69,6 +70,8 @@ public class ConsoleView {
                                 case 3: // sterge imobil
                                     break;
                                 case 4: // lista imobile vanzare
+
+                                    System.out.println(databaseHandler.getImobileEntitate(userLogat).toString());
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");
