@@ -15,9 +15,9 @@ public class ImobilModel {
     private String coordonate;
     private String descriere;
     private Integer idAnuntStatusEntity;
-    private String idCompartimentareEntity;
-    private String idCurrencyEntity;
-    private String idOras;
+    private Integer idCompartimentareEntity;
+    private Integer idCurrencyEntity;
+    private Integer idOras;
 
     public Integer getIdTipImobilEntity() {
         return idTipImobilEntity;
@@ -35,27 +35,27 @@ public class ImobilModel {
         this.idAnuntStatusEntity = idAnuntStatusEntity;
     }
 
-    public String getIdCompartimentareEntity() {
+    public Integer getIdCompartimentareEntity() {
         return idCompartimentareEntity;
     }
 
-    public void setIdCompartimentareEntity(String idCompartimentareEntity) {
+    public void setIdCompartimentareEntity(Integer idCompartimentareEntity) {
         this.idCompartimentareEntity = idCompartimentareEntity;
     }
 
-    public String getIdCurrencyEntity() {
+    public Integer getIdCurrencyEntity() {
         return idCurrencyEntity;
     }
 
-    public void setIdCurrencyEntity(String idCurrencyEntity) {
+    public void setIdCurrencyEntity(Integer idCurrencyEntity) {
         this.idCurrencyEntity = idCurrencyEntity;
     }
 
-    public String getIdOras() {
+    public Integer getIdOras() {
         return idOras;
     }
 
-    public void setIdOras(String idOras) {
+    public void setIdOras(Integer idOras) {
         this.idOras = idOras;
     }
 
