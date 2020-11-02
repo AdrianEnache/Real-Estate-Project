@@ -9,12 +9,14 @@ import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
 public class ConsoleView {
+    ViewHandler viewHandler = new ViewHandler();
+    KeyboardHandler keyboardHandler = new KeyboardHandler();
+    DatabaseHandler databaseHandler = new DatabaseHandler();
+    SessionFactory sessionFactory = new SessionFactory();
+
 
     public void startApp() {
-        ViewHandler viewHandler = new ViewHandler();
-        KeyboardHandler keyboardHandler = new KeyboardHandler();
-        DatabaseHandler databaseHandler = new DatabaseHandler();
-        SessionFactory sessionFactory = new SessionFactory();
+
 
 
         Integer option = 0;
@@ -60,8 +62,7 @@ public class ConsoleView {
                             switch (option) {
 
                                 case 1: // adauga imobil
-                                    ImobilModel imobilModel = new ImobilModel();
-                                    databaseHandler.addImobil(imobilModel);
+                                  this.addImobil();
                                     break;
                                 case 2: // cauta imobil
                                     break;
@@ -113,35 +114,9 @@ public class ConsoleView {
 
                     break;
 
-                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
+                //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata
                 case 3:
-                    ImobilModel imobilModel = new ImobilModel();
-                    imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
-                    imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
-                    imobilModel.setEtaj(keyboardHandler.readString("Add etaj: "));
-                    imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
-                    imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
-                    imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
-                    imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
-                    imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
-                    imobilModel.setIdCompartimentareEntity(keyboardHandler.readInteger("Ce tip de compartimentare are apartamentul:\n" +
-                            "1. Decomandat\n" +
-                            "2. Semidecomandat\n" +
-                            "3. Circular\n" +
-                            "4. Vagon\n"));
-                    imobilModel.setIdAnuntStatusEntity(1);
-                    imobilModel.setIdCurrencyEntity(keyboardHandler.readInteger("Ce tip de Valuta doriti:\n" +
-                            "1. RON\n" +
-                            "2. EURO\n" +
-                            "3. DOLAR\n"));
-                    imobilModel.setIdOras(keyboardHandler.readInteger("In ce oras :\n" +
-                            "1. Brasov\n" +
-                            "2. Bucuresti\n" +
-                            "3. Cluj-Napoca\n" +
-                            "4. Rm Valcea\n"));
 
-                    databaseHandler.addImobil(imobilModel);
-                    System.out.println("Imobil created !");
                     break;
 
                 case 5:
@@ -150,7 +125,41 @@ public class ConsoleView {
                 default:
                     System.out.println("Nu cunoastem optiunea");
             }
+
         }
+
+
+    }
+
+
+    public void addImobil(){
+        ImobilModel imobilModel = new ImobilModel();
+        imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
+        imobilModel.setAnConstructie(keyboardHandler.readInteger("Add year: "));
+        imobilModel.setEtaj(keyboardHandler.readString("Add etaj: "));
+        imobilModel.setNumarCamere(keyboardHandler.readInteger("Add Numar camere: "));
+        imobilModel.setIdCurrencyEntity(keyboardHandler.readInteger("Ce tip de Valuta doriti:\n" +
+                "1. RON\n" +
+                "2. EURO\n" +
+                "3.DOLAR"));
+        imobilModel.setPret(keyboardHandler.readDouble("Add price: "));
+        imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
+        imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
+        imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
+        imobilModel.setIdCompartimentareEntity(keyboardHandler.readInteger("Ce tip de compartimentare are apartamentul:\n" +
+                "1. Decomandat\n" +
+                "2. Semidecomandat\n" +
+                "3. Circular\n" +
+                "4. Vagon\n"));
+        imobilModel.setIdAnuntStatusEntity(1);
+        imobilModel.setIdOras(keyboardHandler.readInteger("In ce oras :\n" +
+                "1. Brasov\n" +
+                "2. Bucuresti\n" +
+                "3. Cluj-Napoca\n" +
+                "4. Rm Valcea"));
+
+        databaseHandler.addImobil(imobilModel);
+        System.out.println("Imobil created !");
     }
 
 

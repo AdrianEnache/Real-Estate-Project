@@ -1,5 +1,7 @@
 package com.sda.practical.entities.imobile;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.OneToOne;
 import javax.persistence.*;
 import java.util.Date;
@@ -17,7 +19,8 @@ public class ImobileEntitate {
     private Date dataPostariiAnuntului;
     private Double suprafata;
     private Double pret;
-    private String etaj;
+    @Column(nullable = false)
+   private String etaj;
     private Integer anConstructie;
     private Integer numarCamere;
     private String coordonate;
@@ -84,13 +87,6 @@ public class ImobileEntitate {
         this.pret = pret;
     }
 
-    public String getEtaj() {
-        return etaj;
-    }
-
-    public void setEtaj(String etaj) {
-        this.etaj = etaj;
-    }
 
     public Integer getAnConstructii() {
         return anConstructie;
@@ -146,5 +142,13 @@ public class ImobileEntitate {
 
     public void setOrasEntitate(OrasEntitate orasEntitate) {
         this.orasEntitate = orasEntitate;
+    }
+
+    public String getEtaj() {
+        return etaj;
+    }
+
+    public void setEtaj(String etaj) {
+        this.etaj = etaj;
     }
 }
