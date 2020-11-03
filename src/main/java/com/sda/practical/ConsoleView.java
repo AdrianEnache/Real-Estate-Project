@@ -10,7 +10,6 @@ import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConsoleView {
     ViewHandler viewHandler = new ViewHandler();
@@ -74,9 +73,10 @@ public class ConsoleView {
                                 case 3: // sterge imobil
                                     break;
                                 case 4: // lista imobile vanzare
-                                    //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate
-                                  List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
-                                    for (ImobileEntitate imobileEntitate : listaImobile){
+                                    //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate - done
+
+                                    List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
+                                    for (ImobileEntitate imobileEntitate : listaImobile) {
                                         System.out.println(imobileEntitate.toString());
                                     }
                                     break;

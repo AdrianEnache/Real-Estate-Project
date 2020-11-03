@@ -25,11 +25,11 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipImobil")
     private ImobilTypeEntity tipImobil;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idVanzator")
     private UtilizatorEntitate utilizatorEntitate;
 
@@ -42,7 +42,7 @@ public class ImobileEntitate {
     @OneToMany(mappedBy = "imobileEntitate")
     private List<ValutaEntitate> valutaEntitate;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
 
@@ -177,16 +177,17 @@ public class ImobileEntitate {
 
     @Override
     public String toString() {
-        return "ImobileEntitate{" +
-                "idTipImobilEntitate=" + idTipImobilEntitate +
-                ", dataPostariiAnuntului=" + dataPostariiAnuntului +
-                ", suprafata=" + suprafata +
-                ", pret=" + pret +
-                ", etaj='" + etaj + '\'' +
-                ", anConstructie=" + anConstructie +
-                ", numarCamere=" + numarCamere +
-                ", coordonate='" + coordonate + '\'' +
-                ", descriere='" + descriere + '\'' +
-                '}';
+        return "Imobil : [" +
+                "ID Imobil = " + idTipImobilEntitate +
+                ", Data postarii anunt = " + dataPostariiAnuntului +
+                ", Suprafata = " + suprafata +
+                ", Pret = " + pret +
+                ", Etaj = " + etaj +
+                ", An constructie = " + anConstructie +
+                ", Numar camere = " + numarCamere +
+                ", Coordonate = '" + coordonate + '\'' +
+                ", Descriere = '" + descriere + '\'' +
+                ']';
+
     }
 }
