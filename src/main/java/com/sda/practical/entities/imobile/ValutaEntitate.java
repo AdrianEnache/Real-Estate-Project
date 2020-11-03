@@ -11,7 +11,7 @@ public class ValutaEntitate {
     private Integer idValutateEntitate;
     private String tipValuta;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idTipImobilEntitate")
     private ImobileEntitate imobileEntitate;
 

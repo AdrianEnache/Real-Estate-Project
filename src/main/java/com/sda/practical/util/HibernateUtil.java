@@ -2,7 +2,7 @@ package com.sda.practical.util;
 
 import com.sda.practical.entities.imobile.*;
 import com.sda.practical.entities.users.ListaFavoriteEntitate;
-import com.sda.practical.entities.users.ImobilTypeEntity;
+import com.sda.practical.entities.imobile.ImobilTypeEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import org.hibernate.SessionFactory;
@@ -25,7 +25,7 @@ public class HibernateUtil {
                 properties.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5InnoDBDialect");
                 properties.put(Environment.URL, "jdbc:mysql://localhost:3306/imobiliare?serverTimezone=UTC");
                 properties.put(Environment.USER, "root");
-                properties.put(Environment.PASS, "12345678");
+                properties.put(Environment.PASS, "Adrian@91");
                 properties.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
                 properties.put(Environment.HBM2DDL_AUTO, "update");
 

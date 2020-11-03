@@ -128,6 +128,7 @@ public class DatabaseHandler {
         return idUser;
     }
 
+    //TODO - EROARE UtilizatorEntitate.favouritesListEntityId, could not initialize proxy - no Session
     public List<ImobileEntitate> getImobileEntitate(UserModel userModel) {
         List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {
@@ -142,6 +143,12 @@ public class DatabaseHandler {
         }
         return imobileEntitateList;
     }
+
+
+
+
+
+
 
     public List<ImobileEntitate> getImobils(FilterModel filterModel) {
         String sql = createFilterSql(filterModel);

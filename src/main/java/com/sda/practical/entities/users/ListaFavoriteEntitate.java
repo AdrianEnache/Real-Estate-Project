@@ -12,7 +12,7 @@ public class ListaFavoriteEntitate {
     private Integer idUtilizator;
     private Integer imobilId;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idUtilizator")
     private UtilizatorEntitate utilizator;
 
