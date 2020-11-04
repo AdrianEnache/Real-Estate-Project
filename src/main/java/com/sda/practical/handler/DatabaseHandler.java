@@ -99,7 +99,6 @@ public class DatabaseHandler {
             List<Integer> users = session.createQuery(sql, Integer.class).list();
             idTipUser = users.get(0);
             System.out.println(users);
-            System.out.println("Conected!");
             session.close();
         } catch (Exception ex) {
             System.out.println("Not Connected !");
