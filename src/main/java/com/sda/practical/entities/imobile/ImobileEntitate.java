@@ -25,24 +25,27 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idTipImobil")
     private ImobilTypeEntity tipImobil;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idVanzator")
     private UtilizatorEntitate utilizatorEntitate;
 
-    @OneToOne(mappedBy = "imobileEntitate")
+    @ManyToOne
+    @JoinColumn(name = "idTipAnunt")
     private AnuntStatusEntitate anuntStatusEntity;
 
-    @OneToOne(mappedBy = "imobileEntitate")
+    @ManyToOne
+    @JoinColumn(name = "idTipCompartimentare")
     private CompartimentareEntitate compartimentareEntity;
 
-    @OneToMany(mappedBy = "imobileEntitate")
-    private List<ValutaEntitate> valutaEntitate;
+    @ManyToOne
+    @JoinColumn(name = "idTipValuta")
+    private ValutaEntitate valutaEntitate;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
 
@@ -143,11 +146,11 @@ public class ImobileEntitate {
         this.compartimentareEntity = compartimentareEntity;
     }
 
-    public List<ValutaEntitate> getValutaEntitate() {
+    public ValutaEntitate getValutaEntitate() {
         return valutaEntitate;
     }
 
-    public void setValutaEntitate(List<ValutaEntitate> valutaEntitate) {
+    public void setValutaEntitate(ValutaEntitate valutaEntitate) {
         this.valutaEntitate = valutaEntitate;
     }
 
@@ -175,18 +178,6 @@ public class ImobileEntitate {
         this.tipImobil = tipImobil;
     }
 
-    @Override
-    public String toString() {
-        return "ImobileEntitate{" +
-                "idTipImobilEntitate=" + idTipImobilEntitate +
-                ", dataPostariiAnuntului=" + dataPostariiAnuntului +
-                ", suprafata=" + suprafata +
-                ", pret=" + pret +
-                ", etaj='" + etaj + '\'' +
-                ", anConstructie=" + anConstructie +
-                ", numarCamere=" + numarCamere +
-                ", coordonate='" + coordonate + '\'' +
-                ", descriere='" + descriere + '\'' +
-                '}';
-    }
+
+
 }

@@ -63,11 +63,13 @@ public class DatabaseHandler {
             CompartimentareEntitate compartimentare = session.find(CompartimentareEntitate.class, imobilModel.getIdCompartimentareEntity());
             imobil.setCompartimentareEntity(compartimentare);
             ValutaEntitate currency = session.find(ValutaEntitate.class, imobilModel.getIdCurrencyEntity());
-            imobil.setValutaEntitate(Arrays.asList(currency));
+            imobil.setValutaEntitate(currency);
             OrasEntitate oras = session.find(OrasEntitate.class, imobilModel.getIdOras());
             imobil.setOrasEntitate(oras);
             UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, imobilModel.getIdVanzator());
             imobil.setUtilizatorEntitate(utilizatorEntitate);
+            ImobilTypeEntity imobilTypeEntity = session.find(ImobilTypeEntity.class,imobilModel.getIdTipImobil());
+            imobil.setTipImobil(imobilTypeEntity);
             transaction = session.beginTransaction();
             session.save(imobil);
             transaction.commit();
@@ -145,7 +147,20 @@ public class DatabaseHandler {
     }
 
 
-
+//    public String getTipImobil(ImobilTypeEntity imobilTypeEntity){
+//        String tipImobil = null;
+//        try {
+//            Session session = HibernateUtil.getSessionFactory().openSession();
+//
+//            String sql = "select tipImobil from ImobilTypeEntity where idTipImobil='" + imobilTypeEntity. + "'";
+//            tipImobil = session.createQuery(sql, ImobilTypeEntity.class).toString();
+//            session.close();
+//
+//        } catch (Exception e) {
+//            System.out.println(e.getMessage());
+//        }
+//        return tipImobil;
+//    }
 
 
 

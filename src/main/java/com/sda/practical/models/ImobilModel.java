@@ -19,6 +19,7 @@ public class ImobilModel {
     private Integer idCurrencyEntity;
     private Integer idOras;
     private Integer idVanzator;
+    private Integer idTipImobil;
 
     public Integer getIdVanzator() {
         return idVanzator;
@@ -130,5 +131,13 @@ public class ImobilModel {
 
     public void setDescriere(String descriere) {
         this.descriere = descriere;
+    }
+
+    public Integer getIdTipImobil() {
+        return idTipImobil;
+    }
+
+    public void setIdTipImobil(Integer idTipImobil) {
+        this.idTipImobil = idTipImobil;
     }
 }

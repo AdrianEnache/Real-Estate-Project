@@ -15,7 +15,6 @@ public class OrasEntitate {
 
     @Id
     private Integer idOras;
-    @NotNull
     private String numeOras;
 
     @OneToMany(mappedBy = "orasEntitate")

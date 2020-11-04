@@ -20,7 +20,7 @@ public class ImobilTypeEntity {
     @OneToMany(mappedBy = "tipImobil")
     private List<ImobileEntitate> imobileEntitates;
 
-    //TODO - de normalizat
+    //TODO - de normalizat - Done
 
 
     public Integer getIdImobilTypeEntity() {

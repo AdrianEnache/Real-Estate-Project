@@ -9,6 +9,7 @@ import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -76,9 +77,7 @@ public class ConsoleView {
                                 case 4: // lista imobile vanzare
                                     //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate
                                   List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
-                                    for (ImobileEntitate imobileEntitate : listaImobile){
-                                        System.out.println(imobileEntitate.toString());
-                                    }
+                                    this.printVanzatorList(listaImobile);
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");
@@ -156,6 +155,10 @@ public class ConsoleView {
         imobilModel.setCoordonate(keyboardHandler.readString("Add coordonate: "));
         imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
         imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
+        imobilModel.setIdTipImobil(keyboardHandler.readInteger("Ce tip de imobil este:\n" +
+                "1. Pamant\n" +
+                "2. Casa\n" +
+                "3. Apartament\n"));
         imobilModel.setIdCompartimentareEntity(keyboardHandler.readInteger("Ce tip de compartimentare are apartamentul:\n" +
                 "1. Decomandat\n" +
                 "2. Semidecomandat\n" +
@@ -173,5 +176,26 @@ public class ConsoleView {
         System.out.println("Imobil created !");
     }
 
+    public void printVanzatorList(List<ImobileEntitate> listaImobile){
 
-}
+        for (ImobileEntitate imobil : listaImobile){
+            System.out.println( imobil.getIdTipImobilEntitate() + ". " +
+                    " data Postarii Anuntului =" + imobil.getDataPostariiAnuntului() +
+                    ", suprafata =" + imobil.getSuprafata() +
+                    ", pret =" + imobil.getPret() +
+                    ", etaj ='" + imobil.getEtaj() +
+                    ", an Constructie =" + imobil.getAnConstructie() +
+                    ", numar Camere =" + imobil.getNumarCamere() +
+                    ", coordonate =" + imobil.getCoordonate() +
+                    ", descriere =" + imobil.getDescriere() +
+                    ", tip Imobil =" + imobil.getTipImobil().getTipImobil() +
+                    ", anunt Status=" + imobil.getAnuntStatusEntity().getStatusAnunt() +
+                    ", compartimentare =" + imobil.getCompartimentareEntity().getTipCompartimentare() +
+                    ", valuta =" + imobil.getValutaEntitate().getTipValuta() +
+                    ", oras =" + imobil.getOrasEntitate().getNumeOras());
+            }
+        }
+    }
+
+
+
