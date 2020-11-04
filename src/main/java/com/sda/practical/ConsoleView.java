@@ -9,15 +9,16 @@ import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Map;
 
 public class ConsoleView {
     ViewHandler viewHandler = new ViewHandler();
     KeyboardHandler keyboardHandler = new KeyboardHandler();
     DatabaseHandler databaseHandler = new DatabaseHandler();
     SessionFactory sessionFactory = new SessionFactory();
+    Map<Integer, String> filtre = new HashMap<>();
 
 
     public void startApp() {
@@ -42,6 +43,8 @@ public class ConsoleView {
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
                                 case 1:  // cauta imobil
+                                    //TODO De comentat metodele!
+                                this.cautaCuFiltre();
                                     break;
                                 case 2: // inchiriaza imobil
                                     break;
@@ -71,13 +74,17 @@ public class ConsoleView {
                                     this.addImobil(userLogat.getUserId());
                                     break;
                                 case 2: // cauta imobil
+                                    this.cautaCuFiltre();
                                     break;
                                 case 3: // sterge imobil
+                                    ImobilModel imobilModel = new ImobilModel();
+                                    imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Introduceti id-ul imobilului pe care doriti sa il stergeti:"));
+                                    databaseHandler.stergeImobil(imobilModel);
                                     break;
                                 case 4: // lista imobile vanzare
                                     //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate
-                                  List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
-                                    this.printVanzatorList(listaImobile);
+                                    List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
+                                    this.printListaImobile(listaImobile);
                                     break;
                                 case 5:
                                     System.out.println("Pa Pa");
@@ -176,26 +183,85 @@ public class ConsoleView {
         System.out.println("Imobil created !");
     }
 
-    public void printVanzatorList(List<ImobileEntitate> listaImobile){
+    public void printListaImobile(List<ImobileEntitate> listaImobile) {
 
-        for (ImobileEntitate imobil : listaImobile){
-            System.out.println( imobil.getIdTipImobilEntitate() + ". " +
+        for (ImobileEntitate imobil : listaImobile) {
+            System.out.println(imobil.getIdTipImobilEntitate() + ". " +
                     " data Postarii Anuntului =" + imobil.getDataPostariiAnuntului() +
                     ", suprafata =" + imobil.getSuprafata() +
                     ", pret =" + imobil.getPret() +
-                    ", etaj ='" + imobil.getEtaj() +
+                    ", etaj =" + imobil.getEtaj() +
                     ", an Constructie =" + imobil.getAnConstructie() +
                     ", numar Camere =" + imobil.getNumarCamere() +
                     ", coordonate =" + imobil.getCoordonate() +
                     ", descriere =" + imobil.getDescriere() +
                     ", tip Imobil =" + imobil.getTipImobil().getTipImobil() +
-                    ", anunt Status=" + imobil.getAnuntStatusEntity().getStatusAnunt() +
+                    ", anunt Statu =" + imobil.getAnuntStatusEntity().getStatusAnunt() +
                     ", compartimentare =" + imobil.getCompartimentareEntity().getTipCompartimentare() +
                     ", valuta =" + imobil.getValutaEntitate().getTipValuta() +
                     ", oras =" + imobil.getOrasEntitate().getNumeOras());
-            }
         }
     }
+
+
+    public void cautaCuFiltre() {
+        Integer option = 0;
+        while (option != 8) {
+            viewHandler.printMenu(MenuTypeEnum.SEARCH_MENU);
+            option = keyboardHandler.readInteger("Introduceti optiunea : ");
+            switch (option) {
+                case 1:
+                    Double pret = keyboardHandler.readDouble("Intre Pret : ");
+                    filtre.put(1, pret.toString());
+                    Double pret2 = keyboardHandler.readDouble("Si pret: ");
+                    filtre.put(11, pret2.toString());
+                    break;
+                case 2:
+                    Integer idTipLocuinta = keyboardHandler.readInteger("Ce tip de locuinta:\n" +
+                            "1. Pamant\n" +
+                            "2. Casa\n" +
+                            "3.Apartament");
+                    filtre.put(2, idTipLocuinta.toString());
+                    break;
+                case 3:
+                    Double suprafata = keyboardHandler.readDouble("Intre Suprafata: ");
+                    filtre.put(3, suprafata.toString());
+                    Double suprafata2 = keyboardHandler.readDouble("Si suprafata: ");
+                    filtre.put(13, suprafata2.toString());
+                    break;
+                case 4:
+                    Integer etaj = keyboardHandler.readInteger("Intre Etaj: ");
+                    filtre.put(4, etaj.toString());
+                    Integer etaj2 = keyboardHandler.readInteger("Si Etaj: ");
+                    filtre.put(14, etaj2.toString());
+                    break;
+                case 5:
+                    Integer nrCamere = keyboardHandler.readInteger("intre Numar Camere: ");
+                    filtre.put(5, nrCamere.toString());
+                    Integer nrCamere2 = keyboardHandler.readInteger("Si numar Camere: ");
+                    filtre.put(15, nrCamere2.toString());
+                    break;
+                case 6:
+                    String anConstructie = keyboardHandler.readString("Intre An Constructie: ");
+                    filtre.put(6, anConstructie);
+                    String anConstructie2 = keyboardHandler.readString("Si An Constructie: ");
+                    filtre.put(16, anConstructie2);
+                    break;
+                case 7:
+                    printListaImobile(databaseHandler.cautaImobil(filtre));
+                    filtre.clear();
+                    break;
+                case 8:
+                    filtre.clear();
+                    break;
+                default:
+                    System.out.println("Optiune incorecta");
+            }
+
+        }
+    }
+
+}
 
 
 

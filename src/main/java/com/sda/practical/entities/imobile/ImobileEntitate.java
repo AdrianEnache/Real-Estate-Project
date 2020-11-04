@@ -16,12 +16,12 @@ public class ImobileEntitate {
     private Integer idTipImobilEntitate;
     @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
-    private Double suprafata;
-    private Double pret;
+    private Double suprafata; //filtru 1
+    private Double pret;//filtru 2
     @Column(nullable = false)
-    private String etaj;
-    private Integer anConstructie;
-    private Integer numarCamere;
+    private String etaj;//filtru 3
+    private Integer anConstructie;//filtru 4
+    private Integer numarCamere;//filtru 5
     private String coordonate;
     private String descriere;
 
