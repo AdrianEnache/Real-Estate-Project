@@ -47,8 +47,14 @@ public class ConsoleView {
                                     this.cautaCuFiltre();
                                     break;
                                 case 2: // inchiriaza imobil
+                                    ImobilModel imobilModelInchiriat = new ImobilModel();
+                                    imobilModelInchiriat.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa inchiriati?"));
+                                    this.databaseHandler.inchiriazaImobil(imobilModelInchiriat);
                                     break;
                                 case 3: // cumpara imobil
+                                    ImobilModel imobilModelCumparat = new ImobilModel();
+                                    imobilModelCumparat.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa cumparati?"));
+                                    this.databaseHandler.cumparaImobil(imobilModelCumparat);
                                     break;
                                 case 4: // prezinta lista favorite
                                     break;
@@ -102,6 +108,7 @@ public class ConsoleView {
                     //TODO sa prindem intr-un loop metoda de log in, - done
 
                     break;
+
                 case 2:
                     UserModel user = new UserModel();
                     user.setName(keyboardHandler.readString("Add Name: "));
@@ -131,6 +138,7 @@ public class ConsoleView {
                     break;
 
                 //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
+
                 case 3:
 
                     break;
@@ -147,7 +155,7 @@ public class ConsoleView {
 
     }
 
-
+    // metoda addImobil - ne creaza un imobil de tip imobilModel
     public void addImobil(Integer id) {
         ImobilModel imobilModel = new ImobilModel();
         imobilModel.setDataPostariiAnuntului(keyboardHandler.readDate());
@@ -183,7 +191,6 @@ public class ConsoleView {
         System.out.println("Imobil created !");
     }
 
-
     //metoda printListaImobile - ne afiseaza lista din baza de date cu toate imobilele introduse
     public void printListaImobile(List<ImobileEntitate> listaImobile) {
 
@@ -191,7 +198,7 @@ public class ConsoleView {
             System.out.println(imobil.getIdTipImobilEntitate() + ". " +
                     "Data Postarii = " + imobil.getDataPostariiAnuntului() +
                     ", Anunt Status = " + imobil.getAnuntStatusEntity().getStatusAnunt() +
-                    ", Suprafata = " + imobil.getSuprafata() +
+                    ", Suprafata = " + imobil.getSuprafata() + " MP" +
                     ", Pret = " + imobil.getPret() +
                     ", Valuta = " + imobil.getValutaEntitate().getTipValuta() +
                     ", Tip Imobil = " + imobil.getTipImobil().getTipImobil() +
@@ -261,10 +268,8 @@ public class ConsoleView {
                 default:
                     System.out.println("Optiune incorecta");
             }
-
         }
     }
-
 }
 
 

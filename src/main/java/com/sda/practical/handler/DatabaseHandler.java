@@ -252,7 +252,42 @@ public class DatabaseHandler {
         return sql;
     }
 
-    //TODO de realizat metodele de cautare, adaugare,
+    //  TODO cumparaImobil - nu am finalizat metoda
+    public void cumparaImobil(ImobilModel imobilModel) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
 
 
+            transaction = session.beginTransaction();
+            session. ();
+            transaction.commit();
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+    }
+
+
+    //    TODO inchiriazaImobil - nu am finalizat metoda
+    public void inchiriazaImobil(ImobilModel imobilModel) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            imobileEntitate.getAnuntStatusEntity().setIdAnuntStatusEntitate(3);
+            transaction = session.beginTransaction();
+            session.update(imobileEntitate);
+            transaction.commit();
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+    }
 }
