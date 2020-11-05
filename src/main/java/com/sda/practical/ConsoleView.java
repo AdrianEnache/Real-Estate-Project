@@ -52,9 +52,9 @@ public class ConsoleView {
                                     break;
                                 case 4: // prezinta lista favorite
                                     break;
-                                case 5: // adauga la favorit
+                                case 5: // adauga in lista favorite
                                     break;
-                                case 6: // sterger de la favorit
+                                case 6: // sterge de la favorit
                                     break;
                                 case 7:
                                     System.out.println("Logged out!");
