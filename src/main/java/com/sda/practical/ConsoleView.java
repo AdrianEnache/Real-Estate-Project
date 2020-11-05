@@ -44,7 +44,7 @@ public class ConsoleView {
                             switch (option) {
                                 case 1:  // cauta imobil
                                     //TODO De comentat metodele!
-                                this.cautaCuFiltre();
+                                    this.cautaCuFiltre();
                                     break;
                                 case 2: // inchiriaza imobil
                                     break;
@@ -57,7 +57,7 @@ public class ConsoleView {
                                 case 6: // sterger de la favorit
                                     break;
                                 case 7:
-                                    System.out.println("Pa Pa");
+                                    System.out.println("Logged out!");
                                     break;
                                 default:
                                     System.out.println("Nu cunoastem optiunea !");
@@ -87,8 +87,9 @@ public class ConsoleView {
                                     this.printListaImobile(listaImobile);
                                     break;
                                 case 5:
-                                    System.out.println("Pa Pa");
+                                    System.out.println("Logged out!");
                                     break;
+                                //TODO cand selectam log out dintr-un user - ne scoate din loop si opreste programul
                                 default:
                                     System.out.println("Nu cunoastem optiunea !");
                             }
@@ -183,27 +184,30 @@ public class ConsoleView {
         System.out.println("Imobil created !");
     }
 
+
+    //metoda printListaImobile - ne afiseaza lista din baza de date cu toate imobilele introduse
     public void printListaImobile(List<ImobileEntitate> listaImobile) {
 
         for (ImobileEntitate imobil : listaImobile) {
             System.out.println(imobil.getIdTipImobilEntitate() + ". " +
-                    " data Postarii Anuntului =" + imobil.getDataPostariiAnuntului() +
-                    ", suprafata =" + imobil.getSuprafata() +
-                    ", pret =" + imobil.getPret() +
-                    ", etaj =" + imobil.getEtaj() +
-                    ", an Constructie =" + imobil.getAnConstructie() +
-                    ", numar Camere =" + imobil.getNumarCamere() +
-                    ", coordonate =" + imobil.getCoordonate() +
-                    ", descriere =" + imobil.getDescriere() +
-                    ", tip Imobil =" + imobil.getTipImobil().getTipImobil() +
-                    ", anunt Statu =" + imobil.getAnuntStatusEntity().getStatusAnunt() +
-                    ", compartimentare =" + imobil.getCompartimentareEntity().getTipCompartimentare() +
-                    ", valuta =" + imobil.getValutaEntitate().getTipValuta() +
-                    ", oras =" + imobil.getOrasEntitate().getNumeOras());
+                    "Data Postarii = " + imobil.getDataPostariiAnuntului() +
+                    ", Anunt Status = " + imobil.getAnuntStatusEntity().getStatusAnunt() +
+                    ", Suprafata = " + imobil.getSuprafata() +
+                    ", Pret = " + imobil.getPret() +
+                    ", Valuta = " + imobil.getValutaEntitate().getTipValuta() +
+                    ", Tip Imobil = " + imobil.getTipImobil().getTipImobil() +
+                    ", Etaj = " + imobil.getEtaj() +
+                    ", Compartimentare = " + imobil.getCompartimentareEntity().getTipCompartimentare() +
+                    ", Numar Camere = " + imobil.getNumarCamere() +
+                    ", An Constructie = " + imobil.getAnConstructie() +
+                    ", Coordonate = " + imobil.getCoordonate() +
+                    ", Descriere = " + imobil.getDescriere() +
+                    ", Oras = " + imobil.getOrasEntitate().getNumeOras());
         }
     }
 
-
+    // metoda cautaCuFiltre - se foloseste de metoda cautaImobil din DBHandler
+    // am folosit un switch + case pentru meniul de filtre
     public void cautaCuFiltre() {
         Integer option = 0;
         while (option != 8) {
@@ -211,40 +215,40 @@ public class ConsoleView {
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
             switch (option) {
                 case 1:
-                    Double pret = keyboardHandler.readDouble("Intre Pret : ");
+                    Double pret = keyboardHandler.readDouble("Intre Pret (=>): ");
                     filtre.put(1, pret.toString());
-                    Double pret2 = keyboardHandler.readDouble("Si pret: ");
+                    Double pret2 = keyboardHandler.readDouble("Si pret (<=): ");
                     filtre.put(11, pret2.toString());
                     break;
                 case 2:
                     Integer idTipLocuinta = keyboardHandler.readInteger("Ce tip de locuinta:\n" +
                             "1. Pamant\n" +
                             "2. Casa\n" +
-                            "3.Apartament");
+                            "3. Apartament");
                     filtre.put(2, idTipLocuinta.toString());
                     break;
                 case 3:
-                    Double suprafata = keyboardHandler.readDouble("Intre Suprafata: ");
+                    Double suprafata = keyboardHandler.readDouble("Intre Suprafata (=>): ");
                     filtre.put(3, suprafata.toString());
-                    Double suprafata2 = keyboardHandler.readDouble("Si suprafata: ");
+                    Double suprafata2 = keyboardHandler.readDouble("Si suprafata (<=): ");
                     filtre.put(13, suprafata2.toString());
                     break;
                 case 4:
-                    Integer etaj = keyboardHandler.readInteger("Intre Etaj: ");
+                    Integer etaj = keyboardHandler.readInteger("Intre Etaj (=>): ");
                     filtre.put(4, etaj.toString());
-                    Integer etaj2 = keyboardHandler.readInteger("Si Etaj: ");
+                    Integer etaj2 = keyboardHandler.readInteger("Si Etaj(<=): ");
                     filtre.put(14, etaj2.toString());
                     break;
                 case 5:
-                    Integer nrCamere = keyboardHandler.readInteger("intre Numar Camere: ");
+                    Integer nrCamere = keyboardHandler.readInteger("intre Numar Camere (=>): ");
                     filtre.put(5, nrCamere.toString());
-                    Integer nrCamere2 = keyboardHandler.readInteger("Si numar Camere: ");
+                    Integer nrCamere2 = keyboardHandler.readInteger("Si numar Camere(<=): ");
                     filtre.put(15, nrCamere2.toString());
                     break;
                 case 6:
-                    String anConstructie = keyboardHandler.readString("Intre An Constructie: ");
+                    String anConstructie = keyboardHandler.readString("Intre An Constructie (=>): ");
                     filtre.put(6, anConstructie);
-                    String anConstructie2 = keyboardHandler.readString("Si An Constructie: ");
+                    String anConstructie2 = keyboardHandler.readString("Si An Constructie (<=): ");
                     filtre.put(16, anConstructie2);
                     break;
                 case 7:
@@ -252,6 +256,7 @@ public class ConsoleView {
                     filtre.clear();
                     break;
                 case 8:
+                    // filtre.clear - ne goleste mapa de fiecare data pentru a putea reintroduce alte optiuni
                     filtre.clear();
                     break;
                 default:
