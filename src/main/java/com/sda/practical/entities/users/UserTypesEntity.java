@@ -49,4 +49,14 @@ public class UserTypesEntity {
     public void setListUser(List<UtilizatorEntitate> listUser) {
         this.listUser = listUser;
     }
+
+    @Override
+    public String toString() {
+        return "UserTypesEntity{" +
+                "userTypesEntityId=" + userTypesEntityId +
+                ", tipClient='" + tipClient + '\'' +
+                ", tipUserId=" + tipUserId +
+                ", listUser=" + listUser +
+                '}';
+    }
 }

@@ -48,4 +48,14 @@ public class ListaFavoriteEntitate {
     public void setUtilizator(UtilizatorEntitate utilizator) {
         this.utilizator = utilizator;
     }
+
+    @Override
+    public String toString() {
+        return "ListaFavoriteEntitate{" +
+                "listaFavoriteEntitateId=" + listaFavoriteEntitateId +
+                ", idUtilizator=" + idUtilizator +
+                ", imobilId=" + imobilId +
+                ", utilizator=" + utilizator +
+                '}';
+    }
 }

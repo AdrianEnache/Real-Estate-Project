@@ -114,7 +114,19 @@ public class UtilizatorEntitate {
     }
 
 
-
-
-
+    @Override
+    public String toString() {
+        return "UtilizatorEntitate{" +
+                "idUtilizator=" + idUtilizator +
+                ", numeDeFamilie='" + numeDeFamilie + '\'' +
+                ", prenume='" + prenume + '\'' +
+                ", numarTelefon='" + numarTelefon + '\'' +
+                ", adresaEmail='" + adresaEmail + '\'' +
+                ", parola='" + parola + '\'' +
+                ", idTipUser=" + idTipUser +
+                ", imobileEntitateList=" + imobileEntitateList +
+                ", userType=" + userType +
+                ", favouritesListEntityId=" + favouritesListEntityId +
+                '}';
+    }
 }

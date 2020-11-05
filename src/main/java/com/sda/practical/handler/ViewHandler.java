@@ -32,8 +32,9 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("3. Cauta dupa suprafata : ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("4. Cauta dupa etaj : ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("5. Cauta dupa numar camere : ");
-        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("6. Cauta dupa zona : ");
-        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("7. Cauta dupa an constructie : ");
+        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("6. Cauta dupa an constructie : ");
+        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("7. Cauta cu filtre: ");
+        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("8. Iesire: ");
 
         myMenues.put(MenuTypeEnum.ORDER_MENU, new ArrayList<>());
         myMenues.get(MenuTypeEnum.ORDER_MENU).add("1. Ascendent dupa pret.");
@@ -48,6 +49,7 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.VANZATOR_USER).add("2. Cauta Imobil.");
         myMenues.get(MenuTypeEnum.VANZATOR_USER).add("3. Sterge Imobil.");
         myMenues.get(MenuTypeEnum.VANZATOR_USER).add("4. Lista Imobile Vanzare.");
+        myMenues.get(MenuTypeEnum.VANZATOR_USER).add("5. Log Out.");
 
 
         myMenues.put(MenuTypeEnum.CLIENT_USER, new ArrayList<>());
@@ -57,6 +59,7 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("4.Prezinta Lista Favorite");
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("5.Adauga la Favorit");
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("6.Sterge de la Favorit");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("7.Log Out");
 
     }
 

@@ -16,33 +16,36 @@ public class ImobileEntitate {
     private Integer idTipImobilEntitate;
     @Temporal(TemporalType.DATE)
     private Date dataPostariiAnuntului;
-    private Double suprafata;
-    private Double pret;
+    private Double suprafata; //filtru 1
+    private Double pret;//filtru 2
     @Column(nullable = false)
-    private String etaj;
-    private Integer anConstructie;
-    private Integer numarCamere;
+    private String etaj;//filtru 3
+    private Integer anConstructie;//filtru 4
+    private Integer numarCamere;//filtru 5
     private String coordonate;
     private String descriere;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idTipImobil")
     private ImobilTypeEntity tipImobil;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idVanzator")
     private UtilizatorEntitate utilizatorEntitate;
 
-    @OneToOne(mappedBy = "imobileEntitate")
+    @ManyToOne
+    @JoinColumn(name = "idTipAnunt")
     private AnuntStatusEntitate anuntStatusEntity;
 
-    @OneToOne(mappedBy = "imobileEntitate")
+    @ManyToOne
+    @JoinColumn(name = "idTipCompartimentare")
     private CompartimentareEntitate compartimentareEntity;
 
-    @OneToMany(mappedBy = "imobileEntitate")
-    private List<ValutaEntitate> valutaEntitate;
+    @ManyToOne
+    @JoinColumn(name = "idTipValuta")
+    private ValutaEntitate valutaEntitate;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
 
@@ -143,11 +146,11 @@ public class ImobileEntitate {
         this.compartimentareEntity = compartimentareEntity;
     }
 
-    public List<ValutaEntitate> getValutaEntitate() {
+    public ValutaEntitate getValutaEntitate() {
         return valutaEntitate;
     }
 
-    public void setValutaEntitate(List<ValutaEntitate> valutaEntitate) {
+    public void setValutaEntitate(ValutaEntitate valutaEntitate) {
         this.valutaEntitate = valutaEntitate;
     }
 
@@ -175,19 +178,6 @@ public class ImobileEntitate {
         this.tipImobil = tipImobil;
     }
 
-    @Override
-    public String toString() {
-        return "Imobil : [" +
-                "ID Imobil = " + idTipImobilEntitate +
-                ", Data postarii anunt = " + dataPostariiAnuntului +
-                ", Suprafata = " + suprafata +
-                ", Pret = " + pret +
-                ", Etaj = " + etaj +
-                ", An constructie = " + anConstructie +
-                ", Numar camere = " + numarCamere +
-                ", Coordonate = '" + coordonate + '\'' +
-                ", Descriere = '" + descriere + '\'' +
-                ']';
 
-    }
+
 }

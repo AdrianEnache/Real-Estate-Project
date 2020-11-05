@@ -1,6 +1,7 @@
 package com.sda.practical.entities.imobile;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -11,9 +12,8 @@ public class ValutaEntitate {
     private Integer idValutateEntitate;
     private String tipValuta;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
-    @JoinColumn(name = "idTipImobilEntitate")
-    private ImobileEntitate imobileEntitate;
+    @OneToMany(mappedBy = "valutaEntitate")
+   private List<ImobileEntitate> listaImobile;
 
     public Integer getIdValutateEntitate() {
         return idValutateEntitate;
@@ -31,11 +31,11 @@ public class ValutaEntitate {
         this.tipValuta = tipValuta;
     }
 
-    public ImobileEntitate getImobileEntitate() {
-        return imobileEntitate;
+    public List<ImobileEntitate> getListaImobile() {
+        return listaImobile;
     }
 
-    public void setImobileEntitate(ImobileEntitate imobileEntitate) {
-        this.imobileEntitate = imobileEntitate;
+    public void setListaImobile(List<ImobileEntitate> listaImobile) {
+        this.listaImobile = listaImobile;
     }
 }
