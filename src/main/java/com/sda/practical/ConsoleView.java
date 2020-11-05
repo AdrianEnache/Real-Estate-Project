@@ -125,7 +125,6 @@ public class ConsoleView {
                             iscorect = true;
                         }
                     }
-
                     databaseHandler.createUser(user);
                     System.out.println("User created !");
 
@@ -164,7 +163,7 @@ public class ConsoleView {
         imobilModel.setSuprafata(keyboardHandler.readDouble("Add suprafata : "));
         imobilModel.setDescriere(keyboardHandler.readString("Add descriere : "));
         imobilModel.setIdTipImobil(keyboardHandler.readInteger("Ce tip de imobil este:\n" +
-                "1. Pamant\n" +
+                "1. Teren\n" +
                 "2. Casa\n" +
                 "3. Apartament\n"));
         imobilModel.setIdCompartimentareEntity(keyboardHandler.readInteger("Ce tip de compartimentare are apartamentul:\n" +
@@ -222,7 +221,7 @@ public class ConsoleView {
                     break;
                 case 2:
                     Integer idTipLocuinta = keyboardHandler.readInteger("Ce tip de locuinta:\n" +
-                            "1. Pamant\n" +
+                            "1. Teren\n" +
                             "2. Casa\n" +
                             "3. Apartament");
                     filtre.put(2, idTipLocuinta.toString());
