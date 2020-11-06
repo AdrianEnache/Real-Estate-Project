@@ -1,10 +1,10 @@
 package com.sda.practical.entities.imobile;
 
+import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table
@@ -25,6 +25,11 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
+
+    @ManyToOne
+    @JoinColumn(name = "listaFavorite")
+    private ListaFavoriteEntitate listaFavoriteEntitate;
+
     @ManyToOne
     @JoinColumn(name = "idTipImobil")
     private ImobilTypeEntity tipImobil;
@@ -34,7 +39,7 @@ public class ImobileEntitate {
     private UtilizatorEntitate utilizatorEntitate;
 
     @ManyToOne
-    @JoinColumn(name = "idTipAnunt")
+    @JoinColumn(name = "anuntStatus")
     private AnuntStatusEntitate anuntStatusEntity;
 
     @ManyToOne
@@ -48,6 +53,14 @@ public class ImobileEntitate {
     @ManyToOne
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
+
+    public ListaFavoriteEntitate getListaFavoriteEntitate() {
+        return listaFavoriteEntitate;
+    }
+
+    public void setListaFavoriteEntitate(ListaFavoriteEntitate listaFavoriteEntitate) {
+        this.listaFavoriteEntitate = listaFavoriteEntitate;
+    }
 
     public UtilizatorEntitate getUtilizatorEntitate() {
         return utilizatorEntitate;
@@ -177,7 +190,6 @@ public class ImobileEntitate {
     public void setTipImobil(ImobilTypeEntity tipImobil) {
         this.tipImobil = tipImobil;
     }
-
 
 
 }

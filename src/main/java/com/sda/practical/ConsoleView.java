@@ -25,7 +25,7 @@ public class ConsoleView {
 
 
         Integer option = 0;
-        while (option != 5) {
+        while (option != 3) {
             viewHandler.printMenu(MenuTypeEnum.MAIN_MENU);
             option = keyboardHandler.readInteger("Introduceti optiunea : ");
 
@@ -59,6 +59,9 @@ public class ConsoleView {
                                 case 4: // prezinta lista favorite
                                     break;
                                 case 5: // adauga in lista favorite
+                                    ImobilModel imobilModelFavorit = new ImobilModel();
+                                    imobilModelFavorit.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati in lista de favorite?"));
+                                    databaseHandler.adaugaLaFavorit(imobilModelFavorit, userLogat);
                                     break;
                                 case 6: // sterge de la favorit
                                     break;
@@ -88,14 +91,14 @@ public class ConsoleView {
                                     databaseHandler.stergeImobil(imobilModel);
                                     break;
                                 case 4: // lista imobile vanzare
-                                    //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate
+                                    //TODO - trebuie aranjata prezentarea listei (vezi in metode de toString din ImobileEntitate - done
                                     List<ImobileEntitate> listaImobile = databaseHandler.getImobileEntitate(userLogat);
                                     this.printListaImobile(listaImobile);
                                     break;
                                 case 5:
                                     System.out.println("Logged out!");
                                     break;
-                                //TODO cand selectam log out dintr-un user - ne scoate din loop si opreste programul
+                                //TODO cand selectam log out dintr-un user - ne scoate din loop si opreste programul -done
                                 default:
                                     System.out.println("Nu cunoastem optiunea !");
                             }
@@ -139,11 +142,8 @@ public class ConsoleView {
 
                 //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
 
+
                 case 3:
-
-                    break;
-
-                case 5:
                     System.out.println("Bye bye");
                     break;
                 default:

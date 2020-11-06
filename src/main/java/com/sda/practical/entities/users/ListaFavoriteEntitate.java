@@ -1,6 +1,9 @@
 package com.sda.practical.entities.users;
 
+import com.sda.practical.entities.imobile.ImobileEntitate;
+
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table
@@ -8,11 +11,15 @@ import javax.persistence.*;
 public class ListaFavoriteEntitate {
     @Id
     private Integer listaFavoriteEntitateId;
-    @Column(insertable = false,updatable = false)
-    private Integer idUtilizator;
+    @Column(insertable = false, updatable = false)
     private Integer imobilId;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+
+    @OneToMany(mappedBy = "listaFavoriteEntitate")
+    private List<ImobileEntitate> imobileEntitateList;
+
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "idUtilizator")
     private UtilizatorEntitate utilizator;
 
@@ -23,14 +30,6 @@ public class ListaFavoriteEntitate {
 
     public void setListaFavoriteEntitateId(Integer listaFavoriteEntitateId) {
         this.listaFavoriteEntitateId = listaFavoriteEntitateId;
-    }
-
-    public Integer getIdUtilizator() {
-        return idUtilizator;
-    }
-
-    public void setIdUtilizator(Integer idUtilizator) {
-        this.idUtilizator = idUtilizator;
     }
 
     public Integer getImobilId() {
@@ -49,13 +48,11 @@ public class ListaFavoriteEntitate {
         this.utilizator = utilizator;
     }
 
-    @Override
-    public String toString() {
-        return "ListaFavoriteEntitate{" +
-                "listaFavoriteEntitateId=" + listaFavoriteEntitateId +
-                ", idUtilizator=" + idUtilizator +
-                ", imobilId=" + imobilId +
-                ", utilizator=" + utilizator +
-                '}';
+    public List<ImobileEntitate> getImobileEntitateList() {
+        return imobileEntitateList;
+    }
+
+    public void setImobileEntitateList(List<ImobileEntitate> imobileEntitateList) {
+        this.imobileEntitateList = imobileEntitateList;
     }
 }

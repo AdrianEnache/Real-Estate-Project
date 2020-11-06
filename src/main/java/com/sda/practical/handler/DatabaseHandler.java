@@ -1,6 +1,7 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
+import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.models.FilterModel;
@@ -252,15 +253,19 @@ public class DatabaseHandler {
         return sql;
     }
 
-    //  TODO cumparaImobil - nu am finalizat metoda
+    //  TODO cumparaImobil - nu am finalizat metoda - done
     public void cumparaImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
+        ImobilModel imobilVandut = new ImobilModel();
+        imobilVandut.setIdAnuntStatusEntity(2);
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-
-
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilVandut.getIdAnuntStatusEntity());
+            imobileEntitate.setAnuntStatusEntity(statusEntitate);
             transaction = session.beginTransaction();
-            session. ();
+            session.update(imobileEntitate);
+            System.out.println("Imobilul a fost vandut !");
             transaction.commit();
             session.close();
         } catch (Exception ex) {
@@ -272,15 +277,19 @@ public class DatabaseHandler {
     }
 
 
-    //    TODO inchiriazaImobil - nu am finalizat metoda
+    //  TODO inchiriazaImobil - nu am finalizat metoda - done
     public void inchiriazaImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
+        ImobilModel imobilInchiriat = new ImobilModel();
+        imobilInchiriat.setIdAnuntStatusEntity(3);
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
-            imobileEntitate.getAnuntStatusEntity().setIdAnuntStatusEntitate(3);
+            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilInchiriat.getIdAnuntStatusEntity());
+            imobileEntitate.setAnuntStatusEntity(statusEntitate);
             transaction = session.beginTransaction();
             session.update(imobileEntitate);
+            System.out.println("Imobilul a fost inchiriat !");
             transaction.commit();
             session.close();
         } catch (Exception ex) {
@@ -289,5 +298,33 @@ public class DatabaseHandler {
             }
             System.out.println(ex.getMessage());
         }
+    }
+
+    // TODO 1. creare metoda pentru a crea lista de favorite - care se introduce in meniu;
+    // TODO 2. metoda adaugaLaFavorit - o adaugam in noua lista din metoda noua ;
+
+    public void adaugaLaFavorit(ImobilModel imobilModel, UserModel userModel) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
+            ListaFavoriteEntitate listaFavoriteEntitate = new ListaFavoriteEntitate();
+            listaFavoriteEntitate.setUtilizator(utilizatorEntitate);
+            imobileEntitateList.add(imobileEntitate);
+            listaFavoriteEntitate.setImobileEntitateList(imobileEntitateList);
+            session.save(listaFavoriteEntitate);
+            transaction.commit();
+            System.out.println("Imobilul a fost adaugat in lista favorite !");
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+
+
     }
 }

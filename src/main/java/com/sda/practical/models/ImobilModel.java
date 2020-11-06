@@ -21,6 +21,7 @@ public class ImobilModel {
     private Integer idVanzator;
     private Integer idTipImobil;
 
+
     public Integer getIdVanzator() {
         return idVanzator;
     }
