@@ -10,6 +10,7 @@ import com.sda.practical.models.UserModel;
 import com.sda.practical.util.HibernateUtil;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -254,18 +255,17 @@ public class DatabaseHandler {
     }
 
     //  TODO cumparaImobil - nu am finalizat metoda - done
+    // metoda cumparaImobil - ne folosim de un query pentru a modifica statusul unui imobil din baza de date in anunt vandut ( optiunea - 2 )
     public void cumparaImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
-        ImobilModel imobilVandut = new ImobilModel();
-        imobilVandut.setIdAnuntStatusEntity(2);
+
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
-            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilVandut.getIdAnuntStatusEntity());
-            imobileEntitate.setAnuntStatusEntity(statusEntitate);
             transaction = session.beginTransaction();
-            session.update(imobileEntitate);
-            System.out.println("Imobilul a fost vandut !");
+            Query imobileEntitateQuery = session
+                    .createQuery("update ImobileEntitate set anuntStatusEntity=2 where idTipImobilEntitate=" + imobilModel.getIdTipImobilEntity());
+            int result = imobileEntitateQuery.executeUpdate();
+            System.out.println("Imobilul a fost cumparat.");
             transaction.commit();
             session.close();
         } catch (Exception ex) {
@@ -278,17 +278,16 @@ public class DatabaseHandler {
 
 
     //  TODO inchiriazaImobil - nu am finalizat metoda - done
+    // metoda inchiriazaImobil - ne folosim de un query pentru a modifica statusul unui imobil din baza de date in anunt inchiriat ( optiunea - 3 )
     public void inchiriazaImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
-        ImobilModel imobilInchiriat = new ImobilModel();
-        imobilInchiriat.setIdAnuntStatusEntity(3);
+
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
-            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilInchiriat.getIdAnuntStatusEntity());
-            imobileEntitate.setAnuntStatusEntity(statusEntitate);
             transaction = session.beginTransaction();
-            session.update(imobileEntitate);
+            Query imobileEntitateQuery = session
+                    .createQuery("update ImobileEntitate set anuntStatusEntity=3 where idTipImobilEntitate=" + imobilModel.getIdTipImobilEntity());
+            int result = imobileEntitateQuery.executeUpdate();
             System.out.println("Imobilul a fost inchiriat !");
             transaction.commit();
             session.close();
