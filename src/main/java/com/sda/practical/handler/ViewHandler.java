@@ -57,10 +57,9 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("2.Inchiriaza imobil");
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("3.Cumpara imobil");
         myMenues.get(MenuTypeEnum.CLIENT_USER).add("4.Prezinta Lista Favorite");
-        myMenues.get(MenuTypeEnum.CLIENT_USER).add("5.Creaza o lista de Favorite");
-        myMenues.get(MenuTypeEnum.CLIENT_USER).add("6.Adauga la Favorit");
-        myMenues.get(MenuTypeEnum.CLIENT_USER).add("7.Sterge de la Favorit");
-        myMenues.get(MenuTypeEnum.CLIENT_USER).add("8.Log Out");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("5.Adauga la Favorit");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("6.Sterge de la Favorit");
+        myMenues.get(MenuTypeEnum.CLIENT_USER).add("7.Log Out");
 
     }
 

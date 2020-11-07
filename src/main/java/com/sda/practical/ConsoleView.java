@@ -38,7 +38,7 @@ public class ConsoleView {
                     userLogat.setUserTypeId(databaseHandler.verifyUser(userLogat));
                     userLogat.setUserId(databaseHandler.getUserId(userLogat));
                     if (userLogat.getUserTypeId() == 1) {
-                        while (option != 8) {
+                        while (option != 7) {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
@@ -57,18 +57,17 @@ public class ConsoleView {
                                     this.databaseHandler.cumparaImobil(imobilModelCumparat);
                                     break;
                                 case 4: // prezinta lista favorite
-                                    break;
-                                case 5: // creaza lista favorite
 
                                     break;
-                                case 6: // adauga de la favorit
-                                    ImobilModel imobilFavorit = new ImobilModel();
-                                    imobilFavorit.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati la favorit?"));
-                                    this.databaseHandler.adaugaFavorit(userLogat.getUserId(), imobilFavorit.getIdTipImobilEntity());
+                                case 5: // adauga la favorit
+                                    ImobilModel imobil = new ImobilModel();
+                                    imobil.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati la favorit?"));
+                                    databaseHandler.adaugaFavorit(userLogat,imobil);
+                                    break;
+                                case 6: // sterge de la favorit
+
                                     break;
                                 case 7://sterge de la favorite
-                                    break;
-                                case 8:
                                     System.out.println("Logged out!");
                                     break;
                                 default:

@@ -1,7 +1,6 @@
 package com.sda.practical.entities.users;
 
 import com.sda.practical.entities.imobile.ImobileEntitate;
-import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -38,7 +37,7 @@ public class UtilizatorEntitate {
             joinColumns = {@JoinColumn(name = "utilizatorId")},
             inverseJoinColumns = {@JoinColumn(name = "imobileId")}
     )
-    private Set<ImobileEntitate> imobileEntitateSet = new HashSet<ImobileEntitate>();
+    private Set<ImobileEntitate> favorite = new HashSet<ImobileEntitate>();
 
 
     public List<ImobileEntitate> getImobileEntitateList() {
@@ -114,12 +113,12 @@ public class UtilizatorEntitate {
         this.idTipUser = idTipUser;
     }
 
-    public Set<ImobileEntitate> getImobileEntitateSet() {
-        return imobileEntitateSet;
+    public Set<ImobileEntitate> getFavorite() {
+        return favorite;
     }
 
-    public void setImobileEntitateSet(Set<ImobileEntitate> imobileEntitateSet) {
-        this.imobileEntitateSet = imobileEntitateSet;
+    public void setFavorite(Set<ImobileEntitate> favorite) {
+        this.favorite = favorite;
     }
 
     @Override
