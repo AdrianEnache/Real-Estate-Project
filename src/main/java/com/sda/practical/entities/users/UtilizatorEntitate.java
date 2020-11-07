@@ -3,9 +3,8 @@ package com.sda.practical.entities.users;
 import com.sda.practical.entities.imobile.ImobileEntitate;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table
@@ -31,13 +30,15 @@ public class UtilizatorEntitate {
     @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
+    //TODO sa facem cu LAZY
+
     @ManyToMany
     @JoinTable(
             name = "favorite",
             joinColumns = {@JoinColumn(name = "utilizatorId")},
             inverseJoinColumns = {@JoinColumn(name = "imobileId")}
     )
-    private Set<ImobileEntitate> favorite = new HashSet<ImobileEntitate>();
+    private List<ImobileEntitate> favorite = new ArrayList<>();
 
 
     public List<ImobileEntitate> getImobileEntitateList() {
@@ -113,26 +114,11 @@ public class UtilizatorEntitate {
         this.idTipUser = idTipUser;
     }
 
-    public Set<ImobileEntitate> getFavorite() {
+    public List<ImobileEntitate> getFavorite() {
         return favorite;
     }
 
-    public void setFavorite(Set<ImobileEntitate> favorite) {
+    public void setFavorite(List<ImobileEntitate> favorite) {
         this.favorite = favorite;
-    }
-
-    @Override
-    public String toString() {
-        return "UtilizatorEntitate{" +
-                "idUtilizator=" + idUtilizator +
-                ", numeDeFamilie='" + numeDeFamilie + '\'' +
-                ", prenume='" + prenume + '\'' +
-                ", numarTelefon='" + numarTelefon + '\'' +
-                ", adresaEmail='" + adresaEmail + '\'' +
-                ", parola='" + parola + '\'' +
-                ", idTipUser=" + idTipUser +
-                ", imobileEntitateList=" + imobileEntitateList +
-                ", userType=" + userType +
-                '}';
     }
 }

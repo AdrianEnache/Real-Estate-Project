@@ -3,9 +3,9 @@ package com.sda.practical.entities.imobile;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table
@@ -27,7 +27,7 @@ public class ImobileEntitate {
     private String descriere;
 
     @ManyToMany(mappedBy = "favorite")
-    private Set<UtilizatorEntitate> utilizatori = new HashSet<UtilizatorEntitate>();
+    private List<UtilizatorEntitate> utilizatori = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "idTipImobil")
@@ -52,7 +52,6 @@ public class ImobileEntitate {
     @ManyToOne
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
-
 
 
     public UtilizatorEntitate getUtilizatorEntitate() {
@@ -184,11 +183,13 @@ public class ImobileEntitate {
         this.tipImobil = tipImobil;
     }
 
-    public Set<UtilizatorEntitate> getUtilizatori() {
+    public List<UtilizatorEntitate> getUtilizatori() {
         return utilizatori;
     }
 
-    public void setUtilizatori(Set<UtilizatorEntitate> utilizatori) {
+    public void setUtilizatori(List<UtilizatorEntitate> utilizatori) {
         this.utilizatori = utilizatori;
     }
+
+
 }

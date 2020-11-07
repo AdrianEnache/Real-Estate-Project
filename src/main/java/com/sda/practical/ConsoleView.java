@@ -57,12 +57,13 @@ public class ConsoleView {
                                     this.databaseHandler.cumparaImobil(imobilModelCumparat);
                                     break;
                                 case 4: // prezinta lista favorite
+                                    this.printListaImobile(databaseHandler.arataListaFavorite(userLogat));
 
                                     break;
                                 case 5: // adauga la favorit
                                     ImobilModel imobil = new ImobilModel();
                                     imobil.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati la favorit?"));
-                                    databaseHandler.adaugaFavorit(userLogat,imobil);
+                                    databaseHandler.adaugaFavorit(userLogat, imobil);
                                     break;
                                 case 6: // sterge de la favorit
 
