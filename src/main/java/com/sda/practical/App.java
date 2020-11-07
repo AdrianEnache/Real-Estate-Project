@@ -12,5 +12,7 @@ public class App
 //        Session session = HibernateUtil.getSessionFactory().openSession();
         new ConsoleView().startApp();
 
+
+
     }
 }
