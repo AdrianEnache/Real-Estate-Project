@@ -11,6 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -296,6 +297,22 @@ public class DatabaseHandler {
             }
             System.out.println(ex.getMessage());
         }
+    }
+
+    public void adaugaFavorit(UserModel userModel, ImobilModel imobilModel){
+        Transaction transaction = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            UtilizatorEntitate user = session.find(UtilizatorEntitate.class,userModel.getUserId());
+            ImobileEntitate imobil = session.find(ImobileEntitate.class,imobilModel.getIdTipImobilEntity());
+            user.getFavorite().add(imobil);
+            transaction.commit();
+            session.close();
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
     }
 
     // TODO 1. creare metoda pentru a crea lista de favorite - care se introduce in meniu;

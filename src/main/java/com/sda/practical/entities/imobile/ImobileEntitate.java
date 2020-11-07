@@ -26,8 +26,8 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-    @ManyToMany(mappedBy = "imobileEntitateSet")
-    private Set<UtilizatorEntitate> utilizatorEntitateSet = new HashSet<UtilizatorEntitate>();
+    @ManyToMany(mappedBy = "favorite")
+    private Set<UtilizatorEntitate> utilizatori = new HashSet<UtilizatorEntitate>();
 
     @ManyToOne
     @JoinColumn(name = "idTipImobil")
@@ -184,11 +184,11 @@ public class ImobileEntitate {
         this.tipImobil = tipImobil;
     }
 
-    public Set<UtilizatorEntitate> getUtilizatorEntitateSet() {
-        return utilizatorEntitateSet;
+    public Set<UtilizatorEntitate> getUtilizatori() {
+        return utilizatori;
     }
 
-    public void setUtilizatorEntitateSet(Set<UtilizatorEntitate> utilizatorEntitateSet) {
-        this.utilizatorEntitateSet = utilizatorEntitateSet;
+    public void setUtilizatori(Set<UtilizatorEntitate> utilizatori) {
+        this.utilizatori = utilizatori;
     }
 }
