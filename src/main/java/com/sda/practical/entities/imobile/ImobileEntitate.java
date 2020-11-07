@@ -1,6 +1,5 @@
 package com.sda.practical.entities.imobile;
 
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 
 import javax.persistence.*;

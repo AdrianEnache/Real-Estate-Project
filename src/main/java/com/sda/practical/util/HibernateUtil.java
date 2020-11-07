@@ -1,7 +1,6 @@
 package com.sda.practical.util;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.imobile.ImobilTypeEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;

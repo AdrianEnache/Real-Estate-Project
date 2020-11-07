@@ -1,7 +1,6 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.models.FilterModel;
