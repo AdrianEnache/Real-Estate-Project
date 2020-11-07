@@ -1,6 +1,8 @@
 package com.sda.practical.models;
 
 
+import java.util.List;
+
 public class UserModel {
 
     private String surname;
@@ -10,6 +12,7 @@ public class UserModel {
     private String password;
     private Integer userTypeId;
     private Integer userId;
+
 
     public Integer getUserId() {
         return userId;
@@ -66,4 +69,6 @@ public class UserModel {
     public void setUserTypeId(Integer userTypeId) {
         this.userTypeId = userTypeId;
     }
+
+
 }

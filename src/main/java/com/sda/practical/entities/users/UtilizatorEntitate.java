@@ -4,7 +4,9 @@ import com.sda.practical.entities.imobile.ImobileEntitate;
 import org.hibernate.annotations.Proxy;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -26,12 +28,18 @@ public class UtilizatorEntitate {
     @OneToMany(mappedBy = "utilizatorEntitate")
     private List<ImobileEntitate> imobileEntitateList;
 
-    @ManyToOne(cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
-    @OneToMany(mappedBy = "utilizator")
-    private List<ListaFavoriteEntitate> favouritesListEntityId;
+    @ManyToMany
+    @JoinTable(
+            name = "favorite",
+            joinColumns = {@JoinColumn(name = "utilizatorId")},
+            inverseJoinColumns = {@JoinColumn(name = "imobileId")}
+    )
+    private Set<ImobileEntitate> imobileEntitateSet = new HashSet<ImobileEntitate>();
+
 
     public List<ImobileEntitate> getImobileEntitateList() {
         return imobileEntitateList;
@@ -97,13 +105,6 @@ public class UtilizatorEntitate {
         this.parola = parola;
     }
 
-    public List<ListaFavoriteEntitate> getFavouritesListEntityId() {
-        return favouritesListEntityId;
-    }
-
-    public void setFavouritesListEntityId(List<ListaFavoriteEntitate> favouritesListEntityId) {
-        this.favouritesListEntityId = favouritesListEntityId;
-    }
 
     public Integer getIdTipUser() {
         return idTipUser;
@@ -113,6 +114,13 @@ public class UtilizatorEntitate {
         this.idTipUser = idTipUser;
     }
 
+    public Set<ImobileEntitate> getImobileEntitateSet() {
+        return imobileEntitateSet;
+    }
+
+    public void setImobileEntitateSet(Set<ImobileEntitate> imobileEntitateSet) {
+        this.imobileEntitateSet = imobileEntitateSet;
+    }
 
     @Override
     public String toString() {
@@ -126,7 +134,6 @@ public class UtilizatorEntitate {
                 ", idTipUser=" + idTipUser +
                 ", imobileEntitateList=" + imobileEntitateList +
                 ", userType=" + userType +
-                ", favouritesListEntityId=" + favouritesListEntityId +
                 '}';
     }
 }
