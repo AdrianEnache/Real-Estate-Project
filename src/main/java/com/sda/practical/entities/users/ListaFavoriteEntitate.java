@@ -11,15 +11,14 @@ import java.util.List;
 public class ListaFavoriteEntitate {
     @Id
     private Integer listaFavoriteEntitateId;
-    @Column(insertable = false, updatable = false)
-    private Integer imobilId;
+
 
 
     @OneToMany(mappedBy = "listaFavoriteEntitate")
     private List<ImobileEntitate> imobileEntitateList;
 
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @ManyToOne
     @JoinColumn(name = "idUtilizator")
     private UtilizatorEntitate utilizator;
 
@@ -32,13 +31,6 @@ public class ListaFavoriteEntitate {
         this.listaFavoriteEntitateId = listaFavoriteEntitateId;
     }
 
-    public Integer getImobilId() {
-        return imobilId;
-    }
-
-    public void setImobilId(Integer imobilId) {
-        this.imobilId = imobilId;
-    }
 
     public UtilizatorEntitate getUtilizator() {
         return utilizator;

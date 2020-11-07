@@ -30,7 +30,7 @@ public class UtilizatorEntitate {
     @JoinColumn(name = "idTipUser")
     private UserTypesEntity userType;
 
-    @OneToMany(mappedBy = "utilizator")
+    @ManyToMany
     private List<ListaFavoriteEntitate> favouritesListEntityId;
 
     public List<ImobileEntitate> getImobileEntitateList() {

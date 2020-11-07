@@ -38,7 +38,7 @@ public class ConsoleView {
                     userLogat.setUserTypeId(databaseHandler.verifyUser(userLogat));
                     userLogat.setUserId(databaseHandler.getUserId(userLogat));
                     if (userLogat.getUserTypeId() == 1) {
-                        while (option != 7) {
+                        while (option != 8) {
                             viewHandler.printMenu(MenuTypeEnum.CLIENT_USER);
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
@@ -58,14 +58,17 @@ public class ConsoleView {
                                     break;
                                 case 4: // prezinta lista favorite
                                     break;
-                                case 5: // adauga in lista favorite
+                                case 5: // creaza lista favorite
+                                  databaseHandler.creazaListaFavorite(userLogat);
+                                    break;
+                                case 6: // adauga de la favorit
                                     ImobilModel imobilModelFavorit = new ImobilModel();
                                     imobilModelFavorit.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati in lista de favorite?"));
                                     databaseHandler.adaugaLaFavorit(imobilModelFavorit, userLogat);
                                     break;
-                                case 6: // sterge de la favorit
+                                case 7://sterge de la favorite
                                     break;
-                                case 7:
+                                case 8:
                                     System.out.println("Logged out!");
                                     break;
                                 default:
