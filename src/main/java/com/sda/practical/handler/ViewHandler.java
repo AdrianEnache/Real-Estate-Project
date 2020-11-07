@@ -33,7 +33,7 @@ public class ViewHandler {
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("4. Cauta dupa etaj : ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("5. Cauta dupa numar camere : ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("6. Cauta dupa an constructie : ");
-        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("7. Cauta cu filtre: ");
+        myMenues.get(MenuTypeEnum.SEARCH_MENU).add("7. Aplica filtre si incepe cautarea: ");
         myMenues.get(MenuTypeEnum.SEARCH_MENU).add("8. Iesire: ");
 
         myMenues.put(MenuTypeEnum.ORDER_MENU, new ArrayList<>());

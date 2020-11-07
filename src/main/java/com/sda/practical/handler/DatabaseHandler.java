@@ -1,6 +1,7 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
+import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.models.FilterModel;
@@ -17,7 +18,7 @@ import java.util.Map;
 
 public class DatabaseHandler {
 
-
+    // metoda createUser ne ajuta sa cream un user nou
     public void createUser(UserModel userModel) {
         Transaction transaction = null;
         try {
@@ -43,7 +44,7 @@ public class DatabaseHandler {
         }
     }
 
-
+    // metoda addImobil ne ajuta sa cream un imobil nou
     public void addImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
         try {
@@ -81,10 +82,9 @@ public class DatabaseHandler {
             }
             System.out.println(ex.getMessage());
         }
-
-
     }
 
+    // metoda verifyUser - o folosim pentru a verifica ce tip de user s-a logat in baza de date
     public Integer verifyUser(UserModel userModel) {
         Integer idTipUser = -1;
         try {
@@ -99,6 +99,14 @@ public class DatabaseHandler {
             List<Integer> users = session.createQuery(sql, Integer.class).list();
             idTipUser = users.get(0);
             System.out.println(users);
+            System.out.println("Utilizatorul este :");
+            if (users.contains(1)) {
+                System.out.println("Cumparator!");
+            } else if (users.contains(2)) {
+                System.out.println("Vanzator!");
+            } else {
+                System.out.println("User nu exista !");
+            }
             session.close();
         } catch (Exception ex) {
             System.out.println("Not Connected !");
@@ -107,6 +115,8 @@ public class DatabaseHandler {
         return idTipUser;
     }
 
+
+    // metoda getUserId - o folosim pentru log in in baza de date
     public Integer getUserId(UserModel userModel) {
         Integer idUser = -1;
         try {
@@ -120,7 +130,7 @@ public class DatabaseHandler {
 
             List<Integer> users = session.createQuery(sql, Integer.class).list();
             idUser = users.get(0);
-            System.out.println("Conected!");
+            System.out.println("Logged in!");
             session.close();
         } catch (Exception ex) {
             System.out.println("Not Connected !");
@@ -129,12 +139,12 @@ public class DatabaseHandler {
         return idUser;
     }
 
-
+    // metoda getImobileEntitate ne afiseaza o lista care contine toate imobilele din baza de date
     public List<ImobileEntitate> getImobileEntitate(UserModel userModel) {
         List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
 
+            Session session = HibernateUtil.getSessionFactory().openSession();
             String sql = "from ImobileEntitate where idVanzator='" + userModel.getUserId() + "'";
             imobileEntitateList = session.createQuery(sql, ImobileEntitate.class).list();
             session.close();
@@ -145,7 +155,7 @@ public class DatabaseHandler {
         return imobileEntitateList;
     }
 
-
+    // metoda stergeImobil - ne ajuta sa stergem un imobil din baza de date cu ajutorul ID-ului acelui imobil
     public void stergeImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
         try {
@@ -163,7 +173,8 @@ public class DatabaseHandler {
         }
     }
 
-
+    // metoda cautaImobil - ne ofera posibilitatea sa cautam ( in baza unor filtre ) in lista de imobile,
+    // ne va afisa imobilele conform filtrelor selectate
     public List<ImobileEntitate> cautaImobil(Map<Integer, String> filtre) {
         List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {
@@ -175,12 +186,12 @@ public class DatabaseHandler {
             boolean isFirst = false;
 
             if (filtre.containsKey(1)) {
-                String filtruPret = "pret>='" + filtre.get(1) + "' and pret<='" +filtre.get(11) + "'";
+                String filtruPret = "pret>='" + filtre.get(1) + "' and pret<='" + filtre.get(11) + "'";
                 stringBuilder.append(filtruPret);
                 isFirst = true;
             }
             if (filtre.containsKey(2)) {
-                if (isFirst){
+                if (isFirst) {
                     stringBuilder.append(and);
                 }
                 String filtruTipImobil = "idTipImobil='" + filtre.get(2) + "'";
@@ -188,34 +199,34 @@ public class DatabaseHandler {
                 isFirst = true;
             }
             if (filtre.containsKey(3)) {
-                if (isFirst){
+                if (isFirst) {
                     stringBuilder.append(and);
                 }
-                String filtruSuprafata = "suprafata>='" + filtre.get(3) + "' and suprafata<='" +filtre.get(13) + "'";
+                String filtruSuprafata = "suprafata>='" + filtre.get(3) + "' and suprafata<='" + filtre.get(13) + "'";
                 stringBuilder.append(filtruSuprafata);
                 isFirst = true;
             }
             if (filtre.containsKey(4)) {
-                if (isFirst){
+                if (isFirst) {
                     stringBuilder.append(and);
                 }
-                String filtruEtaj = "etaj>='" + filtre.get(4) + "' and etaj<='" +filtre.get(14) + "'";
+                String filtruEtaj = "etaj>='" + filtre.get(4) + "' and etaj<='" + filtre.get(14) + "'";
                 stringBuilder.append(filtruEtaj);
                 isFirst = true;
             }
             if (filtre.containsKey(5)) {
-                if (isFirst){
+                if (isFirst) {
                     stringBuilder.append(and);
                 }
-                String filtruCamere = "numarCamere>='" + filtre.get(5) + "' and numarCamere<='" +filtre.get(15) + "'";
+                String filtruCamere = "numarCamere>='" + filtre.get(5) + "' and numarCamere<='" + filtre.get(15) + "'";
                 stringBuilder.append(filtruCamere);
                 isFirst = true;
             }
             if (filtre.containsKey(6)) {
-                if (isFirst){
+                if (isFirst) {
                     stringBuilder.append(and);
                 }
-                String filtruAnConstructie = "anConstructie>='" + filtre.get(6) + "' and anConstructie<='" +filtre.get(16) + "'";
+                String filtruAnConstructie = "anConstructie>='" + filtre.get(6) + "' and anConstructie<='" + filtre.get(16) + "'";
                 stringBuilder.append(filtruAnConstructie);
             }
             imobileEntitateList = session.createQuery(stringBuilder.toString(), ImobileEntitate.class).list();
@@ -223,9 +234,7 @@ public class DatabaseHandler {
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-
         return imobileEntitateList;
-
     }
 
 
@@ -244,7 +253,78 @@ public class DatabaseHandler {
         return sql;
     }
 
-    //TODO de realizat metodele de cautare, adaugare,
+    //  TODO cumparaImobil - nu am finalizat metoda - done
+    public void cumparaImobil(ImobilModel imobilModel) {
+        Transaction transaction = null;
+        ImobilModel imobilVandut = new ImobilModel();
+        imobilVandut.setIdAnuntStatusEntity(2);
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilVandut.getIdAnuntStatusEntity());
+            imobileEntitate.setAnuntStatusEntity(statusEntitate);
+            transaction = session.beginTransaction();
+            session.update(imobileEntitate);
+            System.out.println("Imobilul a fost vandut !");
+            transaction.commit();
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+    }
 
 
+    //  TODO inchiriazaImobil - nu am finalizat metoda - done
+    public void inchiriazaImobil(ImobilModel imobilModel) {
+        Transaction transaction = null;
+        ImobilModel imobilInchiriat = new ImobilModel();
+        imobilInchiriat.setIdAnuntStatusEntity(3);
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            AnuntStatusEntitate statusEntitate = session.find(AnuntStatusEntitate.class, imobilInchiriat.getIdAnuntStatusEntity());
+            imobileEntitate.setAnuntStatusEntity(statusEntitate);
+            transaction = session.beginTransaction();
+            session.update(imobileEntitate);
+            System.out.println("Imobilul a fost inchiriat !");
+            transaction.commit();
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+    }
+
+    // TODO 1. creare metoda pentru a crea lista de favorite - care se introduce in meniu;
+    // TODO 2. metoda adaugaLaFavorit - o adaugam in noua lista din metoda noua ;
+
+    public void adaugaLaFavorit(ImobilModel imobilModel, UserModel userModel) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
+            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
+            ListaFavoriteEntitate listaFavoriteEntitate = new ListaFavoriteEntitate();
+            listaFavoriteEntitate.setUtilizator(utilizatorEntitate);
+            imobileEntitateList.add(imobileEntitate);
+            listaFavoriteEntitate.setImobileEntitateList(imobileEntitateList);
+            session.save(listaFavoriteEntitate);
+            transaction.commit();
+            System.out.println("Imobilul a fost adaugat in lista favorite !");
+            session.close();
+        } catch (Exception ex) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            System.out.println(ex.getMessage());
+        }
+
+
+    }
 }
