@@ -59,12 +59,10 @@ public class ConsoleView {
                                 case 4: // prezinta lista favorite
                                     break;
                                 case 5: // creaza lista favorite
-                                  databaseHandler.creazaListaFavorite(userLogat);
+
                                     break;
                                 case 6: // adauga de la favorit
-                                    ImobilModel imobilModelFavorit = new ImobilModel();
-                                    imobilModelFavorit.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati in lista de favorite?"));
-                                    databaseHandler.adaugaLaFavorit(imobilModelFavorit, userLogat);
+
                                     break;
                                 case 7://sterge de la favorite
                                     break;

@@ -1,7 +1,6 @@
 package com.sda.practical.util;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.imobile.ImobilTypeEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
@@ -43,7 +42,7 @@ public class HibernateUtil {
                 configuration.addAnnotatedClass(ImobilTypeEntity.class);
                 configuration.addAnnotatedClass(UtilizatorEntitate.class);
                 configuration.addAnnotatedClass(UserTypesEntity.class);
-                configuration.addAnnotatedClass(ListaFavoriteEntitate.class);
+
 
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

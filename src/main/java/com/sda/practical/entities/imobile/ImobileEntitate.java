@@ -1,10 +1,11 @@
 package com.sda.practical.entities.imobile;
 
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table
@@ -25,10 +26,8 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-
-    @ManyToOne
-    @JoinColumn(name = "listaFavorite")
-    private ListaFavoriteEntitate listaFavoriteEntitate;
+    @ManyToMany(mappedBy = "imobileEntitateSet")
+    private Set<UtilizatorEntitate> utilizatorEntitateSet = new HashSet<UtilizatorEntitate>();
 
     @ManyToOne
     @JoinColumn(name = "idTipImobil")
@@ -54,13 +53,7 @@ public class ImobileEntitate {
     @JoinColumn(name = "idOras")
     private OrasEntitate orasEntitate;
 
-    public ListaFavoriteEntitate getListaFavoriteEntitate() {
-        return listaFavoriteEntitate;
-    }
 
-    public void setListaFavoriteEntitate(ListaFavoriteEntitate listaFavoriteEntitate) {
-        this.listaFavoriteEntitate = listaFavoriteEntitate;
-    }
 
     public UtilizatorEntitate getUtilizatorEntitate() {
         return utilizatorEntitate;
@@ -191,5 +184,11 @@ public class ImobileEntitate {
         this.tipImobil = tipImobil;
     }
 
+    public Set<UtilizatorEntitate> getUtilizatorEntitateSet() {
+        return utilizatorEntitateSet;
+    }
 
+    public void setUtilizatorEntitateSet(Set<UtilizatorEntitate> utilizatorEntitateSet) {
+        this.utilizatorEntitateSet = utilizatorEntitateSet;
+    }
 }

@@ -1,7 +1,6 @@
 package com.sda.practical.handler;
 
 import com.sda.practical.entities.imobile.*;
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
 import com.sda.practical.models.FilterModel;
@@ -302,48 +301,48 @@ public class DatabaseHandler {
     // TODO 1. creare metoda pentru a crea lista de favorite - care se introduce in meniu;
     // TODO 2. metoda adaugaLaFavorit - o adaugam in noua lista din metoda noua ;
 
-    public void creazaListaFavorite(UserModel userModel) {
-        Transaction transaction = null;
-        try {
-            List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            ListaFavoriteEntitate listaFavoriteEntitate = new ListaFavoriteEntitate();
-            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
-            listaFavoriteEntitate.setImobileEntitateList(imobileEntitateList);
-            transaction = session.beginTransaction();
-            session.save(listaFavoriteEntitate);
-            System.out.println("Lista favorita creata");
-            transaction.commit();
-            session.close();
-        } catch (Exception ex) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            System.out.println(ex.getMessage());
-        }
-    }
-
-
-    public void adaugaLaFavorit(ImobilModel imobilModel, UserModel userModel) {
-        Transaction transaction = null;
-        try {
-            Session session = HibernateUtil.getSessionFactory().openSession();
-            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
-            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
-            ListaFavoriteEntitate listaFavoriteEntitate = session.find(ListaFavoriteEntitate.class, utilizatorEntitate.getFavouritesListEntityId());
-            listaFavoriteEntitate.getImobileEntitateList().add(imobileEntitate);
-            transaction = session.beginTransaction();
-            session.save(listaFavoriteEntitate);
-            transaction.commit();
-            System.out.println("Imobilul a fost adaugat in lista favorite !");
-            session.close();
-        } catch (Exception ex) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
-            System.out.println(ex.getMessage());
-        }
-
-
-    }
+//    public void creazaListaFavorite(UserModel userModel) {
+//        Transaction transaction = null;
+//        try {
+//            List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
+//            Session session = HibernateUtil.getSessionFactory().openSession();
+////            ListaFavoriteEntitate listaFavoriteEntitate = new ListaFavoriteEntitate();
+//            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
+//            listaFavoriteEntitate.setImobileEntitateList(imobileEntitateList);
+//            transaction = session.beginTransaction();
+////            session.save(listaFavoriteEntitate);
+//            System.out.println("Lista favorita creata");
+//            transaction.commit();
+//            session.close();
+//        } catch (Exception ex) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            System.out.println(ex.getMessage());
+//        }
+//    }
+//
+//
+//    public void adaugaLaFavorit(ImobilModel imobilModel, UserModel userModel) {
+//        Transaction transaction = null;
+//        try {
+//            Session session = HibernateUtil.getSessionFactory().openSession();
+//            ImobileEntitate imobileEntitate = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+//            UtilizatorEntitate utilizatorEntitate = session.find(UtilizatorEntitate.class, userModel.getUserId());
+//            ListaFavoriteEntitate listaFavoriteEntitate = session.find(ListaFavoriteEntitate.class, utilizatorEntitate.getFavouritesListEntityId());
+//            listaFavoriteEntitate.getImobileEntitateList().add(imobileEntitate);
+//            transaction = session.beginTransaction();
+//            session.save(listaFavoriteEntitate);
+//            transaction.commit();
+//            System.out.println("Imobilul a fost adaugat in lista favorite !");
+//            session.close();
+//        } catch (Exception ex) {
+//            if (transaction != null) {
+//                transaction.rollback();
+//            }
+//            System.out.println(ex.getMessage());
+//        }
+//
+//
+//    }
 }

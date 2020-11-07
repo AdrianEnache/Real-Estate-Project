@@ -1,8 +1,6 @@
 package com.sda.practical.models;
 
 
-import com.sda.practical.entities.users.ListaFavoriteEntitate;
-
 import java.util.List;
 
 public class UserModel {
@@ -14,7 +12,7 @@ public class UserModel {
     private String password;
     private Integer userTypeId;
     private Integer userId;
-    private List<ListaFavoriteEntitate> listaFavorite;
+
 
     public Integer getUserId() {
         return userId;
@@ -72,11 +70,5 @@ public class UserModel {
         this.userTypeId = userTypeId;
     }
 
-    public List<ListaFavoriteEntitate> getListaFavorite() {
-        return listaFavorite;
-    }
 
-    public void setListaFavorite(List<ListaFavoriteEntitate> listaFavorite) {
-        this.listaFavorite = listaFavorite;
-    }
 }
