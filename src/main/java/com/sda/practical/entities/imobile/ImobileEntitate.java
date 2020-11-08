@@ -191,5 +191,4 @@ public class ImobileEntitate {
         this.utilizatori = utilizatori;
     }
 
-
 }

@@ -3,8 +3,9 @@ package com.sda.practical.entities.users;
 import com.sda.practical.entities.imobile.ImobileEntitate;
 
 import javax.persistence.*;
-import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table
@@ -32,14 +33,13 @@ public class UtilizatorEntitate {
 
     //TODO sa facem cu LAZY
 
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinTable(
             name = "favorite",
             joinColumns = {@JoinColumn(name = "utilizatorId")},
             inverseJoinColumns = {@JoinColumn(name = "imobileId")}
     )
-    private List<ImobileEntitate> favorite = new ArrayList<>();
-
+    private Set<ImobileEntitate> favorite = new HashSet<>();
 
     public List<ImobileEntitate> getImobileEntitateList() {
         return imobileEntitateList;
@@ -47,6 +47,14 @@ public class UtilizatorEntitate {
 
     public void setImobileEntitateList(List<ImobileEntitate> imobileEntitateList) {
         this.imobileEntitateList = imobileEntitateList;
+    }
+
+    public void setFavorite(Set<ImobileEntitate> favorite) {
+        this.favorite = favorite;
+    }
+
+    public Set<ImobileEntitate> getFavorite() {
+        return favorite;
     }
 
     public UserTypesEntity getUserType() {
@@ -114,11 +122,5 @@ public class UtilizatorEntitate {
         this.idTipUser = idTipUser;
     }
 
-    public List<ImobileEntitate> getFavorite() {
-        return favorite;
-    }
 
-    public void setFavorite(List<ImobileEntitate> favorite) {
-        this.favorite = favorite;
-    }
 }

@@ -12,6 +12,7 @@ import com.sda.practical.models.UserModel;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ConsoleView {
     ViewHandler viewHandler = new ViewHandler();
@@ -57,8 +58,7 @@ public class ConsoleView {
                                     this.databaseHandler.cumparaImobil(imobilModelCumparat);
                                     break;
                                 case 4: // prezinta lista favorite
-                                    this.printListaImobile(databaseHandler.arataListaFavorite(userLogat));
-
+                                    this.printSetImobile(databaseHandler.arataListaFavorite(userLogat));
                                     break;
                                 case 5: // adauga la favorit
                                     ImobilModel imobil = new ImobilModel();
@@ -195,12 +195,33 @@ public class ConsoleView {
     }
 
     //metoda printListaImobile - ne afiseaza lista din baza de date cu toate imobilele introduse
+
     public void printListaImobile(List<ImobileEntitate> listaImobile) {
 
         for (ImobileEntitate imobil : listaImobile) {
             System.out.println(imobil.getIdTipImobilEntitate() + ". " +
                     "Data Postarii = " + imobil.getDataPostariiAnuntului() +
                     ", Anunt Status = " + imobil.getAnuntStatusEntity().getStatusAnunt() +
+                    ", Suprafata = " + imobil.getSuprafata() + " MP" +
+                    ", Pret = " + imobil.getPret() +
+                    ", Valuta = " + imobil.getValutaEntitate().getTipValuta() +
+                    ", Tip Imobil = " + imobil.getTipImobil().getTipImobil() +
+                    ", Etaj = " + imobil.getEtaj() +
+                    ", Compartimentare = " + imobil.getCompartimentareEntity().getTipCompartimentare() +
+                    ", Numar Camere = " + imobil.getNumarCamere() +
+                    ", An Constructie = " + imobil.getAnConstructie() +
+                    ", Coordonate = " + imobil.getCoordonate() +
+                    ", Descriere = " + imobil.getDescriere() +
+                    ", Oras = " + imobil.getOrasEntitate().getNumeOras());
+        }
+    }
+
+    public void printSetImobile(Set<ImobileEntitate> listaImobile) {
+
+        for (ImobileEntitate imobil : listaImobile) {
+            System.out.println(imobil.getIdTipImobilEntitate() + ". " +
+                    "Data Postarii = " + imobil.getDataPostariiAnuntului() +
+//                    ", Anunt Status = " + imobil.getAnuntStatusEntity().getStatusAnunt() +
                     ", Suprafata = " + imobil.getSuprafata() + " MP" +
                     ", Pret = " + imobil.getPret() +
                     ", Valuta = " + imobil.getValutaEntitate().getTipValuta() +

@@ -11,9 +11,7 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 public class DatabaseHandler {
@@ -299,7 +297,8 @@ public class DatabaseHandler {
     }
 
 
-    // metoda
+    // metoda adaugaFavorit - ne foloseste pentru a putea adauga imobile in lista de favorite
+    // adaugam in functie de ID imobil si ID user
 
     public void adaugaFavorit(UserModel userModel, ImobilModel imobilModel) {
         Transaction transaction = null;
@@ -309,6 +308,7 @@ public class DatabaseHandler {
             UtilizatorEntitate user = session.find(UtilizatorEntitate.class, userModel.getUserId());
             ImobileEntitate imobil = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
             user.getFavorite().add(imobil);
+            System.out.println("Imobilul a fost adaugat la favorite.");
             transaction.commit();
             session.close();
         } catch (Exception e) {
@@ -317,22 +317,29 @@ public class DatabaseHandler {
 
     }
 
-    public List<ImobileEntitate> arataListaFavorite(UserModel userModel) {
+    // metoda arataListaFavorite - ne folosim ca sa putem afisa ce imobile au fost salvate de user in lista lui de favorite
+    // am folosit un Set pentru a ne afisa lista de imobile favorite
+    // Interfata Set - este o colectie care nu contine duplicate
+
+    public Set<ImobileEntitate> arataListaFavorite(UserModel userModel) {
         Transaction transaction = null;
-        List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
+        Set<ImobileEntitate> imobileEntitateList = new HashSet<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
             UtilizatorEntitate user = session.find(UtilizatorEntitate.class, userModel.getUserId());
+            imobileEntitateList = user.getFavorite();
             transaction.commit();
             session.close();
-            imobileEntitateList = user.getFavorite();
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
-
         return imobileEntitateList;
     }
 
+
+    public void stergeFavorit() {
+
+    }
 
 }
