@@ -26,7 +26,7 @@ public class ImobileEntitate {
     private String coordonate;
     private String descriere;
 
-    @ManyToMany(mappedBy = "favorite")
+    @ManyToMany(mappedBy = "favorite", cascade = CascadeType.ALL)
     private List<UtilizatorEntitate> utilizatori = new ArrayList<>();
 
     @ManyToOne

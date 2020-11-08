@@ -3,7 +3,6 @@ package com.sda.practical.handler;
 import com.sda.practical.entities.imobile.*;
 import com.sda.practical.entities.users.UserTypesEntity;
 import com.sda.practical.entities.users.UtilizatorEntitate;
-import com.sda.practical.models.FilterModel;
 import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 import com.sda.practical.util.HibernateUtil;
@@ -11,7 +10,9 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 
 public class DatabaseHandler {
@@ -177,55 +178,57 @@ public class DatabaseHandler {
         List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            String hql = "from ImobileEntitate where ";
+            String hql = "from ImobileEntitate ";
             String and = " and ";
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(hql);
             boolean isFirst = false;
-
-            if (filtre.containsKey(1)) {
-                String filtruPret = "pret>='" + filtre.get(1) + "' and pret<='" + filtre.get(11) + "'";
-                stringBuilder.append(filtruPret);
-                isFirst = true;
-            }
-            if (filtre.containsKey(2)) {
-                if (isFirst) {
-                    stringBuilder.append(and);
+            if (!filtre.isEmpty()) {
+                stringBuilder.append("where");
+                if (filtre.containsKey(1)) {
+                    String filtruPret = "pret>='" + filtre.get(1) + "' and pret<='" + filtre.get(11) + "'";
+                    stringBuilder.append(filtruPret);
+                    isFirst = true;
                 }
-                String filtruTipImobil = "idTipImobil='" + filtre.get(2) + "'";
-                stringBuilder.append(filtruTipImobil);
-                isFirst = true;
-            }
-            if (filtre.containsKey(3)) {
-                if (isFirst) {
-                    stringBuilder.append(and);
+                if (filtre.containsKey(2)) {
+                    if (isFirst) {
+                        stringBuilder.append(and);
+                    }
+                    String filtruTipImobil = "idTipImobil='" + filtre.get(2) + "'";
+                    stringBuilder.append(filtruTipImobil);
+                    isFirst = true;
                 }
-                String filtruSuprafata = "suprafata>='" + filtre.get(3) + "' and suprafata<='" + filtre.get(13) + "'";
-                stringBuilder.append(filtruSuprafata);
-                isFirst = true;
-            }
-            if (filtre.containsKey(4)) {
-                if (isFirst) {
-                    stringBuilder.append(and);
+                if (filtre.containsKey(3)) {
+                    if (isFirst) {
+                        stringBuilder.append(and);
+                    }
+                    String filtruSuprafata = "suprafata>='" + filtre.get(3) + "' and suprafata<='" + filtre.get(13) + "'";
+                    stringBuilder.append(filtruSuprafata);
+                    isFirst = true;
                 }
-                String filtruEtaj = "etaj>='" + filtre.get(4) + "' and etaj<='" + filtre.get(14) + "'";
-                stringBuilder.append(filtruEtaj);
-                isFirst = true;
-            }
-            if (filtre.containsKey(5)) {
-                if (isFirst) {
-                    stringBuilder.append(and);
+                if (filtre.containsKey(4)) {
+                    if (isFirst) {
+                        stringBuilder.append(and);
+                    }
+                    String filtruEtaj = "etaj>='" + filtre.get(4) + "' and etaj<='" + filtre.get(14) + "'";
+                    stringBuilder.append(filtruEtaj);
+                    isFirst = true;
                 }
-                String filtruCamere = "numarCamere>='" + filtre.get(5) + "' and numarCamere<='" + filtre.get(15) + "'";
-                stringBuilder.append(filtruCamere);
-                isFirst = true;
-            }
-            if (filtre.containsKey(6)) {
-                if (isFirst) {
-                    stringBuilder.append(and);
+                if (filtre.containsKey(5)) {
+                    if (isFirst) {
+                        stringBuilder.append(and);
+                    }
+                    String filtruCamere = "numarCamere>='" + filtre.get(5) + "' and numarCamere<='" + filtre.get(15) + "'";
+                    stringBuilder.append(filtruCamere);
+                    isFirst = true;
                 }
-                String filtruAnConstructie = "anConstructie>='" + filtre.get(6) + "' and anConstructie<='" + filtre.get(16) + "'";
-                stringBuilder.append(filtruAnConstructie);
+                if (filtre.containsKey(6)) {
+                    if (isFirst) {
+                        stringBuilder.append(and);
+                    }
+                    String filtruAnConstructie = "anConstructie>='" + filtre.get(6) + "' and anConstructie<='" + filtre.get(16) + "'";
+                    stringBuilder.append(filtruAnConstructie);
+                }
             }
             imobileEntitateList = session.createQuery(stringBuilder.toString(), ImobileEntitate.class).list();
             session.close();
@@ -233,22 +236,6 @@ public class DatabaseHandler {
             System.out.println(ex.getMessage());
         }
         return imobileEntitateList;
-    }
-
-
-    public List<ImobileEntitate> getImobils(FilterModel filterModel) {
-        String sql = createFilterSql(filterModel);
-
-        return null;
-    }
-
-    public String createFilterSql(FilterModel filterModel) {
-        String sql = "Select * imobile where ";
-
-        if (filterModel.getOras() != null) {
-            sql += "suprafata = " + filterModel.getSuprafata();
-        }
-        return sql;
     }
 
     //  TODO cumparaImobil - nu am finalizat metoda - done
@@ -276,6 +263,7 @@ public class DatabaseHandler {
 
     //  TODO inchiriazaImobil - nu am finalizat metoda - done
     // metoda inchiriazaImobil - ne folosim de un query pentru a modifica statusul unui imobil din baza de date in anunt inchiriat ( optiunea - 3 )
+
     public void inchiriazaImobil(ImobilModel imobilModel) {
         Transaction transaction = null;
 
@@ -314,16 +302,33 @@ public class DatabaseHandler {
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+    }
 
+    //
+
+    public void stergeFavorit(UserModel userModel, ImobilModel imobilModel) {
+        Transaction transaction = null;
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            transaction = session.beginTransaction();
+            UtilizatorEntitate user = session.find(UtilizatorEntitate.class, userModel.getUserId());
+            ImobileEntitate imobil = session.find(ImobileEntitate.class, imobilModel.getIdTipImobilEntity());
+            user.getFavorite().remove(imobil);
+            System.out.println("Imobilul a fost sters!");
+            transaction.commit();
+            session.close();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
     // metoda arataListaFavorite - ne folosim ca sa putem afisa ce imobile au fost salvate de user in lista lui de favorite
     // am folosit un Set pentru a ne afisa lista de imobile favorite
     // Interfata Set - este o colectie care nu contine duplicate
 
-    public Set<ImobileEntitate> arataListaFavorite(UserModel userModel) {
+    public List<ImobileEntitate> arataListaFavorite(UserModel userModel) {
         Transaction transaction = null;
-        Set<ImobileEntitate> imobileEntitateList = new HashSet<>();
+        List<ImobileEntitate> imobileEntitateList = new ArrayList<>();
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
             transaction = session.beginTransaction();
@@ -336,10 +341,4 @@ public class DatabaseHandler {
         }
         return imobileEntitateList;
     }
-
-
-    public void stergeFavorit() {
-
-    }
-
 }

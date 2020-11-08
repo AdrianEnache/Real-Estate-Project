@@ -9,10 +9,10 @@ import com.sda.practical.handler.ViewHandler;
 import com.sda.practical.models.ImobilModel;
 import com.sda.practical.models.UserModel;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class ConsoleView {
     ViewHandler viewHandler = new ViewHandler();
@@ -20,6 +20,7 @@ public class ConsoleView {
     DatabaseHandler databaseHandler = new DatabaseHandler();
     SessionFactory sessionFactory = new SessionFactory();
     Map<Integer, String> filtre = new HashMap<>();
+    ImobilModel imobilModel = new ImobilModel();
 
 
     public void startApp() {
@@ -44,29 +45,26 @@ public class ConsoleView {
                             option = keyboardHandler.readInteger("Introduceti optiunea : ");
                             switch (option) {
                                 case 1:  // cauta imobil
-                                    //TODO De comentat metodele!
                                     this.cautaCuFiltre();
                                     break;
                                 case 2: // inchiriaza imobil
-                                    ImobilModel imobilModelInchiriat = new ImobilModel();
-                                    imobilModelInchiriat.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa inchiriati?"));
-                                    this.databaseHandler.inchiriazaImobil(imobilModelInchiriat);
+                                    imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa inchiriati?"));
+                                    this.databaseHandler.inchiriazaImobil(imobilModel);
                                     break;
                                 case 3: // cumpara imobil
-                                    ImobilModel imobilModelCumparat = new ImobilModel();
-                                    imobilModelCumparat.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa cumparati?"));
-                                    this.databaseHandler.cumparaImobil(imobilModelCumparat);
+                                    imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa cumparati?"));
+                                    this.databaseHandler.cumparaImobil(imobilModel);
                                     break;
                                 case 4: // prezinta lista favorite
-                                    this.printSetImobile(databaseHandler.arataListaFavorite(userLogat));
+                                    this.printListaImobile(databaseHandler.arataListaFavorite(userLogat));
                                     break;
                                 case 5: // adauga la favorit
-                                    ImobilModel imobil = new ImobilModel();
-                                    imobil.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati la favorit?"));
-                                    databaseHandler.adaugaFavorit(userLogat, imobil);
+                                    imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa adaugati la favorit?"));
+                                    databaseHandler.adaugaFavorit(userLogat, imobilModel);
                                     break;
                                 case 6: // sterge de la favorit
-
+                                    imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Ce imobil doriti sa stergeti de la favorit?"));
+                                    databaseHandler.stergeFavorit(userLogat, imobilModel);
                                     break;
                                 case 7://sterge de la favorite
                                     System.out.println("Logged out!");
@@ -89,7 +87,6 @@ public class ConsoleView {
                                     this.cautaCuFiltre();
                                     break;
                                 case 3: // sterge imobil
-                                    ImobilModel imobilModel = new ImobilModel();
                                     imobilModel.setIdTipImobilEntity(keyboardHandler.readInteger("Introduceti id-ul imobilului pe care doriti sa il stergeti:"));
                                     databaseHandler.stergeImobil(imobilModel);
                                     break;
@@ -145,17 +142,13 @@ public class ConsoleView {
 
                 //TODO - de realizat metoda de adaugat imobile, am inceput, trebuie finalizata -done
 
-
                 case 3:
                     System.out.println("Bye bye");
                     break;
                 default:
                     System.out.println("Nu cunoastem optiunea");
             }
-
         }
-
-
     }
 
     // metoda addImobil - ne creaza un imobil de tip imobilModel
@@ -216,25 +209,6 @@ public class ConsoleView {
         }
     }
 
-    public void printSetImobile(Set<ImobileEntitate> listaImobile) {
-
-        for (ImobileEntitate imobil : listaImobile) {
-            System.out.println(imobil.getIdTipImobilEntitate() + ". " +
-                    "Data Postarii = " + imobil.getDataPostariiAnuntului() +
-//                    ", Anunt Status = " + imobil.getAnuntStatusEntity().getStatusAnunt() +
-                    ", Suprafata = " + imobil.getSuprafata() + " MP" +
-                    ", Pret = " + imobil.getPret() +
-                    ", Valuta = " + imobil.getValutaEntitate().getTipValuta() +
-                    ", Tip Imobil = " + imobil.getTipImobil().getTipImobil() +
-                    ", Etaj = " + imobil.getEtaj() +
-                    ", Compartimentare = " + imobil.getCompartimentareEntity().getTipCompartimentare() +
-                    ", Numar Camere = " + imobil.getNumarCamere() +
-                    ", An Constructie = " + imobil.getAnConstructie() +
-                    ", Coordonate = " + imobil.getCoordonate() +
-                    ", Descriere = " + imobil.getDescriere() +
-                    ", Oras = " + imobil.getOrasEntitate().getNumeOras());
-        }
-    }
 
     // metoda cautaCuFiltre - se foloseste de metoda cautaImobil din DBHandler
     // am folosit un switch + case pentru meniul de filtre
@@ -286,11 +260,52 @@ public class ConsoleView {
                     filtre.clear();
                     break;
                 case 8:
-                    // filtre.clear - ne goleste mapa de fiecare data pentru a putea reintroduce alte optiuni
+                    List<ImobileEntitate> imobileEntitateList = databaseHandler.cautaImobil(filtre);
+                    orderList(imobileEntitateList);
+                    break;
+                case 9:
+                    // filtre.clear - ne goleste mapa de fiecare data pentru a putea reintroduce alte filtre noi
                     filtre.clear();
                     break;
+
                 default:
                     System.out.println("Optiune incorecta");
+            }
+        }
+    }
+
+
+    public void orderList(List<ImobileEntitate> imobileEntitateList) {
+        Integer option = 0;
+        while (option != 6) {
+            viewHandler.printMenu(MenuTypeEnum.ORDER_MENU);
+            option = keyboardHandler.readInteger("Introduceti optiunea : ");
+            switch (option) {
+                case 1:
+                    imobileEntitateList.sort(Comparator.comparing(ImobileEntitate::getPret));
+                    printListaImobile(imobileEntitateList);
+                    break;
+                case 2:
+                    imobileEntitateList.sort(Comparator.comparing(ImobileEntitate::getPret).reversed());
+                    printListaImobile(imobileEntitateList);
+                    break;
+                    //TODO de facut metodele de ordonare in functie de tip anunt( vandut , inchiriat etc)
+                case 3:
+
+                    break;
+                case 4:
+
+                    break;
+                case 5:
+                    imobileEntitateList.sort(Comparator.comparing(ImobileEntitate::getSuprafata));
+                    printListaImobile(imobileEntitateList);
+                    break;
+                case 6:
+                    imobileEntitateList.sort(Comparator.comparing(ImobileEntitate::getSuprafata).reversed());
+                    printListaImobile(imobileEntitateList);
+                    break;
+                default:
+                    System.out.println("Optiune incorecta!");
             }
         }
     }

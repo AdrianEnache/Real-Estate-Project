@@ -3,9 +3,8 @@ package com.sda.practical.entities.users;
 import com.sda.practical.entities.imobile.ImobileEntitate;
 
 import javax.persistence.*;
-import java.util.HashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table
@@ -39,7 +38,7 @@ public class UtilizatorEntitate {
             joinColumns = {@JoinColumn(name = "utilizatorId")},
             inverseJoinColumns = {@JoinColumn(name = "imobileId")}
     )
-    private Set<ImobileEntitate> favorite = new HashSet<>();
+    private List<ImobileEntitate> favorite = new ArrayList<>();
 
     public List<ImobileEntitate> getImobileEntitateList() {
         return imobileEntitateList;
@@ -49,12 +48,12 @@ public class UtilizatorEntitate {
         this.imobileEntitateList = imobileEntitateList;
     }
 
-    public void setFavorite(Set<ImobileEntitate> favorite) {
-        this.favorite = favorite;
+    public List<ImobileEntitate> getFavorite() {
+        return favorite;
     }
 
-    public Set<ImobileEntitate> getFavorite() {
-        return favorite;
+    public void setFavorite(List<ImobileEntitate> favorite) {
+        this.favorite = favorite;
     }
 
     public UserTypesEntity getUserType() {
