@@ -274,6 +274,7 @@ public class ConsoleView {
         }
     }
 
+    // metoda orderList - ne ajuta sa ordonam lista de imobile
 
     public void orderList(List<ImobileEntitate> imobileEntitateList) {
         Integer option = 0;
@@ -291,7 +292,7 @@ public class ConsoleView {
                     break;
                     //TODO de facut metodele de ordonare in functie de tip anunt( vandut , inchiriat etc)
                 case 3:
-
+                    
                     break;
                 case 4:
 
